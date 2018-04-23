@@ -35,3 +35,11 @@ svg {
 .label {
   color: $primary;
 }
+
+.banner {
+  height: 15em;
+  width: 100%;
+  background: url('../img/banner-home.jpg') no-repeat;
+  background-size: cover;
+  background-position: top center;
+}

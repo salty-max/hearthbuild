@@ -1,0 +1,54 @@
+.deck {
+  .content-top {
+    display: flex;
+    align-items: center;
+  }
+
+  &--title {
+    background: url('../img/deck-banners/banner-mage.png') no-repeat $dark right;
+    border-radius: .375em .375em 0 0;
+    color: $light;
+    padding: .8rem;
+    font-family: $serif-font;
+    font-size: 1.6em;
+
+  }
+
+  &--metas {
+    background-color: $light;
+    border-radius: 0 0 .375em .375em;
+    padding: 1.2rem;
+    display: flex;
+    flex-flow: row wrap;
+
+    .tags {
+      margin: 0 .5em;
+
+      .tag {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &--cost, &--format, &--class {
+    svg {
+      fill: $light;
+    }
+  }
+
+  &--rating-btn {
+    width: 100%;
+  }
+
+  &--ratings {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .deck--metas .tags .tag {
+    margin-bottom: 1em;
+  }
+}

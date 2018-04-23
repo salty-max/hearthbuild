@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <link rel="stylesheet" href="css/app.css">
+  <title>HearthBuild</title>
+</head>
+<body>
+    <!-- HEADER -->
+    <nav class="navbar is-light">
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <img src="img/hearthbuild-logo-150.png" alt="" class="brand-logo">
+        </div>
+        <div class="navbar-burger">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a href="#" class="navbar-link">Decks</a>
+            <div class="navbar-dropdown">
+              <a href="" class="navbar-item">Shaman</a>
+              <a href="" class="navbar-item">Rogue</a>
+              <a href="" class="navbar-item">Warrior</a>
+              <a href="" class="navbar-item">Mage</a>
+              <a href="" class="navbar-item">Hunter</a>
+              <a href="" class="navbar-item">Paladin</a>
+              <a href="" class="navbar-item">Priest</a>
+              <a href="" class="navbar-item">Warlock</a>
+              <a href="" class="navbar-item">Druid</a>
+            </div>
+          </div>
+          <a href="" class="navbar-item">Cards</a>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a class="button is-primary">
+              <span class="icon">
+                <i class="fas fa-plus-circle"></i>
+              </span>
+              <span>Create a deck</span>
+            </a>
+          </div>
+          <div class="navbar-item">
+            <a class="button is-primary is-outlined">
+              <span class="icon">
+                <i class="fas fa-sign-in-alt"></i>
+              </span>
+              <span>Login</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section" id="deck-single">
+      <div class="deck">
+        <div class="columns">
+          <div class="column is-9">
+            <div class="deck--title">Pew pew I'm a mage</div>
+            <div class="deck--metas">
+              <div class="deck--author">
+                <span class=" tags has-addons">
+                  <span class="tag is-dark">
+                    <span class="icon">
+                      <i class="fas fa-user"></i>
+                    </span>
+                  </span>
+                  <span class="tag is-white">
+                    John Doe
+                  </span>
+                </span>
+              </div>
+              <div class="deck--updated">
+                <span class=" tags has-addons">
+                  <span class="tag is-dark">
+                    <span class="icon">
+                      <i class="fas fa-calendar-alt"></i>
+                    </span>
+                  </span>
+                  <span class="tag is-white">
+                    2 days ago
+                  </span>
+                </span>
+              </div>
+              <div class="deck--cost">
+                <span class=" tags has-addons">
+                  <span class="tag is-dark">
+                    <svg>
+                      <use xlink:href="img/misc/misc-dust.svg#misc-dust"></use>
+                    </svg>
+                  </span>
+                  <span class="tag is-white">
+                    15k
+                  </span>
+                </span>
+              </div>
+              <div class="deck--format">
+                <span class=" tags has-addons">
+                  <span class="tag is-dark">
+                    <svg>
+                      <use xlink:href="img/misc/misc-raven.svg#misc-raven"></use>
+                    </svg>
+                  </span>
+                  <span class="tag is-white">
+                    Standard
+                  </span>
+                </span>
+              </div>
+              <div class="deck--type">
+                <span class=" tags has-addons">
+                  <span class="tag is-dark">
+                    <span class="icon">
+                      <i class="fas fa-tags"></i>
+                    </span>
+                  </span>
+                  <span class="tag is-white">
+                    Midrange
+                  </span>
+                </span>
+              </div>
+              <div class="deck--class">
+                <span class="tags has-addons">
+                  <span class="tag is-dark">
+                    <svg>
+                      <use xlink:href="img/classes/class-mage.svg#class-mage"></use>
+                    </svg>
+                  </span>
+                  <span class="tag is-white">
+                    Mage
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="box">
+              <button class="button is-primary is-outlined is-medium deck--rating-btn">
+                <span class="icon">
+                  <i class="fas fa-thumbs-up"></i>
+                </span>
+                <span>Like this deck</span>
+              </button>
+              <div class="deck--ratings">
+                <div class="deck--rating">
+                  <span class=" tags has-addons">
+                    <span class="tag is-dark">
+                      <span class="icon">
+                        <i class="fas fa-thumbs-up"></i>
+                      </span>
+                    </span>
+                    <span class="tag is-light">
+                      +52
+                    </span>
+                  </span>
+                </div>
+                <div class="deck--views">
+                  <span class="views tags has-addons">
+                    <span class="tag is-medium-mobile is-dark">
+                      <span class="icon">
+                        <i class="fas fa-eye"></i>
+                      </span>
+                    </span>
+                    <span class="tag is-medium-mobile is-light">
+                      6000
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="copyright">
+        <span class="icon">
+          <i class="fas fa-copyright"></i>
+        </span>
+        <span>2018 - HearthBuild</span>
+      </div>
+      <div class="github">
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+        <span>
+          Fork me on <a href="#">Github</a>
+        </span>
+      </div>
+    </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

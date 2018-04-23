@@ -1,1 +1,17 @@
+.navbar {
+  box-shadow: 1px 1px 5px rgba($dark, .4);
 
+  &-brand {
+    height: 6em;
+    display: flex;
+    align-items: center;
+
+    img {
+      max-height: 5em;
+    }
+  }
+
+  &-item {
+    font-weight: 600;
+  }
+}

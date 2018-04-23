@@ -1,2 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto+Slab:400,700');
+
 @import 'bulma';
+@import '_variables';
 @import '_navbar';
+@import '_sidebar';
+@import '_deckList';
+@import '_deckSingle';
+@import '_footer';
+
+body {
+  font-family: $font;
+}
+
+a {
+  color: $dark;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+svg {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.input, .select select:focus {
+  &:focus, &:active {
+    border-color: $primary;
+    box-shadow: 0 0 0 .125em rgba($primary, .5)
+  }
+}
+
+.label {
+  color: $primary;
+}

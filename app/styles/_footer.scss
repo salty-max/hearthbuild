@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $dark;
+  color: darken($light, 10%);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  a, .icon {
+    color: $primary;
+  }
+}

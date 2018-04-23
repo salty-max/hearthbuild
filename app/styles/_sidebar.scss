@@ -1,0 +1,38 @@
+.sidebar {
+  &-item {
+    background-color: $dark;
+    &--title {
+      margin-bottom: 1rem;
+      color: $primary;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    &--list-item {
+      padding: 1rem;
+      border: 1px solid rgba($light, .3);
+      border-bottom: none;
+      color: $white;
+
+      &:hover {
+        background: $primary;
+        color: $white;
+      }
+
+      &:last-child {
+        border-bottom: 1px solid rgba($light, .3);
+      }
+    }
+  }
+
+  .guide {
+    background-color: $warning;
+    .sidebar-item--title {
+      color: $dark;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}

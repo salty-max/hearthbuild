@@ -1,0 +1,101 @@
+.deck-list--form {
+  background-color: $lighter-dark;
+  padding: 1.5rem;
+  border-radius: .375rem;
+
+  .classes {
+
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      fill: $light;
+      width: 4rem;
+      height: 4rem;
+      margin: 0 .25rem;
+    }
+
+    label {
+      cursor: pointer;
+      color: $light;
+    }
+
+    .control {
+      position: relative;
+    }
+
+    .radio {
+      position: absolute;
+      visibility: hidden;
+    }
+
+    .radio:checked + label>svg {
+      fill: $primary;
+      transition: all .5s;
+    }
+  }
+
+  .fields {
+    padding-top: 1rem;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid rgba($light, .3);
+
+    .field {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.table {
+
+  margin-top: 2rem;
+  border-radius: .375em;
+  overflow: hidden;
+
+  thead {
+    background: $lighter-dark;
+
+    svg {
+      fill: $primary;
+    }
+
+    th {
+      text-align: center;
+      color: $primary;
+      padding: 1rem;
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+  }
+
+  tbody {
+    font-family: $serif-font;
+
+    tr {
+
+      td {
+        text-align: center;
+        padding: 1rem;
+
+        &:first-child {
+          text-align: left;
+
+          &:hover {
+            color: $primary;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

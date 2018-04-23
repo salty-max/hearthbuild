@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   <link rel="stylesheet" href="css/app.css">
   <title>HearthBuild</title>
 </head>
 <body>
     <!-- HEADER -->
-    <nav class="navbar is-dark">
+    <nav class="navbar is-light">
       <div class="navbar-brand">
         <div class="navbar-item">
           <img src="img/hearthbuild-logo-150.png" alt="" class="brand-logo">
@@ -20,17 +21,259 @@
           <span aria-hidden="true"></span>
         </div>
       </div>
-      <div class="navbar-menu is-active">
+      <div class="navbar-menu">
         <div class="navbar-start">
-          <div class="navbar-item">
+          <div class="navbar-item has-dropdown is-hoverable">
             <a href="#" class="navbar-link">Decks</a>
+            <div class="navbar-dropdown">
+              <a href="" class="navbar-item">Shaman</a>
+              <a href="" class="navbar-item">Rogue</a>
+              <a href="" class="navbar-item">Warrior</a>
+              <a href="" class="navbar-item">Mage</a>
+              <a href="" class="navbar-item">Hunter</a>
+              <a href="" class="navbar-item">Paladin</a>
+              <a href="" class="navbar-item">Priest</a>
+              <a href="" class="navbar-item">Warlock</a>
+              <a href="" class="navbar-item">Druid</a>
+            </div>
+          </div>
+          <a href="" class="navbar-item">Cards</a>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a class="button is-primary">
+              <span class="icon">
+                <i class="fas fa-plus-circle"></i>
+              </span>
+              <span>Create a deck</span>
+            </a>
           </div>
           <div class="navbar-item">
-            <a href="#" class="navbar-link">Cartes</a>
+            <a class="button is-primary is-outlined">
+              <span class="icon">
+                <i class="fas fa-sign-in-alt"></i>
+              </span>
+              <span>Login</span>
+            </a>
           </div>
         </div>
       </div>
     </nav>
+
+    <!-- HOME -->
+    <section class="section" id="home">
+      <div class="columns">
+        <div class="column is-9">
+          <main>
+            <h1 class="title">Decks list</h1>
+            <p class="subtitle">Decks from the community</p>
+
+            <div class="deck-list">
+              <div class="deck-list--form">
+                <form>
+                  <div class="classes">
+                    <div class="control">
+                      <input id="druid" name="class" type="radio" class="radio">
+                      <label for="druid">
+                        <svg>
+                          <use xlink:href="img/classes/class-druid.svg#class-druid"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <div class="control">
+                      <input id="hunter" name="class" type="radio" class="radio">
+                      <label for="hunter">
+                        <svg>
+                          <use xlink:href="img/classes/class-hunter.svg#class-hunter"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <div class="control">
+                      <input id="mage" name="class" type="radio" class="radio">
+                      <label for="mage">
+                        <svg>
+                          <use xlink:href="img/classes/class-mage.svg#class-mage"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <div class="control">
+                      <input id="paladin" name="class" type="radio" class="radio">
+                      <label for="paladin">
+                        <svg>
+                          <use xlink:href="img/classes/class-paladin.svg#class-paladin"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <div class="control">
+                      <input id="priest" name="class" type="radio" class="radio">
+                      <label for="priest">
+                        <svg>
+                          <use xlink:href="img/classes/class-priest.svg#class-priest"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <div class="control">
+                      <input id="rogue" name="class" type="radio" class="radio">
+                      <label for="rogue">
+                        <svg>
+                          <use xlink:href="img/classes/class-rogue.svg#class-rogue"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <div class="control">
+                      <input id="shaman" name="class" type="radio" class="radio">
+                      <label for="shaman">
+                        <svg>
+                          <use xlink:href="img/classes/class-shaman.svg#class-shaman"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <div class="control">
+                      <input id="warlock" name="class" type="radio" class="radio">
+                      <label for="warlock">
+                        <svg>
+                          <use xlink:href="img/classes/class-warlock.svg#class-warlock"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <div class="control">
+                      <input id="warrior" name="class" type="radio" class="radio">
+                      <label for="warrior">
+                        <svg>
+                          <use xlink:href="img/classes/class-warrior.svg#class-warrior"></use>
+                        </svg>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="field">
+                      <label class="label">Search by name</label>
+                      <div class="control has-icons-left">
+                        <input type="text" class="input" placeholder="Search by name...">
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-pencil-alt"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">By format</label>
+                      <div class="control">
+                        <span class="select">
+                          <select>
+                            <option value="">Standard</option>
+                            <option value="">Wild</option>
+                          </select>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">By type</label>
+                      <div class="control">
+                        <span class="select">
+                          <select>
+                            <option value="">Midrange</option>
+                            <option value="">Aggro</option>
+                            <option value="">Handlock</option>
+                            <option value="">Zoo</option>
+                          </select>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <table class="table deck-list--table is-fullwidth is-striped is-hoverable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th><i class="fas fa-user"></i></th>
+                    <th><i class="fas fa-calendar-alt"></i></th>
+                    <th>
+                      <svg>
+                        <use xlink:href="img/misc/misc-dust.svg#misc-dust"></use>
+                      </svg>
+                    </th>
+                    <th><i class="fas fa-thumbs-up"></i></th>
+                    <th><i class="fas fa-eye"></i></th>
+                    <th><i class="fas fa-comments"></i></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="deck.html">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></td>
+                    <td>John Doe</td>
+                    <td>2 days ago</td>
+                    <td>15k</td>
+                    <td>+52</td>
+                    <td>1k</td>
+                    <td>32</td>
+                  </tr>
+                  <tr>
+                    <td><a href="deck.html">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></td>
+                    <td>John Doe</td>
+                    <td>2 days ago</td>
+                    <td>15k</td>
+                    <td>+52</td>
+                    <td>1k</td>
+                    <td>32</td>
+                  </tr>
+                  <tr>
+                    <td><a href="deck.html">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></td>
+                    <td>John Doe</td>
+                    <td>2 days ago</td>
+                    <td>15k</td>
+                    <td>+52</td>
+                    <td>1k</td>
+                    <td>32</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </main>
+        </div>
+        <div class="column is-3">
+          <aside class="sidebar">
+            <div class="box sidebar-item">
+              <h3 class="sidebar-item--title is-size-5">Best rated decks</h3>
+              <div class="sidebar-item--list-item">Deck 1</div>
+              <div class="sidebar-item--list-item">Deck 2</div>
+              <div class="sidebar-item--list-item">Deck 3</div>
+              <div class="sidebar-item--list-item">Deck 4</div>
+              <div class="sidebar-item--list-item">Deck 5</div>
+            </div>
+            <div class="box sidebar-item">
+              <h3 class="sidebar-item--title is-size-5">Latest decks</h3>
+              <div class="sidebar-item--list-item">Deck 1</div>
+              <div class="sidebar-item--list-item">Deck 2</div>
+              <div class="sidebar-item--list-item">Deck 3</div>
+              <div class="sidebar-item--list-item">Deck 4</div>
+              <div class="sidebar-item--list-item">Deck 5</div>
+            </div>
+            <div class="box guide sidebar-item">
+              <h3 class="sidebar-item--title is-size-5">Deck creation 101</h3>
+              <button class="button is-dark is-outlined is-block is-medium">Read more</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="copyright">
+        <span class="icon">
+          <i class="fas fa-copyright"></i>
+        </span>
+        <span>2018 - HearthBuild</span>
+      </div>
+      <div class="github">
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+        <span>
+          Fork me on <a href="#">Github</a>
+        </span>
+      </div>
+    </footer>
 
   <script src="js/app.js"></script>
 </body>

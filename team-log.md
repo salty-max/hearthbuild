@@ -14,3 +14,9 @@
 
 - Rédaction des user stories
 - Création des wireframes
+
+## 23-04-2018
+
+### Pair-programming
+
+- Intégration HTML/CSS

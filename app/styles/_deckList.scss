@@ -14,8 +14,8 @@
 
     svg {
       fill: $light;
-      width: 4rem;
-      height: 4rem;
+      width: 3.5rem;
+      height: 3.5rem;
       margin: 0 .25rem;
     }
 
@@ -60,12 +60,12 @@
   border-radius: .375em;
   overflow: hidden;
 
+  svg {
+    fill: $primary;
+  }
+
   thead {
     background: $lighter-dark;
-
-    svg {
-      fill: $primary;
-    }
 
     th {
       text-align: center;
@@ -80,6 +80,16 @@
 
   tbody {
     font-family: $serif-font;
+
+    .deck-list--deck-name {
+      display: flex;
+      align-items: center;
+
+      .class-icon {
+        margin-right: .5em;
+        fill: $dark;
+      }
+    }
 
     tr {
 

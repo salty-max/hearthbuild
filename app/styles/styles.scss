@@ -37,9 +37,27 @@ svg {
 }
 
 .banner {
-  height: 15em;
+  height: 20em;
   width: 100%;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
   background: url('../img/banner-home.jpg') no-repeat;
   background-size: cover;
-  background-position: top center;
+  background-position: center center;
+
+  .title {
+    font-size: 3em;
+    font-weight: 600;
+    color: $primary;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba($light, .7);
+  }
+
+  .subtitle {
+    padding-top: 1rem;
+    font-weight: 600;
+    font-size: 2em;
+    color: $light;
+  }
 }

@@ -1,7 +1,14 @@
 .deck {
+
   .content-top {
     display: flex;
     align-items: center;
+  }
+
+  .panel-heading {
+    text-align: center;
+    color: $dark;
+    font-weight: 600;
   }
 
   &--title {
@@ -44,6 +51,91 @@
     display: flex;
     justify-content: space-between;
     padding-top: 1rem;
+  }
+
+  &--list-card {
+
+    justify-content: flex-start;
+    position: relative;
+    padding: 0;
+
+    &-cost {
+      width: 3rem;
+      padding: .5em;
+      background: $dark;
+      color: $light;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--icon {
+        svg {
+          fill: $light;
+          width: .9em;
+          height: .9em;
+        }
+      }
+
+      &--text {
+        font-weight: 600;
+        padding-left: .25em
+      }
+
+    }
+
+    &-name {
+      padding-left: .8em;
+      text-transform: uppercase;
+    }
+
+    &-count {
+      position: absolute;
+      width: 2rem;
+      height: 100%;
+      line-height: 100%;
+      padding: 1em;
+      right: 0;
+      color: $light;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &--desc {
+    padding: 2.5em 0;
+  }
+
+  &--comments {
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2em;
+
+      &-login {
+        display: flex;
+        align-items: center;
+
+        .subtitle {
+          margin-bottom: 0;
+          padding-right: 1em;
+        }
+      }
+    }
+
+    .title {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+
+    .subtitle {
+      font-size: 1em;
+      color: $danger;
+    }
   }
 }
 

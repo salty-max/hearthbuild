@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto+Slab:400,700');
 
 @import 'bulma';
+@import 'bulma-tooltip/dist/bulma-tooltip';
 @import '_variables';
 @import '_navbar';
 @import '_sidebar';
@@ -60,4 +61,16 @@ svg {
     font-size: 2em;
     color: $light;
   }
+}
+
+.is-epic {
+  background: $epic-color;
+}
+
+.is-legendary {
+  background: $legendary-color;
+}
+
+.is-rare {
+  background: $rare-color;
 }

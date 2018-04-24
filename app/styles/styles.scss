@@ -101,3 +101,9 @@ svg {
 .has-text-rare {
   color: $rare-color
 }
+
+@media screen and (max-width: 1024px) {
+  .container {
+    margin: 0;
+  }
+}

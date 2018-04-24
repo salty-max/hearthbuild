@@ -7,6 +7,7 @@
 @import '_sidebar';
 @import '_deckList';
 @import '_deckSingle';
+@import '_deckBuilder';
 @import '_footer';
 
 body {
@@ -63,14 +64,40 @@ svg {
   }
 }
 
+.fields {
+  padding-top: 1rem;
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid rgba($light, .3);
+
+  .field {
+    margin-bottom: 0;
+  }
+}
+
 .is-epic {
   background: $epic-color;
+}
+
+.has-text-epic {
+  color: $epic-color
 }
 
 .is-legendary {
   background: $legendary-color;
 }
 
+.has-text-legendary {
+  color: $legendary-color
+}
+
 .is-rare {
   background: $rare-color;
+}
+
+.has-text-rare {
+  color: $rare-color
 }

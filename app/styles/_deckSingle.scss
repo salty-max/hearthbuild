@@ -27,13 +27,13 @@
     padding: 1.2rem;
     display: flex;
     flex-flow: row wrap;
+  }
 
-    .tags {
-      margin: 0 .5em;
+  .tags {
+    margin: 0 .5em;
 
-      .tag {
-        margin-bottom: 0;
-      }
+    .tag {
+      margin-bottom: 0;
     }
   }
 
@@ -69,6 +69,8 @@
       justify-content: center;
 
       &--icon {
+        padding-left: .25em;
+
         svg {
           fill: $light;
           width: .9em;
@@ -78,7 +80,6 @@
 
       &--text {
         font-weight: 600;
-        padding-left: .25em
       }
 
     }

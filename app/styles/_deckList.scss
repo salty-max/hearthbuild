@@ -38,74 +38,65 @@
       transition: all .5s;
     }
   }
-
-  .fields {
-    padding-top: 1rem;
-    margin-top: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    border-top: 1px solid rgba($light, .3);
-
-    .field {
-      margin-bottom: 0;
-    }
-  }
 }
 
-.table {
+.deck-list {
+  .table {
 
-  margin-top: 2rem;
-  border-radius: .375em;
-  overflow: hidden;
+    margin-top: 2rem;
+    border-radius: .375em;
+    overflow: hidden;
 
-  svg {
-    fill: $primary;
-  }
-
-  thead {
-    background: $lighter-dark;
-
-    th {
-      text-align: center;
-      color: $primary;
-      padding: 1rem;
-
-      &:first-child {
-        text-align: left;
-      }
-    }
-  }
-
-  tbody {
-    font-family: $serif-font;
-
-    .deck-list--deck-name {
-      display: flex;
-      align-items: center;
-
-      .class-icon {
-        margin-right: .5em;
-        fill: $dark;
-      }
+    svg {
+      fill: $primary;
     }
 
-    tr {
+    thead {
+      background: $lighter-dark;
 
-      td {
+      th {
         text-align: center;
+        color: $primary;
         padding: 1rem;
 
         &:first-child {
           text-align: left;
+        }
+      }
+    }
 
-          &:hover {
-            color: $primary;
-            cursor: pointer;
+    tbody {
+      font-family: $serif-font;
+
+      .deck-list--deck-name {
+        display: flex;
+        align-items: center;
+
+        .class-icon {
+          margin-right: .5em;
+          fill: $dark;
+          min-width: 1.5em;
+          min-height: 1.5em;
+        }
+      }
+
+      tr {
+
+        td {
+          text-align: center;
+          padding: 1rem;
+
+          &:first-child {
+            text-align: left;
+
+            &:hover {
+              color: $primary;
+              cursor: pointer;
+            }
           }
         }
       }
     }
   }
+
 }

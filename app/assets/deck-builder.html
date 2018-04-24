@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <link rel="stylesheet" href="css/app.css">
+  <title>HearthBuild</title>
+</head>
+<body>
+    <!-- HEADER -->
+    <nav class="navbar is-light">
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="/" class="navbar-item">
+            <img src="img/hearthbuild-logo-150.png" alt="" class="brand-logo">
+          </a>
+          <div class="navbar-burger">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a href="#" class="navbar-link">Decks</a>
+              <div class="navbar-dropdown">
+                <a href="" class="navbar-item">Shaman</a>
+                <a href="" class="navbar-item">Rogue</a>
+                <a href="" class="navbar-item">Warrior</a>
+                <a href="" class="navbar-item">Mage</a>
+                <a href="" class="navbar-item">Hunter</a>
+                <a href="" class="navbar-item">Paladin</a>
+                <a href="" class="navbar-item">Priest</a>
+                <a href="" class="navbar-item">Warlock</a>
+                <a href="" class="navbar-item">Druid</a>
+              </div>
+            </div>
+            <a href="" class="navbar-item">Cards</a>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <a href="deck-builder.html" class="button is-primary">
+                <span class="icon">
+                  <i class="fas fa-plus-circle"></i>
+                </span>
+                <span>Create a deck</span>
+              </a>
+            </div>
+            <div class="navbar-item">
+              <a class="button is-primary is-outlined">
+                <span class="icon">
+                  <i class="fas fa-sign-in-alt"></i>
+                </span>
+                <span>Login</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="builder-banner">
+      <div class="content">
+        <h1 class="title">Deck builder</h1>
+        <p class="subtitle">One deck to rule them all</p>
+      </div>
+    </div>
+
+    <section class="section" id="deck-builder">
+      <div class="container">
+        <div class="deck-builder">
+          <div class="deck-builder--form">
+            <form>
+              <div class="fields">
+                <div class="field">
+                  <label class="label">Deck name</label>
+                  <div class="control has-icons-left">
+                    <input type="text" class="input" placeholder="What is your name...">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-pencil-alt"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label">By type</label>
+                  <div class="control">
+                    <span class="select">
+                      <select>
+                        <option value="">Midrange</option>
+                        <option value="">Aggro</option>
+                        <option value="">Handlock</option>
+                        <option value="">Zoo</option>
+                      </select>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="columns deck-builder--cards">
+            <div class="column is-4 is-hidden-mobile deck-builder--cards-preview">
+              <img src="img/card-placeholder.png" alt="">
+            </div>
+            <div class="column is-8  deck-builder--cards-table">
+              <div class="tabs">
+                <ul>
+                  <li class="is-active"><a>Warlock</a></li>
+                  <li><a>Neutrals</a></li>
+                </ul>
+              </div>
+              <table class="table is-striped">
+                <tbody>
+                  <tr>
+                    <td>Magikarp</td>
+                    <td>
+                      <div class="deck-builder--cards-table--cost">
+                        <span>0</span>
+                        <svg>
+                          <use xlink:href="img/misc/misc-mana.svg#misc-mana"></use>
+                        </svg>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="has-text-epic">Baston</td>
+                    <td>
+                      <div class="deck-builder--cards-table--cost">
+                        <span>5</span>
+                        <svg>
+                          <use xlink:href="img/misc/misc-mana.svg#misc-mana"></use>
+                        </svg>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="has-text-legendary">Alexstrasza</td>
+                    <td>
+                      <div class="deck-builder--cards-table--cost">
+                        <span>9</span>
+                        <svg>
+                          <use xlink:href="img/misc/misc-mana.svg#misc-mana"></use>
+                        </svg>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="has-text-rare">Acolyte de la souffrance</td>
+                    <td>
+                      <div class="deck-builder--cards-table--cost">
+                        <span>3</span>
+                        <svg>
+                          <use xlink:href="img/misc/misc-mana.svg#misc-mana"></use>
+                        </svg>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="deck-builder--list">
+            <div class="deck-builder--list-header">
+              <h3 class="title">Deck preview</h3>
+              <span class="tags has-addons">
+                <span class="tag is-medium is-dark">
+                  <svg>
+                    <use xlink:href="img/misc/misc-dust.svg#misc-dust"></use>
+                  </svg>
+                </span>
+                <span class="tag is-medium is-light">15k</span>
+              </span>
+              <span class="tags has-addons">
+                <span class="tag is-medium is-dark">
+                  <span class="icon">
+                    <i class="fab fa-slack-hash"></i>
+                  </span>
+                </span>
+                <span class="tag is-medium is-light">
+                  <span id="card-count">15</span> / 30
+                </span>
+              </span>
+            </div>
+            <div class="columns">
+              <div class="column is-8 deck-builder--list-table">
+                <div class="tabs">
+                  <ul>
+                    <li class="is-active"><a>Warlock</a></li>
+                    <li><a>Neutrals</a></li>
+                  </ul>
+                </div>
+                <table class="table is-striped">
+                  <tbody>
+                    <tr>
+                      <td>Magikarp</td>
+                      <td>
+                        <div class="deck-builder--cards-table--cost">
+                          <span>0</span>
+                          <svg>
+                            <use xlink:href="img/misc/misc-mana.svg#misc-mana"></use>
+                          </svg>
+                        </div>
+                      </td>
+                      <td>
+                        <button class="button is-danger is-small">
+                          <span class="icon">
+                            <i class="fas fa-trash-alt"></i>
+                          </span>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-epic">Baston</td>
+                      <td>
+                        <div class="deck-builder--cards-table--cost">
+                          <span>5</span>
+                          <svg>
+                            <use xlink:href="img/misc/misc-mana.svg#misc-mana"></use>
+                          </svg>
+                        </div>
+                      </td>
+                      <td>
+                        <button class="button is-danger is-small">
+                          <span class="icon">
+                            <i class="fas fa-trash-alt"></i>
+                          </span>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-legendary">Alexstrasza</td>
+                      <td>
+                        <div class="deck-builder--cards-table--cost">
+                          <span>9</span>
+                          <svg>
+                            <use xlink:href="img/misc/misc-mana.svg#misc-mana"></use>
+                          </svg>
+                        </div>
+                      </td>
+                      <td>
+                        <button class="button is-danger is-small">
+                          <span class="icon">
+                            <i class="fas fa-trash-alt"></i>
+                          </span>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-rare">Acolyte de la souffrance</td>
+                      <td>
+                        <div class="deck-builder--cards-table--cost">
+                          <span>3</span>
+                          <svg>
+                            <use xlink:href="img/misc/misc-mana.svg#misc-mana"></use>
+                          </svg>
+                        </div>
+                      </td>
+                      <td>
+                        <button class="button is-danger is-small">
+                          <span class="icon">
+                            <i class="fas fa-trash-alt"></i>
+                          </span>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="column is-4 deck-builder--curve">
+                <div class="box"></div>
+              </div>
+            </div>
+          </div>
+
+          <form class="deck-builder--desc">
+            <h3 class="title">Deck guide</h3>
+            <textarea class="textarea" rows="8" cols="80"></textarea>
+          </form>
+
+          <button class="button is-primary is-medium deck-builder--submit">Submit</button>
+        </div>
+      </div>
+    </section>
+
+
+    <footer class="footer">
+      <div class="copyright">
+        <span class="icon">
+          <i class="fas fa-copyright"></i>
+        </span>
+        <span>2018 - HearthBuild</span>
+      </div>
+      <div class="github">
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+        <span>
+          Fork me on <a href="#">Github</a>
+        </span>
+      </div>
+    </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

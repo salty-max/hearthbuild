@@ -1,0 +1,27 @@
+{
+  "users": {
+    "name": "String",
+    "email": "String",
+    "password": "String",
+    "avatar": "String",
+  },
+
+  "decks": {
+    "title": "String",
+    "class": "String",
+    "format": "String",
+    "type": "String",
+    "author": "String",
+    "cost": "Number",
+    "views": "Number",
+    "rating": "Number",
+    "cards": [],
+    "comments": [],
+  },
+
+  "comments": {
+    "user": {},
+    "deck_id": "Number",
+    "content": "String",
+  },
+}

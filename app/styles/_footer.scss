@@ -1,8 +1,7 @@
 .footer {
-  background-color: $dark;
+  background: $dark;
   color: darken($light, 10%);
-  width: 100%;
-  
+
   .container {
     display: flex;
     justify-content: space-between;

@@ -12,6 +12,17 @@
 
 body {
   font-family: $font;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  flex-shrink: 0;
 }
 
 a {
@@ -75,6 +86,25 @@ svg {
 
   .field {
     margin-bottom: 0;
+  }
+}
+
+#login, #register {
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.form {
+  .title {
+    text-align: center;
+  }
+
+  .button {
+    margin-top: 1.5em;
+    width: 100%;
+    font-weight: 600;
   }
 }
 

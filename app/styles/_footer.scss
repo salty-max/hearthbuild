@@ -1,10 +1,13 @@
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: $dark;
   color: darken($light, 10%);
   width: 100%;
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   a, .icon {
     color: $primary;

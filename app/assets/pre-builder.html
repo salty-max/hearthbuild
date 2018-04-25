@@ -70,7 +70,7 @@
             <p>Welcome to our deck builder. Here you can craft decks for every classes and for both standard and wild mode.</p>
             <p>First of all, you must be logged to craft a deck. If you don't have an account, please register.</p>
             <p>As we are nice people, you just have to click one of those marvelous buttons</p>
-            <div class="field is-grouped is-grouped-centered">
+            <div class="buttons field is-grouped is-grouped-centered">
               <div class="control">
                 <button class="button is-danger is-outlined is-medium">
                   <span class="icon">
@@ -89,82 +89,107 @@
               </div>
             </div>
 
-            <h2 class="title">Choose a format and a class</h2>
-
           </div>
           <div class="box">
+            <h2 class="title is-size-4">Choose a format and a class</h2>
             <form>
+              <div class="format">
+                <div class="field is-grouped is-grouped-centered">
+                  <div class="control">
+                    <input class="radio" type="radio" name="format" id="standard">
+                    <label for="standard">
+                      <span class="button is-dark is-outlined is-medium">
+                        <span class="icon">
+                          <svg>
+                            <use xlink:href="img/misc/misc-raven.svg#misc-raven"></use>
+                          </svg>
+                        </span>
+                        <span>Standard</span>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="control">
+                    <input class="radio" type="radio" name="format" id="wild">
+                    <label for="wild">
+                      <span class="button is-dark is-outlined is-medium">
+                        <span class="icon">
+                          <svg>
+                            <use xlink:href="img/misc/misc-wild.svg#misc-wild"></use>
+                          </svg>
+                        </span>
+                        <span>Wild</span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
               <div class="classes">
                 <div class="control">
                   <input id="druid" name="class" type="radio" class="radio">
                   <label for="druid">
-                    <span class="class-title"></span>
+                    <img src="img/classes/avatar-druid.png" class="image is-rounded is-128x128">
+                    <span class="class-title">Druid</span>
                   </label>
                 </div>
                 <div class="control">
                   <input id="hunter" name="class" type="radio" class="radio">
                   <label for="hunter">
-                    <svg>
-                      <use xlink:href="img/classes/class-hunter.svg#class-hunter"></use>
-                    </svg>
+                    <img src="img/classes/avatar-hunter.png" class="image is-rounded is-128x128">
+                    <span class="class-title">Hunter</span>
                   </label>
                 </div>
                 <div class="control">
                   <input id="mage" name="class" type="radio" class="radio">
                   <label for="mage">
-                    <svg>
-                      <use xlink:href="img/classes/class-mage.svg#class-mage"></use>
-                    </svg>
+                    <img src="img/classes/avatar-mage.png" class="image is-rounded is-128x128">
+                    <span class="class-title">Mage</span>
                   </label>
                 </div>
                 <div class="control">
                   <input id="paladin" name="class" type="radio" class="radio">
                   <label for="paladin">
-                    <svg>
-                      <use xlink:href="img/classes/class-paladin.svg#class-paladin"></use>
-                    </svg>
+                    <img src="img/classes/avatar-paladin.png" class="image is-rounded is-128x128">
+                    <span class="class-title">Paladin</span>
                   </label>
                 </div>
                 <div class="control">
                   <input id="priest" name="class" type="radio" class="radio">
                   <label for="priest">
-                    <svg>
-                      <use xlink:href="img/classes/class-priest.svg#class-priest"></use>
-                    </svg>
+                    <img src="img/classes/avatar-priest.png" class="image is-rounded is-128x128">
+                    <span class="class-title">Priest</span>
                   </label>
                 </div>
                 <div class="control">
                   <input id="rogue" name="class" type="radio" class="radio">
                   <label for="rogue">
-                    <svg>
-                      <use xlink:href="img/classes/class-rogue.svg#class-rogue"></use>
-                    </svg>
+                    <img src="img/classes/avatar-rogue.png" class="image is-rounded is-128x128">
+                    <span class="class-title">Rogue</span>
                   </label>
                 </div>
                 <div class="control">
                   <input id="shaman" name="class" type="radio" class="radio">
                   <label for="shaman">
-                    <svg>
-                      <use xlink:href="img/classes/class-shaman.svg#class-shaman"></use>
-                    </svg>
+                    <img src="img/classes/avatar-shaman.png" class="image is-rounded is-128x128">
+                    <span class="class-title">Shaman</span>
                   </label>
                 </div>
                 <div class="control">
                   <input id="warlock" name="class" type="radio" class="radio">
                   <label for="warlock">
-                    <svg>
-                      <use xlink:href="img/classes/class-warlock.svg#class-warlock"></use>
-                    </svg>
+                    <img src="img/classes/avatar-warlock.png" class="image is-rounded is-128x128">
+                    <span class="class-title">Warlock</span>
                   </label>
                 </div>
                 <div class="control">
                   <input id="warrior" name="class" type="radio" class="radio">
                   <label for="warrior">
-                    <svg>
-                      <use xlink:href="img/classes/class-warrior.svg#class-warrior"></use>
-                    </svg>
+                    <img src="img/classes/avatar-warrior.png" class="image is-rounded is-128x128">
+                    <span class="class-title">Warrior</span>
                   </label>
                 </div>
+              </div>
+              <div class="field">
+                <button type="submit" class="button is-primary is-medium submit-button ">Create a deck</button>
               </div>
             </form>
           </div>

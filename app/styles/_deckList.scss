@@ -2,42 +2,6 @@
   background-color: $lighter-dark;
   padding: 1.5rem;
   border-radius: .375rem;
-
-  .classes {
-
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-
-    svg {
-      fill: $light;
-      width: 3.5rem;
-      height: 3.5rem;
-      margin: 0 .25rem;
-    }
-
-    label {
-      cursor: pointer;
-      color: $light;
-    }
-
-    .control {
-      position: relative;
-    }
-
-    .radio {
-      position: absolute;
-      visibility: hidden;
-    }
-
-    .radio:checked + label>svg {
-      fill: $primary;
-      transition: all .5s;
-    }
-  }
 }
 
 .deck-list {

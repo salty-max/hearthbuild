@@ -1,0 +1,99 @@
+#pre-builder {
+
+  text-align: center;
+
+  .radio:checked + label>.button {
+    background: $primary;
+    border-color: $primary;
+    color: $light;
+
+    svg {
+      fill: $light;
+    }
+  }
+
+  label > .button {
+    &:hover {
+      transition: background .3s;
+      background: $primary;
+      border-color: $primary;
+      color: $light;
+
+      svg {
+        fill: $light;
+      }
+    }
+  }
+
+  .title {
+    color: $primary;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .buttons {
+    margin: 3em 0;
+  }
+
+  .box {
+    background: $light;
+  }
+
+  .classes {
+    position: relative;
+    justify-content: space-around;
+    text-align: center;
+    padding: 1em 0 2em;
+
+    .radio:checked + label > .class-title {
+      background: $primary;
+      color: $light;
+    }
+
+    .radio:checked + label > .image {
+      border-color: $primary;
+    }
+
+    .control {
+      padding: 2em;
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+
+        .image {
+          border-color: $primary;
+          transition: all .3s;
+        }
+
+        .class-title {
+          background: $primary;
+          transition: all .3s;
+        }
+      }
+    }
+
+    img {
+      border: 5px solid $dark;
+    }
+
+    .class-title {
+      background-color: $dark;
+      padding: .5em 3em;
+      position: absolute;
+      bottom: .5em;
+      left: 0;
+      text-transform: uppercase;
+      font-weight: 600;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .submit-button {
+    width: 80%;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}

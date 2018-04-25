@@ -19,4 +19,10 @@
 
 ### Pair-programming
 
-- Intégration HTML/CSS
+- Intégration HTML/CSS (home + page d'un deck)
+
+## 24-04-2018
+
+### Pair-programming
+
+- Suite intégration HTML/CSS (finalisation page d'un deck + deck builder)

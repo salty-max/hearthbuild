@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <link rel="stylesheet" href="css/app.css">
+  <title>HearthBuild</title>
+</head>
+<body>
+    <!-- HEADER -->
+    <nav class="navbar is-light">
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="/" class="navbar-item">
+            <img src="img/hearthbuild-logo-150.png" alt="" class="brand-logo">
+          </a>
+          <div class="navbar-burger">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a href="#" class="navbar-link">Decks</a>
+              <div class="navbar-dropdown">
+                <a href="" class="navbar-item">Shaman</a>
+                <a href="" class="navbar-item">Rogue</a>
+                <a href="" class="navbar-item">Warrior</a>
+                <a href="" class="navbar-item">Mage</a>
+                <a href="" class="navbar-item">Hunter</a>
+                <a href="" class="navbar-item">Paladin</a>
+                <a href="" class="navbar-item">Priest</a>
+                <a href="" class="navbar-item">Warlock</a>
+                <a href="" class="navbar-item">Druid</a>
+              </div>
+            </div>
+            <a href="" class="navbar-item">Cards</a>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <a href="deck-builder.html" class="button is-primary">
+                <span class="icon">
+                  <i class="fas fa-plus-circle"></i>
+                </span>
+                <span>Create a deck</span>
+              </a>
+            </div>
+            <div class="navbar-item">
+              <a class="button is-primary is-outlined">
+                <span class="icon">
+                  <i class="fas fa-sign-in-alt"></i>
+                </span>
+                <span>Login</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="section" id="pre-builder">
+        <div class="container">
+          <div class="content">
+            <h1 class="title">HearthBuilder</h1>
+            <p>Welcome to our deck builder. Here you can craft decks for every classes and for both standard and wild mode.</p>
+            <p>First of all, you must be logged to craft a deck. If you don't have an account, please register.</p>
+            <p>As we are nice people, you just have to click one of those marvelous buttons</p>
+            <div class="field is-grouped is-grouped-centered">
+              <div class="control">
+                <button class="button is-danger is-outlined is-medium">
+                  <span class="icon">
+                    <i class="fas fa-user-plus"></i>
+                  </span>
+                  <span>Register</span>
+                </button>
+              </div>
+              <div class="control">
+                <button class="button is-primary is-outlined is-medium">
+                  <span class="icon">
+                    <i class="fas fa-sign-in-alt"></i>
+                  </span>
+                  <span>Login</span>
+                </button>
+              </div>
+            </div>
+
+            <h2 class="title">Choose a format and a class</h2>
+
+          </div>
+          <div class="box">
+            <form>
+              <div class="classes">
+                <div class="control">
+                  <input id="druid" name="class" type="radio" class="radio">
+                  <label for="druid">
+                    <span class="class-title"></span>
+                  </label>
+                </div>
+                <div class="control">
+                  <input id="hunter" name="class" type="radio" class="radio">
+                  <label for="hunter">
+                    <svg>
+                      <use xlink:href="img/classes/class-hunter.svg#class-hunter"></use>
+                    </svg>
+                  </label>
+                </div>
+                <div class="control">
+                  <input id="mage" name="class" type="radio" class="radio">
+                  <label for="mage">
+                    <svg>
+                      <use xlink:href="img/classes/class-mage.svg#class-mage"></use>
+                    </svg>
+                  </label>
+                </div>
+                <div class="control">
+                  <input id="paladin" name="class" type="radio" class="radio">
+                  <label for="paladin">
+                    <svg>
+                      <use xlink:href="img/classes/class-paladin.svg#class-paladin"></use>
+                    </svg>
+                  </label>
+                </div>
+                <div class="control">
+                  <input id="priest" name="class" type="radio" class="radio">
+                  <label for="priest">
+                    <svg>
+                      <use xlink:href="img/classes/class-priest.svg#class-priest"></use>
+                    </svg>
+                  </label>
+                </div>
+                <div class="control">
+                  <input id="rogue" name="class" type="radio" class="radio">
+                  <label for="rogue">
+                    <svg>
+                      <use xlink:href="img/classes/class-rogue.svg#class-rogue"></use>
+                    </svg>
+                  </label>
+                </div>
+                <div class="control">
+                  <input id="shaman" name="class" type="radio" class="radio">
+                  <label for="shaman">
+                    <svg>
+                      <use xlink:href="img/classes/class-shaman.svg#class-shaman"></use>
+                    </svg>
+                  </label>
+                </div>
+                <div class="control">
+                  <input id="warlock" name="class" type="radio" class="radio">
+                  <label for="warlock">
+                    <svg>
+                      <use xlink:href="img/classes/class-warlock.svg#class-warlock"></use>
+                    </svg>
+                  </label>
+                </div>
+                <div class="control">
+                  <input id="warrior" name="class" type="radio" class="radio">
+                  <label for="warrior">
+                    <svg>
+                      <use xlink:href="img/classes/class-warrior.svg#class-warrior"></use>
+                    </svg>
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="copyright">
+        <span class="icon">
+          <i class="fas fa-copyright"></i>
+        </span>
+        <span>2018 - HearthBuild</span>
+      </div>
+      <div class="github">
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+        <span>
+          Fork me on <a href="#">Github</a>
+        </span>
+      </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

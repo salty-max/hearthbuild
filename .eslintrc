@@ -21,6 +21,14 @@
         "allowSamePrecedence": true
       }
     ],
+    "no-shadow": "off",
+    "no-unused-vars": "off",
+    "consistent-return": "off",
+    "no-multi-assign": "off",
+    "no-undef": "off",
+    "no-console": "off",
+    "no-underscore-dangle": "off",
+    "max-len": 0,
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/href-no-hash": "off",
     "react/jsx-filename-extension": "off",

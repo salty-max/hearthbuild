@@ -7,7 +7,6 @@ const app = express();
 
 const users = require('./routes/api/users');
 const decks = require('./routes/api/decks');
-// const comments = require('./routes/api/comments');
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,7 +30,6 @@ require('./config/passport')(passport);
 // Use routes
 app.use('/api/users', users);
 app.use('/api/decks', decks);
-// app.use('/api/comments', comments);
 
 const port = process.env.PORT || 5000;
 

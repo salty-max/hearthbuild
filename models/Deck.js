@@ -38,19 +38,28 @@ const DeckSchema = new Schema({
   views: {
     type: Number,
   },
-  likes: {
-    type: Number,
-  },
+  likes: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
   rating: {
-    type: Number
+    type: Number,
   },
   cards: [
     {
-      id: {
+      name: {
         type: String,
         required: true,
       },
-      name: {
+      class: {
+        type: String,
+        required: true,
+      },
+      rarity: {
         type: String,
         required: true,
       },
@@ -68,17 +77,35 @@ const DeckSchema = new Schema({
       },
     },
   ],
-  comments: {
-    type: Schema.Types.ObjectId,
-    ref: 'comments',
-  },
+  comments: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users',
+      },
+      text: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: String,
+      },
+      avatar: {
+        type: String,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
   },
   updatedAt: {
     type: Date,
-  }
+  },
 });
 
 module.exports = Deck = mongoose.model('decks', DeckSchema);

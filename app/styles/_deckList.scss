@@ -62,5 +62,14 @@
       }
     }
   }
+}
 
+.home-info {
+  padding: 3em;
+  background: url('../img/witchwood-banner.png');
+  background-size: cover;
+
+  .title, .subtitle {
+    color: $light;
+  }
 }

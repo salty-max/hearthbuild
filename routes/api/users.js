@@ -23,7 +23,6 @@ router.get('/test', (req, res) => res.json({
 // @desc     Register a user
 // @access   Public
 router.post('/register', (req, res) => {
-
   const { errors, isValid } = validateRegisterInput(req.body);
 
   if (!isValid) {
@@ -66,7 +65,6 @@ router.post('/register', (req, res) => {
 // @desc     Login user
 // @access   Public
 router.post('/login', (req, res) => {
-
   const { errors, isValid } = validateLoginInput(req.body);
 
   // Check validation

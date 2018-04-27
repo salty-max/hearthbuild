@@ -34,3 +34,20 @@
 - Finalisation intégration HTML/CSS (pages login/register + pre deck builder)
 - Mise en place DB, création data dictionary
 - tests routes, requêtes vers api et validation de données côté serveur
+- Implémentation de l'enregistrement d'un user en BDD
+
+## 26-04-2018
+
+### Pair programming
+
+- Implementation du login en back end
+- Génération d'un token de connexion
+- Commencement des routes pour les decks
+
+## 27-04-2018
+
+### Pair Programming
+
+- Finition des routes pour les decks
+- Implémentation en back end du système de likes et de commentaires
+- Commencement des composants React

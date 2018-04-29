@@ -3,3 +3,4 @@ Thumbs.db
 /node_modules
 /public
 credentials.md
+yarn-error.log

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import DeckMeta from 'src/components/DeckSingle/DeckMeta';
-import DeckRating from 'src/components/DeckSingle/DeckRating';
-import DeckList from 'src/components/DeckSingle/DeckList';
-import DeckDesc from 'src/components/DeckSingle/DeckDesc';
-import DeckComments from 'src/components/DeckSingle/DeckComments';
+import DeckMeta from './DeckMeta';
+import DeckRating from './DeckRating';
+import DeckList from './DeckList';
+import DeckDesc from './DeckDesc';
+import DeckComments from './comments/DeckComments';
 
 const DeckSingle = () => (
   <main>

@@ -1,10 +1,11 @@
 import React from 'react';
+import defaultAvatar from '../../../assets/img/misc/misc-default-avatar.jpg'
 
 const DeckComment = () => (
   <article className="media deck--comments-comment">
     <figure className="media-left">
       <p className="image is-64x64 deck-comments-comment--avatar">
-        <img src="img/misc/misc-default-avatar.jpg" alt="" />
+        <img src={defaultAvatar} alt="" />
       </p>
     </figure>
     <div className="media-content">

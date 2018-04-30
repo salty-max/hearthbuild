@@ -15,6 +15,13 @@ class DecksFilter extends React.Component {
       'warlock',
       'warrior'
     ],
+    hover: false
+  }
+
+  onHover = () => {
+    this.setState({
+      hover: !this.state.hover
+    })
   }
 
   render() {
@@ -23,7 +30,7 @@ class DecksFilter extends React.Component {
         <form>
           <div className="classes">
             {this.state.classes.map(c => (
-              <ClassRadio key={c} hsClass={c} />
+              <ClassRadio onMouseEnter={() => this.onHover()} key={c} hsClass={c} />
             ))}
           </div>
           <div className="fields">

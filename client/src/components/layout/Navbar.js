@@ -94,15 +94,11 @@ class Navbar extends Component {
           <div className="navbar-item has-dropdown is-hoverable">
             <a href="" className="navbar-link">Decks</a>
             <div className="navbar-dropdown">
-              <a href="" className="navbar-item">Shaman</a>
-              <a href="" className="navbar-item">Rogue</a>
-              <a href="" className="navbar-item">Warrior</a>
-              <a href="" className="navbar-item">Mage</a>
-              <a href="" className="navbar-item">Hunter</a>
-              <a href="" className="navbar-item">Paladin</a>
-              <a href="" className="navbar-item">Priest</a>
-              <a href="" className="navbar-item">Warlock</a>
-              <a href="" className="navbar-item">Druid</a>
+              {this.props.home.classes.map(hsClass => (
+                <a key={hsClass} className="navbar-item">
+                  {hsClass}
+                </a>
+              ))}
             </div>
           </div>
         </div>

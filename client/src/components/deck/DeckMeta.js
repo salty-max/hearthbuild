@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Svg from '../common/Svg';
+
 const DeckMeta = () => (
   <div className="column is-9">
     <div className="deck--title">Pew pew I'm a mage</div>
@@ -31,9 +33,7 @@ const DeckMeta = () => (
       <div className="deck--cost">
         <span className=" tags has-addons">
           <span className="tag is-dark">
-            <svg>
-              <use xlinkHref="img/misc/misc-dust.svg#misc-dust" />
-            </svg>
+            <Svg type="misc" value="dust" />
           </span>
           <span className="tag is-white">
             15k
@@ -43,9 +43,7 @@ const DeckMeta = () => (
       <div className="deck--format">
         <span className=" tags has-addons">
           <span className="tag is-dark">
-            <svg>
-              <use xlinkHref="img/misc/misc-raven.svg#misc-raven" />
-            </svg>
+            <Svg type="misc" value="standard" />
           </span>
           <span className="tag is-white">
             Standard
@@ -67,9 +65,7 @@ const DeckMeta = () => (
       <div className="deck--class">
         <span className="tags has-addons">
           <span className="tag is-dark">
-            <svg>
-              <use xlinkHref="img/classes/class-mage.svg#class-mage" />
-            </svg>
+            <Svg type="class" value="mage" />
           </span>
           <span className="tag is-white">
             Mage

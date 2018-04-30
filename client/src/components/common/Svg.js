@@ -11,7 +11,7 @@ import warlock from '../../assets/img/classes/badges/class-warlock.svg';
 import warrior from '../../assets/img/classes/badges/class-warrior.svg';
 import dust from '../../assets/img/misc/misc-dust.svg';
 import mana from '../../assets/img/misc/misc-mana.svg';
-import raven from '../../assets/img/misc/misc-raven.svg';
+import standard from '../../assets/img/misc/misc-standard.svg';
 import wild from '../../assets/img/misc/misc-wild.svg';
 
 const svgs = {
@@ -26,7 +26,7 @@ const svgs = {
   warrior,
   dust,
   mana,
-  raven,
+  standard,
   wild
 }
 

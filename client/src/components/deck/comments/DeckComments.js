@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import DeckComment from './DeckComment';
 
@@ -10,12 +11,12 @@ const DeckComments = () => (
       </h3>
       <div className="deck--comments-header-login">
         <span className="subtitle">You must be logged in</span>
-        <button className="button is-dark is-outlined">
+        <Link className="button is-dark is-outlined" to="/login">
           <span className="icon">
             <i className="fas fa-sign-in-alt" />
           </span>
           <span>Login</span>
-        </button>
+        </Link>
       </div>
     </div>
     <DeckComment />

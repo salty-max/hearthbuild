@@ -5,7 +5,8 @@ import Navbar from '../../components/layout/Navbar';
 import { logoutUser } from '../../actions/authActions';
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  home: state.home
 });
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({

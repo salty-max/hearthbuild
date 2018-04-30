@@ -51,3 +51,13 @@
 - Finition des routes pour les decks
 - Implémentation en back end du système de likes et de commentaires
 - Commencement des composants React
+
+## 30-04-2018
+
+### Pair programming
+
+- Migration de brunch à webpack
+- Initialisation de redux
+- Finition du login et register
+- Continuité des composants react ( deckbuilder)
+- Test requête API

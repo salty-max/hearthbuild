@@ -8,9 +8,16 @@ import magikarp from '../../assets/img/card-placeholder.png'
 
 class DeckBuilder extends Component {
 
-  state = {
-    cards: [],
-    hoverCard: {},
+  constructor() {
+    super();
+    this.state = {
+      cards: [],
+      hoverCard: {},
+      tabs: {
+        classTab: true,
+        neutralTab: false
+      }
+    }
   }
 
   componentDidMount(){
@@ -36,13 +43,17 @@ class DeckBuilder extends Component {
       });
   }
 
-  onHoverCard = (e) => {
-    console.log(e.target)
+  handleTab = (hsClass, tabToActivate) => (e) => {
+    this.setState(prevState => ({
+      tabs: {
+        [tabToActivate]: !prevState.tabs[tabToActivate]
+      }
+    }));
+    this.getCards(hsClass);
   }
 
   render() {
-    const { cards } = this.state;
-    console.log(cards);
+    const { cards, tabs } = this.state;
 
     return (
       <main>
@@ -86,19 +97,23 @@ class DeckBuilder extends Component {
                 <div className="column is-8 deck-builder--cards-table">
                   <div className="tabs">
                     <ul>
-                      {/* <li className="is-active" onClick={this.getCards('Warlock')}>
-                        <p>Warlock</p>
+                      <li className={classnames('', {
+                        'is-active': tabs.classTab
+                      })} onClick={this.handleTab('Warlock', 'classTab')}>
+                        <a>Warlock</a>
                       </li>
 
-                      <li onClick={this.getCards('Neutral')}>
-                        <p>Neutrals</p>
-                      </li> */}
+                      <li className={classnames('', {
+                        'is-active': tabs.neutralTab
+                      })} onClick={this.handleTab('Neutral', 'neutralTab')}>
+                        <a>Neutrals</a>
+                      </li>
                     </ul>
                   </div>
                   <table className="table is-striped">
                     <tbody>
                       {cards.map(card => (
-                        <tr onMouseEnter={this.onHoverCard} key={card.cardID}>
+                        <tr key={card.cardId}>
                           <td className={classnames('', {
                             'has-text-legendary': card.rarity === 'Legendary',
                             'has-text-rare': card.rarity === 'Rare',

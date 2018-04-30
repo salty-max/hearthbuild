@@ -6682,6 +6682,11 @@ label.panel-block {
   .deck-builder--cards .table tr td:first-child, .deck-builder--list .table tr td:first-child {
     text-align: left; }
 
+.deck-builder--cards .table tr:hover, .deck-builder--list .table tr:hover {
+  background: #494949; }
+  .deck-builder--cards .table tr:hover td, .deck-builder--list .table tr:hover td {
+    color: #00d1b2; }
+
 .deck-builder--cards {
   padding-top: 1.5em; }
   .deck-builder--cards-preview {
@@ -6695,13 +6700,13 @@ label.panel-block {
     border-collapse: separate;
     border-radius: 0;
     position: relative;
-    max-height: 375px;
-    z-index: -10; }
+    max-height: 375px; }
     .deck-builder--cards .table tbody {
-      max-height: 375px;
+      height: 350px;
       overflow-y: scroll;
-      position: absolute;
-      width: 100%; }
+      overflow-x: hidden;
+      width: 100%;
+      display: block; }
 
 .deck-builder--list {
   padding: 3em 0 3em; }

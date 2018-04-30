@@ -99,6 +99,14 @@
             text-align: left;
           }
         }
+
+        &:hover {
+          background: $lighter-dark;
+
+          td {
+            color: $primary;
+          }
+        }
       }
     }
   }
@@ -123,13 +131,13 @@
       border-radius: 0;
       position: relative;
       max-height: 375px;
-      z-index: -10;
 
       tbody {
-        max-height: 375px;
+        height: 350px;
         overflow-y: scroll;
-        position: absolute;
+        overflow-x: hidden;
         width: 100%;
+        display: block;
       }
     }
   }

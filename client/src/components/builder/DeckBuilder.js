@@ -3,6 +3,7 @@ import axios from 'axios';
 import classnames from 'classnames';
 
 import TextFieldGroup from '../common/TextFieldGroup';
+import PoolCard from './PoolCard';
 
 import magikarp from '../../assets/img/card-placeholder.png'
 
@@ -44,7 +45,7 @@ class DeckBuilder extends Component {
     })
       .then(res => {
         this.setState({
-          cards: res.data
+          cards: res.data.filter(card => card.type !== 'Hero')
         })
       });
   }
@@ -116,27 +117,10 @@ class DeckBuilder extends Component {
                       </li>
                     </ul>
                   </div>
-                  <table className="table is-striped">
+                  <table className="table">
                     <tbody>
                       {cards.map(card => (
-                        <tr
-                          key={card.cardId}
-                          onMouseOver={this.onCardHover(card.img)}
-                        >
-                          <td className={classnames('', {
-                            'has-text-legendary': card.rarity === 'Legendary',
-                            'has-text-rare': card.rarity === 'Rare',
-                            'has-text-epic': card.rarity === 'Epic',
-                          })}>{card.name}</td>
-                          <td>
-                            <div className="deck-builder--cards-table--cost">
-                              <span>{card.cost}</span>
-                              <svg>
-                                <use xlinkHref="img/misc/misc-mana.svg#misc-mana" />
-                              </svg>
-                            </div>
-                          </td>
-                        </tr>
+                        <PoolCard key={card.cardId} onCardHover={this.onCardHover} card={card} />
                       ))}
                     </tbody>
                   </table>

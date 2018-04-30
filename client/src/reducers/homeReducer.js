@@ -10,7 +10,9 @@ const initialState= {
     'Shaman',
     'Warlock',
     'Warrior'
-  ]
+  ],
+  decksLoading: false,
+  decks: null,
 }
 
 export default function(state= initialState, action) {

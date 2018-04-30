@@ -1,85 +1,39 @@
 {
-  "name": "rrsb-boilerplate",
+  "name": "hearthbuild",
   "version": "1.0.0",
-  "description": "A React/Redux/Sass/Brunch environment boilerplate",
-  "main": "brunch-config.js",
-  "directories": {
-    "test": "tests"
-  },
+  "description": "A deckbuilder in react",
+  "main": "server.js",
+  "directories": {},
   "scripts": {
-    "test": "mocha tests/.setup.js tests/**/*.test.js",
-    "watch": "brunch watch --server",
-    "build": "brunch build --production",
+    "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
-    "dev": "concurrently \"yarn server\" \"yarn watch\""
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/umadmax/rrsb.git"
+    "url": "git+ssh://git@github.com:O-clock-Fusion/HearthBuild.git"
   },
   "author": "Maxime Blanc",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/umadmax/rrsb/issues"
+    "url": "https://github.com/O-clock-Fusion/HearthBuild/issues"
   },
-  "homepage": "https://github.com/umadmax/rrsb#readme",
-  "devDependencies": {
-    "auto-reload-brunch": "^2.7.1",
-    "autoprefixer": "^8.2.0",
-    "babel-brunch": "https://github.com/babel/babel-brunch.git",
-    "babel-eslint": "^8.2.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "babel-resolver": "^1.1.0",
-    "brunch": "^2.10.12",
-    "chai": "^4.1.2",
-    "clean-css-brunch": "^2.10.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-import-resolver-node": "^0.3.2",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0",
-    "imagemin-brunch": "^1.1.0",
-    "jsdom": "^11.7.0",
-    "mocha": "^5.1.0",
-    "postcss-brunch": "^2.1.0",
-    "react-test-renderer": "^16.3.1",
-    "sass-brunch": "^2.10.4",
-    "uglify-js-brunch": "^2.10.0"
-  },
+  "homepage": "https://github.com/O-clock-Fusion/HearthBuild#readme",
+  "devDependencies": {},
   "dependencies": {
-    "axios": "^0.18.0",
-    "babel-polyfill": "^6.26.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
-    "bulma": "^0.6.2",
-    "bulma-extensions": "^1.0.14",
     "classnames": "^2.2.5",
     "concurrently": "^3.5.1",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
-    "foreman": "^2.0.0",
     "gravatar": "^1.6.0",
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.0.15",
-    "nodemon": "^1.17.3",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "prop-types": "^15.6.1",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
-    "react-redux": "^5.0.7",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
-    "redux-devtools-extension": "^2.13.2",
     "validator": "^9.4.1"
-  },
-  "proxy": "http://localhost:5000"
+  }
 }

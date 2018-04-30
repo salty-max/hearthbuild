@@ -1,0 +1,75 @@
+.deck-list--form {
+  background-color: $lighter-dark;
+  padding: 1.5rem;
+  border-radius: .375rem;
+}
+
+.deck-list {
+  .table {
+
+    margin-top: 2rem;
+    border-radius: .375em;
+    overflow: hidden;
+
+    svg {
+      fill: $primary;
+    }
+
+    thead {
+      background: $lighter-dark;
+
+      th {
+        text-align: center;
+        color: $primary;
+        padding: 1rem;
+
+        &:first-child {
+          text-align: left;
+        }
+      }
+    }
+
+    tbody {
+      font-family: $serif-font;
+
+      .deck-list--deck-name {
+        display: flex;
+        align-items: center;
+
+        .class-icon {
+          margin-right: .5em;
+          fill: $dark;
+          min-width: 1.5em;
+          min-height: 1.5em;
+        }
+      }
+
+      tr {
+
+        td {
+          text-align: center;
+          padding: 1rem;
+
+          &:first-child {
+            text-align: left;
+
+            &:hover {
+              color: $primary;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.home-info {
+  padding: 3em;
+  background: url('../assets/img/witchwood-banner.png');
+  background-size: cover;
+
+  .title, .subtitle {
+    color: $light;
+  }
+}

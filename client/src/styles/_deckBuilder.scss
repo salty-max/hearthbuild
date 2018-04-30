@@ -1,0 +1,186 @@
+.builder-banner {
+  height: 20em;
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  background: url('../assets/img/banner-builder.jpg') no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  .title {
+    font-size: 3em;
+    font-weight: 600;
+    color: $primary;
+  }
+
+  .subtitle {
+    padding-top: 1rem;
+    font-weight: 600;
+    font-size: 2em;
+    color: $light;
+  }
+
+
+}
+
+.deck-builder {
+  &--form {
+    background-color: $lighter-dark;
+    padding: 1.5rem;
+    border-radius: .375rem;
+
+    .fields {
+      justify-content: flex-start;
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+
+      .field:last-child {
+        margin-left: 1.5em;
+      }
+    }
+  }
+
+  &--cards, &--list {
+    .tabs {
+      margin: 1.5em 0 0;
+
+      li {
+        a {
+          border-radius: .375em .375em 0 0;
+          border: none;
+
+          &:hover {
+            background: rgba($lighter-dark, .7);
+            color: $light;
+            transition: background .3s;
+            font-weight: 600;
+          }
+        }
+      }
+
+      li.is-active a {
+        background: $lighter-dark;
+        color: $light;
+        font-weight: 600;
+      }
+    }
+
+    .table {
+      .deck-builder--cards-table--cost, .deck-builder--list-table--cost {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          fill: $info;
+        }
+
+        span {
+          display: inline-block;
+          margin-right: .25em;
+        }
+      }
+
+      tbody {
+        text-transform: uppercase;
+        font-weight: 600;
+        line-height: 1.6em;
+      }
+
+      tr {
+        td {
+          text-align: center;
+          padding: 1rem;
+          width: 100%;
+
+          &:first-child {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+  &--cards {
+    padding-top: 1.5em;
+    // overflow: hidden;
+
+    &-preview {
+      text-align: center;
+      img {
+        max-width: 275px;
+        max-height: 373px;
+      }
+    }
+
+    .table {
+
+      width: 100%;
+      margin: 0;
+      border-collapse: separate;
+      border-radius: 0;
+      position: relative;
+      max-height: 375px;
+      z-index: -10;
+
+      tbody {
+        max-height: 375px;
+        overflow-y: scroll;
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+
+  &--list {
+
+    padding: 3em 0 3em;
+
+    &-header {
+      display: flex;
+      align-items: center;
+
+      .title {
+        margin-bottom: 0;
+      }
+
+      .tags {
+        margin: 0 .5em;
+
+        .tag {
+          margin-bottom: 0;
+        }
+
+        &:first-of-type {
+          margin-left: 1.5em;
+        }
+      }
+
+      svg {
+        fill: $light;
+      };
+
+      #card-count {
+        font-weight: 600;
+        margin-right: .25em;
+        color: $danger;
+      }
+    }
+  }
+
+  &--curve {
+    .box {
+      margin-top: 1.5em;
+      height: 300px;
+    }
+  }
+
+  &--submit {
+    margin-top: 2rem;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}

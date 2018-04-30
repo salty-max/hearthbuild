@@ -14,7 +14,7 @@ const Footer = () => (
           <i className="fab fa-github" />
         </span>
         <span>
-          Fork me on <a href="#">Github</a>
+          Fork me on <a href="">Github</a>
         </span>
       </div>
     </div>

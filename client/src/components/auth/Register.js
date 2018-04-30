@@ -24,6 +24,12 @@ class Register extends Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/');
+    }
+  }
+
   onChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -44,7 +50,7 @@ class Register extends Component {
       email,
       password,
       passwordConfirm,
-    }
+    };
 
     this.props.actions.registerUser(newUser, this.props.history);
   }
@@ -63,7 +69,7 @@ class Register extends Component {
         <section className="section" id="login">
           <div className="container">
             <div className="box">
-              <form className="form" onClick={this.onSubmit}>
+              <form noValidate className="form" onSubmit={this.onSubmit}>
                 <h1 className="title">Register</h1>
                 <TextFieldGroup
                   name="name"

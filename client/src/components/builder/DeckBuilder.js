@@ -12,7 +12,7 @@ class DeckBuilder extends Component {
     super();
     this.state = {
       cards: [],
-      hoverCard: {},
+      hoverCard: magikarp,
       tabs: {
         classTab: true,
         neutralTab: false
@@ -22,6 +22,12 @@ class DeckBuilder extends Component {
 
   componentDidMount(){
     this.getCards('Warlock');
+  }
+
+  onCardHover = (imgPath) => () => {
+    this.setState({
+      hoverCard: imgPath
+    });
   }
 
   getCards = (hsClass) => {
@@ -53,7 +59,7 @@ class DeckBuilder extends Component {
   }
 
   render() {
-    const { cards, tabs } = this.state;
+    const { cards, tabs, hoverCard } = this.state;
 
     return (
       <main>
@@ -92,7 +98,7 @@ class DeckBuilder extends Component {
 
               <div className="columns deck-builder--cards">
                 <div className="column is-4 is-hidden-mobile deck-builder--cards-preview">
-                  <img src={magikarp} alt="" />
+                  <img src={hoverCard} alt="" />
                 </div>
                 <div className="column is-8 deck-builder--cards-table">
                   <div className="tabs">
@@ -113,7 +119,10 @@ class DeckBuilder extends Component {
                   <table className="table is-striped">
                     <tbody>
                       {cards.map(card => (
-                        <tr key={card.cardId}>
+                        <tr
+                          key={card.cardId}
+                          onMouseOver={this.onCardHover(card.img)}
+                        >
                           <td className={classnames('', {
                             'has-text-legendary': card.rarity === 'Legendary',
                             'has-text-rare': card.rarity === 'Rare',

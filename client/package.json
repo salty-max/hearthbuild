@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bulma": "^0.7.1",
+    "change-case": "^3.0.2",
     "jwt-decode": "^2.2.0",
     "moment": "^2.22.1",
     "node-sass-chokidar": "^1.2.2",

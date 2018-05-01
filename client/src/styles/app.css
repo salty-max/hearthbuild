@@ -6511,7 +6511,8 @@ label.panel-block {
   font-weight: 600; }
 
 .deck--title {
-  background: url("../assets/img/deck-banners/banner-warlock.png") no-repeat #ffdd57 right;
+  background: url("../assets/img/deck-banners/banner-priest.png") center right no-repeat;
+  background-color: #ffdd57;
   border-radius: .375em .375em 0 0;
   color: #363636;
   padding: .8rem;

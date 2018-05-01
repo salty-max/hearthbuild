@@ -9,6 +9,9 @@ const app = express();
 const users = require('./routes/api/users');
 const decks = require('./routes/api/decks');
 
+// Enable CORS
+app.use(cors());
+
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

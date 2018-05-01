@@ -18,7 +18,7 @@ const DeckCard = ({ cost, name }) => (
 );
 
 DeckCard.propTypes = {
-  cost: PropTypes.string.isRequired,
+  cost: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 };
 

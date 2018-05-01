@@ -1,12 +1,45 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
+import changeCase from 'change-case';
 import axios from 'axios';
 import Svg from '../common/Svg';
 
+import druid from '../../assets/img/deck-banners/banner-druid.png';
+import hunter from '../../assets/img/deck-banners/banner-hunter.png';
+import mage from '../../assets/img/deck-banners/banner-mage.png';
+import paladin from '../../assets/img/deck-banners/banner-paladin.png';
+import priest from '../../assets/img/deck-banners/banner-priest.png';
+import rogue from '../../assets/img/deck-banners/banner-rogue.png';
+import shaman from '../../assets/img/deck-banners/banner-shaman.png';
+import warlock from '../../assets/img/deck-banners/banner-warlock.png';
+import warrior from '../../assets/img/deck-banners/banner-warrior.png';
+
+const deckClasses = {
+  druid,
+  hunter,
+  mage,
+  paladin,
+  priest,
+  rogue,
+  shaman,
+  warlock,
+  warrior
+}
+
 const DeckMeta = ({ meta, author }) => (
   <div className="column is-9">
-    <div className="deck--title">{meta.title}</div>
+    <div
+      className="deck--title"
+      style={{
+        backgroundImage: `url(${deckClasses[changeCase.lowerCase(meta.class)]})`,
+        backgroundPosition: 'center right',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {meta.title}
+    </div>
+
     <div className="deck--metas">
       <div className="deck--author">
         <span className=" tags has-addons">

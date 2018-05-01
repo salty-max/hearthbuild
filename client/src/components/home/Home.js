@@ -4,6 +4,7 @@
 import Banner from '../common/Banner';
 import Sidebar from './Sidebar';
 import DecksFilter from './DecksFilter';
+import DeckSelectionBoard from './DeckSelectionBoard';
 
  import axios from 'axios'; // j'importe axios
 
@@ -43,7 +44,7 @@ import DecksFilter from './DecksFilter';
 
          // je fais mon test requête API
          getDeckTest = () => {
-           axios.get(`http://localhost:5000/api/decks`) // je vais dans la route get '/'
+           axios.get(`http://localhost:5000/api/decks/`) // je vais dans la route get '/'
            .then(res => {
               this.setState({ // je met à jour mon deck
                deck: res.data,
@@ -59,18 +60,28 @@ import DecksFilter from './DecksFilter';
         title="Decks list"
         subtitle="Decks from the community"
         />
+
           <section className="section" id="home">
             <div className="container">
               <div className="columns">
+
                 <div className="column is-9">
                   <DecksFilter />
+                  <DeckSelectionBoard />
+
+
                 </div>
                 <div className="column is-3">
                   <Sidebar />
+
                  </div>
+
                </div>
+
              </div>
+
            </section>
+
        </main>
     );
   }

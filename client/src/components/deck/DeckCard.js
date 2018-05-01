@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Svg from '../common/Svg';
 
 const DeckCard = ({ cost, name }) => (
   <div className="panel-block deck--list-card">
     <div className="deck--list-card-cost">
       <span className="deck--list-card-cost--text">{cost}</span>
       <span className="deck--list-card-cost--icon">
-        <svg>
-          <use xlinkHref="img/misc/misc-mana.svg#misc-mana" />
-        </svg>
+        <Svg type="misc" value="mana" />
       </span>
     </div>
     <span className="deck--list-card-name">{name}</span>

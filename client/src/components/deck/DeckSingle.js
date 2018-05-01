@@ -24,19 +24,35 @@ class DeckSingle extends Component {
     axios.get(`http://localhost:5000/api/decks/id/${id}`)
     .then(res => {
       this.setState({
-        deck: res.data
+        deck: res.data,
+        author: this.getAuthorName(res.data.author),
+      })
+    });
+  }
+  
+  // Get author name by id
+  getAuthorName = (id) => {
+    axios.get(`http://localhost:5000/api/users/id/${id}`)
+    .then(res => {
+      this.setState({
+        author: res.data.name
       })
     });
   }
 
   render() {
+    const { deck, author } = this.state;
+
     return (
       <main>
         <section className="section" id="deck-single">
           <div className="container">
             <div className="deck">
               <div className="columns">
-                <DeckMeta />
+                <DeckMeta
+                  meta={deck}
+                  author={author}
+                />
                 <DeckRating />
               </div>
               <DeckList />

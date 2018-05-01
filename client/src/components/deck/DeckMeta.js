@@ -1,10 +1,12 @@
-import React from 'react';
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+import axios from 'axios';
 import Svg from '../common/Svg';
 
-const DeckMeta = () => (
+const DeckMeta = ({ meta, author }) => (
   <div className="column is-9">
-    <div className="deck--title">Pew pew I'm a mage</div>
+    <div className="deck--title">{meta.title}</div>
     <div className="deck--metas">
       <div className="deck--author">
         <span className=" tags has-addons">
@@ -14,7 +16,7 @@ const DeckMeta = () => (
             </span>
           </span>
           <span className="tag is-white">
-            John Doe
+            {author}
           </span>
         </span>
       </div>
@@ -26,7 +28,7 @@ const DeckMeta = () => (
             </span>
           </span>
           <span className="tag is-white">
-            2 days ago
+            <Moment fromNow>{meta.createdAt}</Moment>
           </span>
         </span>
       </div>
@@ -36,7 +38,7 @@ const DeckMeta = () => (
             <Svg type="misc" value="dust" />
           </span>
           <span className="tag is-white">
-            15k
+            {meta.cost}
           </span>
         </span>
       </div>
@@ -46,7 +48,7 @@ const DeckMeta = () => (
             <Svg type="misc" value="standard" />
           </span>
           <span className="tag is-white">
-            Standard
+            {meta.format}
           </span>
         </span>
       </div>
@@ -58,7 +60,7 @@ const DeckMeta = () => (
             </span>
           </span>
           <span className="tag is-white">
-            Midrange
+            {meta.type}
           </span>
         </span>
       </div>
@@ -68,12 +70,17 @@ const DeckMeta = () => (
             <Svg type="class" value="mage" />
           </span>
           <span className="tag is-white">
-            Mage
+            {meta.class}
           </span>
         </span>
       </div>
     </div>
   </div>
 );
+
+DeckMeta.propTypes = {
+  meta: PropTypes.object.isRequired,
+  author: PropTypes.string.isRequired,
+};
 
 export default DeckMeta;

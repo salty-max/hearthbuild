@@ -1,5 +1,4 @@
 import React from 'react';
-import Svg from '../common/Svg';
 import PropTypes from 'prop-types';
 
 import druid from '../../assets/img/classes/avatars/avatar-druid.png';
@@ -33,7 +32,7 @@ const AvatarClassRadio = ({
     <div className="control">
       <input id={hsClass} name="hsClass" type="radio" className="radio" onChange={onChange} checked={checked} value={label} />
       <label htmlFor={hsClass}>
-        <img src={avatars[hsClass]} className="image is-rounded is-128x128" />
+        <img alt={`avatar-${hsClass}`} src={avatars[hsClass]} className="image is-rounded is-128x128" />
         <span className="class-title">{label}</span>
       </label>
     </div>

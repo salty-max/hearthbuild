@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import sortBy from '../../utils/sortBy';
 
@@ -39,47 +39,6 @@ class DeckBuilder extends Component {
       class: '',
       errors: {}
     }
-  }
-
-  getCards = (hsClass) => {
-    let cards = [];
-
-    const instance = axios.create({
-      headers: { 'X-Mashape-Key': 'uY73MkKAFDmshSrK4M1A28Jxg3fEp1GLauRjsnUDNngp96u7dq' }
-    });
-
-    instance.get(`https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/${hsClass}`, {
-      params: {
-        'collectible': 1
-      }
-    })
-      .then(res => {
-        const classCards = res.data.filter(card => card.type !== 'Hero');
-
-        this.setState({
-          classCards
-        });
-      })
-      .catch(err => {
-        console.log('Cards not found');
-      });
-
-    instance.get(`https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/Neutral`, {
-      params: {
-        'collectible': 1
-      }
-    })
-      .then(res => {
-        const neutralCards = res.data
-          .filter(card => card.type !== 'Hero');
-
-        this.setState({
-          neutralCards,
-        });
-      })
-      .catch(err => {
-        console.log('Cards not found');
-      });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -339,7 +298,12 @@ class DeckBuilder extends Component {
   }
 }
 
-
+DeckBuilder.propTypes = {
+  actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
+  cardsLoading: PropTypes.bool.isRequired,
+  cardsPool: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  currentDeck: PropTypes.object.isRequired
+}
 
 export default DeckBuilder;
 

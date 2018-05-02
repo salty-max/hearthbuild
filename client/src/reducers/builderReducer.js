@@ -1,4 +1,3 @@
-import isEmpty from '../utils/is-empty';
 import { PRE_BUILD, CARDS_LOADING, GET_CARDS_FROM_API } from '../actions/types';
 
 const initialState = {

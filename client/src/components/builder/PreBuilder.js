@@ -133,4 +133,9 @@ class PreBuilder extends Component {
   }
 }
 
+PreBuilder.propTypes = {
+  actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
+  classes: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+}
+
 export default PreBuilder;

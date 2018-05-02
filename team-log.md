@@ -66,7 +66,7 @@
 
 ### Jonathan
 
-- Gestion des metas 
+- Gestion des metas
 
 ### Cécile
 
@@ -84,6 +84,14 @@
 ### Cécile
 
 ### Max
+
+- Création du prebuilder
+- Passage de contenu du prebuilder au deck builder
+- Création d'une fonction de tri d'un array d'objets
+- Récupération des cartes depuis l'API
+- Tri des cartes par classe et par format
+- Affichage des cartes disponibles
+- Ajout d'un spinner au chargement des cartes
 
 ## 03-05-2018
 

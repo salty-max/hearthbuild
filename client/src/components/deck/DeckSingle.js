@@ -12,13 +12,16 @@ class DeckSingle extends Component {
     super();
     this.state = {
       deck: {},
-      cards: [],
       author: '',
+      cards: [],
+      desc: '',
+      comments: [],
     };
   }
 
   componentDidMount() {
-    this.getDeck('5ae321255b644c7477b1664d');
+    this.getDeck('5ae1ef6d40f923503e4ed403');
+    // this.getDeck('5ae321255b644c7477b1664d');
   }
 
   // Get deck by id
@@ -28,6 +31,8 @@ class DeckSingle extends Component {
       this.setState({
         deck: res.data,
         cards: res.data.cards,
+        desc: res.data.description,
+        comments: res.data.comments,
       })
 
       this.getAuthorName(res.data.author);
@@ -45,7 +50,13 @@ class DeckSingle extends Component {
   }
 
   render() {
-    const { deck, cards, author } = this.state;
+    const {
+      deck,
+      author,
+      cards,
+      desc,
+      comments
+    } = this.state;
 
     return (
       <main>
@@ -60,8 +71,8 @@ class DeckSingle extends Component {
                 <DeckRating />
               </div>
               <DeckList cards={cards} />
-              <DeckDesc desc={deck} />
-              <DeckComments />
+              <DeckDesc desc={desc} />
+              <DeckComments comments={comments} />
             </div>
           </div>
         </section>

@@ -15,7 +15,22 @@ class DecksFilter extends React.Component {
       'warlock',
       'warrior'
     ],
+    decks: [],
   }
+  // SelectFormat = () => {
+  //   console.log('coucou');
+  // }
+
+  SelectionFormat = (evt) => {
+  console.log(evt.target.value)
+    const selectFormat = evt.target.value;
+
+    if (selectFormat === this.state.decks.format) {
+    console.log('coucou');
+      // this.state.decks.filters(deck => deck.format = selectFormat)
+      }
+  }
+
 
   render() {
     return (
@@ -37,12 +52,12 @@ class DecksFilter extends React.Component {
               </div>
             </div>
             <div className="field">
-              <label className="label">By format</label>
+              <label className="label" >By format</label>
               <div className="control">
                 <span className="select">
-                  <select>
-                    <option value="">Standard</option>
-                    <option value="">Wild</option>
+                  <select onChange={this.SelectionFormat}>
+                    <option value="Standard"  >Standard</option>
+                    <option value="Wild" >Wild</option>
                   </select>
                 </span>
               </div>

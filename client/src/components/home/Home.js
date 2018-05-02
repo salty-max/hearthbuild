@@ -33,7 +33,7 @@ import DeckSelectionBoard from './DeckSelectionBoard';
   constructor () {  // je fais mon state local pour tester
     super();
       this.state = {
-        deck: {}, // j'initialise mon state deck
+        decks: [], // j'initialise mon state deck
         };
       }
 
@@ -44,12 +44,13 @@ import DeckSelectionBoard from './DeckSelectionBoard';
 
          // je fais mon test requête API
          getDeckTest = () => {
-           axios.get(`http://localhost:5000/api/decks/`) // je vais dans la route get '/'
+           axios.get('/api/decks') // je vais dans la route get '/'
            .then(res => {
               this.setState({ // je met à jour mon deck
-               deck: res.data,
-              })
-              console.log('sucess');
+               decks: res.data,
+
+             })
+             console.log(res.data);
            });
          }
 // ajouter mon component tableau et commencer les filtres dans le formulaire

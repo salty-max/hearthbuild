@@ -22,7 +22,6 @@ export default function (state = initialState, action) {
         cardsLoading: true,
       }
     case GET_CARDS_FROM_API:
-      console.log('fetched');
       return {
         ...state,
         cardsPool: action.payload,

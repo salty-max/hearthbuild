@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import axios from 'axios';
 
+import sortBy from '../../utils/sortBy';
+
 import TextFieldGroup from '../common/TextFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import Svg from '../common/Svg';
+import Spinner from '../common/Spinner';
 
 import PoolCard from './PoolCard';
 
@@ -32,13 +35,10 @@ class DeckBuilder extends Component {
       title: '',
       type: '',
       description: '',
+      format: '',
+      class: '',
       errors: {}
     }
-    
-  }
-
-  componentWillReceiveProps() {
-    // this.props.actions.getCardsFromApi('Warlock');
   }
 
   getCards = (hsClass) => {
@@ -70,7 +70,8 @@ class DeckBuilder extends Component {
       }
     })
       .then(res => {
-        const neutralCards = res.data.filter(card => card.type !== 'Hero');
+        const neutralCards = res.data
+          .filter(card => card.type !== 'Hero');
 
         this.setState({
           neutralCards,
@@ -81,8 +82,26 @@ class DeckBuilder extends Component {
       });
   }
 
-  componentDidMount() {
-    this.getCards('Warlock');
+  componentWillReceiveProps(nextProps) {
+    let cards = [];
+    if (nextProps.cardsPool) {
+      if (nextProps.currentDeck.format === 'standard') {
+        cards = nextProps.cardsPool.filter(card => card.cardSet === 'The Witchwood' || card.cardSet === 'Knights of the Frozen Throne' || card.cardSet === 'Kobolds & Catacombs' || card.cardSet === 'Journey to Un\'Goro' || card.cardSet === 'Classic' || card.cardSet === 'Basic');
+        console.log(cards);
+      }
+      else {
+        cards = nextProps.cardsPool;
+      }
+
+      cards = cards.sort(sortBy('cost'));
+
+      this.setState({
+        classCards: cards.filter(card => card.playerClass === nextProps.currentDeck.class),
+        neutralCards: cards.filter(card => card.playerClass === 'Neutral'),
+        class: nextProps.currentDeck.class,
+        format: nextProps.currentDeck.format,
+      });
+    }
   }
 
   showCards = () => {
@@ -135,7 +154,6 @@ class DeckBuilder extends Component {
           <div className="container">
             <div className="deck-builder">
               {/* FORM */}
-              
               <form onSubmit={this.onSubmit}>
                 <div className="deck-builder--form">
                   <div className="fields">
@@ -168,7 +186,7 @@ class DeckBuilder extends Component {
                         <li className={classnames('', {
                           'is-active': tabs.classTab
                         })} onClick={this.handleTab('classTab')}>
-                          <a>Warlock</a>
+                          <a>{this.state.class}</a>
                         </li>
 
                         <li className={classnames('', {
@@ -178,18 +196,22 @@ class DeckBuilder extends Component {
                         </li>
                       </ul>
                     </div>
-                    <table className="table">
-                      <tbody>
-                        {cardsToShow.map(card => (
-                          <PoolCard
-                            key={card.cardId}
-                            onCardHover={this.onCardHover}
-                            card={card}
-                            onCardClick={this.getCard}
-                          />
-                        ))}
-                      </tbody>
-                    </table>
+                    {this.props.cardsLoading ? (
+                      <Spinner />
+                    ) : (
+                      <table className="table">
+                        <tbody>
+                          {cardsToShow.map(card => (
+                            <PoolCard
+                              key={card.cardId}
+                              onCardHover={this.onCardHover}
+                              card={card}
+                              onCardClick={this.getCard}
+                            />
+                          ))}
+                        </tbody>
+                      </table>
+                    )}
                   </div>
                 </div>
 

@@ -6,7 +6,9 @@ import { getCardsFromApi } from '../../actions/builderActions';
 import DeckBuilder from '../../components/builder/DeckBuilder';
 
 const mapStateToProps = state => ({
-  builder: state.builder
+  currentDeck: state.builder.currentDeck,
+  cardsPool: state.builder.cardsPool,
+  cardsLoading: state.builder.cardsLoading
 })
 
 const mapDispatchToProps = dispatch => ({

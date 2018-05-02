@@ -10,6 +10,7 @@ export const prebuild = (format, hsClass) => dispatch => {
       hsClass
     }
   });
+  dispatch(getCardsFromApi(hsClass));
 }
 
 export const getCardsFromApi = (hsClass) => dispatch => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames'
 import FormatRadio from './FormatRadio';
 import AvatarClassRadio from './AvatarClassRadio';
 
@@ -119,7 +120,9 @@ class PreBuilder extends Component {
                   </div>
                 )}
                 <div className="field">
-                  <input type="submit" className="button is-primary is-medium submit-button " value="Start a deck" />
+                  <button type="submit" className={classnames('button is-primary is-medium submit-button', {
+                    'is-loading': this.props.cardsLoading
+                  })}>Start a deck</button>
                 </div>
               </form>
             </div>

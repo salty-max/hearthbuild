@@ -22,7 +22,7 @@ mongoose
   .then(() => console.log('mongoDB connected'))
   .catch(err => console.log(err));
 
-app.use(cors);
+app.use(cors());
 
 // Passport middleware
 app.use(passport.initialize());

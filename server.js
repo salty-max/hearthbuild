@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const cors = require('cors');
 
 const app = express();
 
@@ -20,6 +21,8 @@ mongoose
   .connect(db)
   .then(() => console.log('mongoDB connected'))
   .catch(err => console.log(err));
+
+app.use(cors);
 
 // Passport middleware
 app.use(passport.initialize());

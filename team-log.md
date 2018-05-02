@@ -61,3 +61,42 @@
 - Finition du login et register
 - Continuité des composants react ( deckbuilder)
 - Test requête API
+
+## 01-05-2018 (censé être férié)
+
+### Jonathan
+
+- Gestion des metas 
+
+### Cécile
+
+- Test requête vers backend
+
+### Max
+
+- Création d'un component de route privée
+- Création de components pour les différents inputs
+
+## 02-05-2018
+
+### Jonathan
+
+### Cécile
+
+### Max
+
+## 03-05-2018
+
+### Jonathan
+
+### Cécile
+
+### Max
+
+## 04-05-2018
+
+### Jonathan
+
+### Cécile
+
+### Max

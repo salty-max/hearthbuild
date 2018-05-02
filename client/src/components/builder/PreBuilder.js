@@ -8,19 +8,8 @@ class PreBuilder extends Component {
     super();
     this.state = {
       format: '',
-      class: '',
-      errors: {},
-      classes: [
-        { label: 'Druid', value: 'druid'},
-        { label: 'Hunter', value: 'hunter'},
-        { label: 'Mage', value: 'mage'},
-        { label: 'Paladin', value: 'paladin'},
-        { label: 'Priest', value: 'priest'},
-        { label: 'Rogue', value: 'rogue'},
-        { label: 'Shaman', value: 'shaman'},
-        { label: 'Warlock', value: 'warlock'},
-        { label: 'Warrior', value: 'warrior'},
-      ],
+      hsClass: '',
+      errors: {}
     }
   }
 
@@ -34,10 +23,33 @@ class PreBuilder extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log('submit');
+    const { format, hsClass } = this.state;
+    if (format === '') {
+      this.setState({
+        errors: {
+          format: 'You must choose a format'
+        }
+      })
+    }
+    if (hsClass === '') {
+      this.setState({
+        errors: {
+           class: 'You must choose a class'
+        }
+      })
+    }
+    if (hsClass !== '' && format !== '') {
+      this.setState({
+        errors: {}
+      });
+      this.props.actions.prebuild(format, hsClass);
+      this.props.history.push('/builder');
+    }
   }
 
   render() {
+    const { classes } = this.props;
+    const { errors } = this.state;
     return (
       <main>
         <section className="section" id="pre-builder">
@@ -85,15 +97,29 @@ class PreBuilder extends Component {
                     />
                   </div>
                 </div>
+                {errors.format && (
+                  <div className="notification is-danger">
+                    {errors.format}
+                  </div>
+                )}
                 <div className="classes">
-                  {this.state.classes.map(hsClass => (
+                  {classes.map(hsClass => (
                     <AvatarClassRadio
-                      hsClass={hsClass.value}
-                      checked={this.state.class === hsClass.label}
+                      key={hsClass}
+                      hsClass={hsClass.toLowerCase()}
+                      checked={this.state.hsClass === hsClass}
                       onChange={this.onChange}
-                      label={hsClass.label}
+                      label={hsClass}
                     />
                   ))}
+                </div>
+                {errors.class && (
+                  <div className="notification is-danger">
+                    {errors.class}
+                  </div>
+                )}
+                <div className="field">
+                  <input type="submit" className="button is-primary is-medium submit-button " value="Start a deck" />
                 </div>
               </form>
             </div>

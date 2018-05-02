@@ -16,7 +16,7 @@ import Navbar from './containers/layout/Navbar';
 import Home from './components/home/Home';
 import DeckSingle from './components/deck/DeckSingle';
 import DeckBuilder from './containers/builder/DeckBuilder';
-import PreBuilder from './components/builder/PreBuilder';
+import PreBuilder from './containers/builder/PreBuilder';
 import Login from './containers/auth/Login';
 import Register from './containers/auth/Register';
 import Footer from './components/layout/Footer';

@@ -31,7 +31,7 @@ const AvatarClassRadio = ({
   checked,
 }) => (
     <div className="control">
-      <input id={hsClass} name="class" type="radio" className="radio" onChange={onChange} checked={checked} value={label} />
+      <input id={hsClass} name="hsClass" type="radio" className="radio" onChange={onChange} checked={checked} value={label} />
       <label htmlFor={hsClass}>
         <img src={avatars[hsClass]} className="image is-rounded is-128x128" />
         <span className="class-title">{label}</span>

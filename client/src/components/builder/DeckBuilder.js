@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import classnames from 'classnames';
+import axios from 'axios';
 
 import TextFieldGroup from '../common/TextFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
+import Svg from '../common/Svg';
+
 import PoolCard from './PoolCard';
 
 import magikarp from '../../assets/img/card-placeholder.png'
@@ -14,7 +16,8 @@ class DeckBuilder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: [],
+      classCards: [],
+      neutralCards: [],
       hoverCard: magikarp,
       tabs: {
         classTab: true,
@@ -31,23 +34,18 @@ class DeckBuilder extends Component {
       description: '',
       errors: {}
     }
+    
   }
 
-  componentDidMount(){
-    this.getCards('Warlock');
-  }
-
-  onCardHover = (imgPath) => () => {
-    this.setState({
-      hoverCard: imgPath
-    });
+  componentWillReceiveProps() {
+    // this.props.actions.getCardsFromApi('Warlock');
   }
 
   getCards = (hsClass) => {
-
     let cards = [];
+
     const instance = axios.create({
-      headers: { 'X-Mashape-Key': 'gRaaphoNnCmshKVbb6SrWfC2IHanp1QeWMMjsnTLA3mjewjtYW' }
+      headers: { 'X-Mashape-Key': 'uY73MkKAFDmshSrK4M1A28Jxg3fEp1GLauRjsnUDNngp96u7dq' }
     });
 
     instance.get(`https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/${hsClass}`, {
@@ -56,19 +54,58 @@ class DeckBuilder extends Component {
       }
     })
       .then(res => {
+        const classCards = res.data.filter(card => card.type !== 'Hero');
+
         this.setState({
-          cards: res.data.filter(card => card.type !== 'Hero')
-        })
+          classCards
+        });
+      })
+      .catch(err => {
+        console.log('Cards not found');
+      });
+
+    instance.get(`https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/Neutral`, {
+      params: {
+        'collectible': 1
+      }
+    })
+      .then(res => {
+        const neutralCards = res.data.filter(card => card.type !== 'Hero');
+
+        this.setState({
+          neutralCards,
+        });
+      })
+      .catch(err => {
+        console.log('Cards not found');
       });
   }
 
-  handleTab = (hsClass, tabToActivate) => (e) => {
+  componentDidMount() {
+    this.getCards('Warlock');
+  }
+
+  showCards = () => {
+    if(this.state.tabs.neutralTab) {
+      return this.state.neutralCards
+    }
+    else {
+      return this.state.classCards;
+    }
+  }
+
+  onCardHover = (imgPath) => () => {
+    this.setState({
+      hoverCard: imgPath
+    });
+  }
+
+  handleTab = (tabToActivate) => (e) => {
     this.setState(prevState => ({
       tabs: {
         [tabToActivate]: !prevState.tabs[tabToActivate]
       }
     }));
-    this.getCards(hsClass);
   }
 
   onChange = (e) => {
@@ -83,8 +120,14 @@ class DeckBuilder extends Component {
     console.log('submit');
   }
 
+  getCard = (card) => () => {
+    console.log(card)
+  }
+
   render() {
-    const { cards, tabs, hoverCard, deckTypes, errors } = this.state;
+    const { tabs, hoverCard, deckTypes, errors } = this.state;
+
+    const cardsToShow = this.showCards();
 
     return (
       <main>
@@ -124,21 +167,26 @@ class DeckBuilder extends Component {
                       <ul>
                         <li className={classnames('', {
                           'is-active': tabs.classTab
-                        })} onClick={this.handleTab('Warlock', 'classTab')}>
+                        })} onClick={this.handleTab('classTab')}>
                           <a>Warlock</a>
                         </li>
 
                         <li className={classnames('', {
                           'is-active': tabs.neutralTab
-                        })} onClick={this.handleTab('Neutral', 'neutralTab')}>
+                        })} onClick={this.handleTab('neutralTab')}>
                           <a>Neutrals</a>
                         </li>
                       </ul>
                     </div>
                     <table className="table">
                       <tbody>
-                        {cards.map(card => (
-                          <PoolCard key={card.cardId} onCardHover={this.onCardHover} card={card} />
+                        {cardsToShow.map(card => (
+                          <PoolCard
+                            key={card.cardId}
+                            onCardHover={this.onCardHover}
+                            card={card}
+                            onCardClick={this.getCard}
+                          />
                         ))}
                       </tbody>
                     </table>
@@ -150,9 +198,7 @@ class DeckBuilder extends Component {
                     <h3 className="title">Deck preview</h3>
                     <span className="tags has-addons">
                       <span className="tag is-medium is-dark">
-                        <svg>
-                          <use xlinkHref="img/misc/misc-dust.svg#misc-dust" />
-                        </svg>
+                        <Svg type="misc" value="dust" />
                         </span>
                         <span className="tag is-medium is-light">15k</span>
                     </span>
@@ -182,9 +228,7 @@ class DeckBuilder extends Component {
                             <td>
                               <div className="deck-builder--cards-table--cost">
                                 <span>0</span>
-                                <svg>
-                                  <use xlinkHref="img/misc/misc-mana.svg#misc-mana" />
-                                </svg>
+                                <Svg type="misc" value="mana" />
                               </div>
                             </td>
                             <td>
@@ -200,9 +244,7 @@ class DeckBuilder extends Component {
                             <td>
                               <div className="deck-builder--cards-table--cost">
                                 <span>5</span>
-                                <svg>
-                                  <use xlinkHref="img/misc/misc-mana.svg#misc-mana" />
-                                </svg>
+                                <Svg type="misc" value="mana" />
                               </div>
                             </td>
                             <td>
@@ -218,11 +260,9 @@ class DeckBuilder extends Component {
                             <td>
                               <div className="deck-builder--cards-table--cost">
                                 <span>9</span>
-                                <svg>
-                                  <use xlinkHref="img/misc/misc-mana.svg#misc-mana" />
-                                  </svg>
-                                </div>
-                              </td>
+                                <Svg type="misc" value="mana" />
+                              </div>
+                            </td>
                             <td>
                               <button className="button is-danger is-small">
                                 <span className="icon">
@@ -236,9 +276,7 @@ class DeckBuilder extends Component {
                             <td>
                               <div className="deck-builder--cards-table--cost">
                                 <span>3</span>
-                                <svg>
-                                  <use xlinkHref="img/misc/misc-mana.svg#misc-mana" />
-                                </svg>
+                                <Svg type="misc" value="mana" />
                               </div>
                             </td>
                             <td>

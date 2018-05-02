@@ -104,7 +104,7 @@ class Navbar extends Component {
         </div>
         <div className="navbar-end">
           <div className="navbar-item">
-            <Link to="/prebuilder" className="button is-primary">
+            <Link to="/pre-builder" className="button is-primary">
               <span className="icon">
                 <i className="fas fa-plus-circle" />
               </span>

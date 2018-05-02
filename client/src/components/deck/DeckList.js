@@ -4,12 +4,8 @@ import PropTypes from 'prop-types';
 import DeckCard from './DeckCard';
 
 const DeckList = ({ cards }) => {
-  if (cards.length === 0) {
-    console.log('loading...');
-    // return <p>loading...</p>;
-  }
-
-  console.log(cards);
+  const neutralCards = cards.filter(card => card.class === 'Neutral');
+  const deckClassCards = cards.filter(card => card.class !== 'Neutral');
 
   return (
     <div className="deck--list">
@@ -17,15 +13,15 @@ const DeckList = ({ cards }) => {
         <div className="column is-6">
           <div className="panel">
             <p className="panel-heading">
-              Neutral
+              Neutrals
             </p>
-            {cards.map(card => {
+            {neutralCards.map(card => (
               <DeckCard
                 key={card._id}
                 cost={card.cost}
                 name={card.name}
               />
-            })}
+            ))}
           </div>
         </div>
         <div className="column is-6">
@@ -33,13 +29,13 @@ const DeckList = ({ cards }) => {
             <p className="panel-heading">
               Warlock
             </p>
-            {cards.map(card => {
+            {deckClassCards.map(card => (
               <DeckCard
                 key={card._id}
                 cost={card.cost}
                 name={card.name}
               />
-            })}
+            ))}
           </div>
         </div>
       </div>

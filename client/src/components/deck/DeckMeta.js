@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import changeCase from 'change-case';
-import axios from 'axios';
 import Svg from '../common/Svg';
 
 import druid from '../../assets/img/deck-banners/banner-druid.png';

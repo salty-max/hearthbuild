@@ -28,10 +28,24 @@ class DeckBuilder extends Component {
         neutralTab: false
       },
       deckTypes: [
-        { label: '* Choose a type', value: 0 },
         { label: 'Aggro', value: 'Aggro' },
         { label: 'Midrange', value: 'Midrange' },
         { label: 'Control', value: 'Control' },
+      ],
+      classes: [
+        { label: 'Druid', value: 'druid' },
+        { label: 'Hunter', value: 'hunter' },
+        { label: 'Mage', value: 'mage' },
+        { label: 'Paladin', value: 'paladin' },
+        { label: 'Priest', value: 'priest' },
+        { label: 'Rogue', value: 'rogue' },
+        { label: 'Shaman', value: 'shaman' },
+        { label: 'Warlock', value: 'warlock' },
+        { label: 'Warrior', value: 'warrior' },
+      ],
+      formats: [
+        { label: 'Standard', value: 'standard' },
+        { label: 'Wild', value: 'wild' },
       ],
       title: '',
       type: '',
@@ -74,16 +88,21 @@ class DeckBuilder extends Component {
     return cards;
   }
 
-  addCard = (card) => () => {
+  addCard = (cardToAdd) => () => {
     let newIndex = this.state.cardIndex;
-    newIndex += 1;
-    this.computeCost(card.rarity, 'add');
-    this.setState(prevState => ({
+    const { deckCards } = this.state;
+    if (deckCards.length < 30) {
+      if ((cardToAdd.rarity === 'Legendary' && deckCards.filter(card => cardToAdd.cardId === card.cardId).length < 1) || (cardToAdd.rarity !== "Legendary" && deckCards.filter(card => cardToAdd.cardId === card.cardId).length < 2)) {
+        newIndex += 1;
+        this.computeCost(cardToAdd.rarity, 'add');
+        this.setState(prevState => ({
 
-      deckCards: [...prevState.deckCards, {...card, index: newIndex}],
-      cardIndex: ++newIndex,
-      cardCount: ++prevState.cardCount
-    }));
+          deckCards: [...prevState.deckCards, { ...cardToAdd, index: newIndex }],
+          cardIndex: ++newIndex,
+          cardCount: ++prevState.cardCount
+        }));
+      }
+    }
   }
 
   removeCard = (cardIndex) => () => {
@@ -168,7 +187,7 @@ class DeckBuilder extends Component {
   }
 
   render() {
-    const { tabs, hoverCard, deckTypes, deckCards, errors } = this.state;
+    const { tabs, hoverCard, formats, classes, deckTypes, deckCards, errors } = this.state;
 
     const cardsToShow = this.showCards();
 
@@ -196,6 +215,22 @@ class DeckBuilder extends Component {
                       error={errors.type}
                       onChange={this.onChange}
                       options={deckTypes}
+                    />
+                    <SelectListGroup
+                      name="format"
+                      label="Format"
+                      value={this.state.format}
+                      error={errors.format}
+                      onChange={this.onChange}
+                      options={formats}
+                    />
+                    <SelectListGroup
+                      name="class"
+                      label="Class"
+                      value={this.state.class}
+                      error={errors.class}
+                      onChange={this.onChange}
+                      options={classes}
                     />
                   </div>
                 </div>

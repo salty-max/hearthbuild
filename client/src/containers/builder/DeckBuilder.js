@@ -8,7 +8,8 @@ import DeckBuilder from '../../components/builder/DeckBuilder';
 const mapStateToProps = state => ({
   currentDeck: state.builder.currentDeck,
   cardsPool: state.builder.cardsPool,
-  cardsLoading: state.builder.cardsLoading
+  cardsLoading: state.builder.cardsLoading,
+  classes: state.home.classes
 })
 
 const mapDispatchToProps = dispatch => ({

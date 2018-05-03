@@ -6,32 +6,22 @@ import Sidebar from './Sidebar';
 import DecksFilter from './DecksFilter';
 import DeckListHeader from './DeckListHeader';
 import DeckItem from './DeckItem';
-import Svg from '../common/Svg';
-
-import axios from 'axios';
-
-
+import AdBanner from './AdBanner';
+import Spinner from '../common/Spinner';
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
       decks: [],
+      filters: {}
     };
   }
 
-  componentDidMount() {
-    this.getDeckTest();
-  }
-
-  getDeckTest = () => {
-    axios.get('/api/decks')
-      .then(res => {
-        this.setState({
-          decks: res.data,
-        })
-        console.log(res.data);
-      });
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      decks: nextProps.decks,
+    })
   }
 
   render() {
@@ -49,13 +39,24 @@ class Home extends Component {
                   <DecksFilter />
                   <table className="table deck-list--table is-fullwidth is-striped is-hoverable">
                     <DeckListHeader />
-                    <tbody>
-                      {this.state.decks.map(deck => (
-                        <DeckItem key={deck._id}{...deck} />
-                      ))}
-                    </tbody>
+                    {this.props.decksLoading ? (
+                      <tbody>
+                        <tr>
+                          <td colSpan="7">
+                            <Spinner />
+                          </td>
+                        </tr>
+                      </tbody>
+                    ) : (
+                      <tbody>
+                        {this.state.decks.map(deck => (
+                          <DeckItem key={deck._id}{...deck} />
+                        ))}
+                      </tbody>
+                    )}
                   </table>
                 </div>
+                <AdBanner />
               </div>
               <div className="column is-3">
                 <Sidebar />

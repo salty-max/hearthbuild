@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
 
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
+import { setDecksLoading } from './actions/homeActions';
 
 import './styles/app.css';
 
@@ -13,7 +14,7 @@ import PrivateRoute from './components/common/PrivateRoute';
 
 import store from './store';
 import Navbar from './containers/layout/Navbar';
-import Home from './components/home/Home';
+import Home from './containers/home/Home';
 import DeckSingle from './components/deck/DeckSingle';
 import DeckBuilder from './containers/builder/DeckBuilder';
 import PreBuilder from './containers/builder/PreBuilder';
@@ -38,6 +39,8 @@ if (localStorage.jwtToken) {
     window.location = '/login';
   }
 }
+
+store.dispatch(setDecksLoading());
 
 class App extends Component {
 

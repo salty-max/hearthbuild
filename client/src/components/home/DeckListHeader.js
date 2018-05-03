@@ -10,7 +10,6 @@ const DeckListHeader = () => (
       <th><i className="fas fa-calendar-alt"></i></th>
       <th>
         <Svg type="misc" value="dust" />
-
       </th>
       <th><i className="fas fa-thumbs-up"></i></th>
       <th><i className="fas fa-eye"></i></th>

@@ -16,19 +16,16 @@ class DecksFilter extends React.Component {
       'warrior'
     ],
     decks: [],
+    filters: {}
   }
-  // SelectFormat = () => {
-  //   console.log('coucou');
-  // }
 
-  SelectionFormat = (evt) => {
-  console.log(evt.target.value)
-    const selectFormat = evt.target.value;
-
-    if (selectFormat === this.state.decks.format) {
-    console.log('coucou');
-      // this.state.decks.filters(deck => deck.format = selectFormat)
+  onChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      filters: {
+        [name]: value
       }
+    })
   }
 
 
@@ -45,7 +42,7 @@ class DecksFilter extends React.Component {
             <div className="field">
               <label className="label">Search by name</label>
               <div className="control has-icons-left">
-                <input type="text" className="input" placeholder="Search by name..." />
+                <input type="text" name="name" className="input" placeholder="Search by name..." onChange={this.onChange} value={this.state.filters.name} />
                 <span className="icon is-small is-left">
                   <i className="fas fa-pencil-alt" />
                 </span>
@@ -74,7 +71,10 @@ class DecksFilter extends React.Component {
                   </select>
                 </span>
               </div>
-            </div>
+            </div> 
+          </div>
+          <div className="field">
+            <button type="submit" className="button is-primary is-outlined" style={{ width: '100%', marginTop: '1.5em' }}>Submit</button>
           </div>
         </form>
       </div>

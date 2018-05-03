@@ -2,9 +2,10 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import rootReducer from './reducers';
+import ajax from './middlewares/ajax';
 
 const initialState = {};
-const middlewares = [thunk];
+const middlewares = [thunk, ajax];
 
 const store = createStore(
   rootReducer,

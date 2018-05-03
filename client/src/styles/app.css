@@ -6725,8 +6725,7 @@ label.panel-block {
       fill: whitesmoke; }
     .deck-builder--list-header #card-count {
       font-weight: 600;
-      margin-right: .25em;
-      color: #ff3860; }
+      margin-right: .25em; }
 
 .deck-builder--curve .box {
   margin-top: 1.5em;

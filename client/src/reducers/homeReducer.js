@@ -13,6 +13,7 @@ const initialState= {
     'Warlock',
     'Warrior'
   ],
+  filters: {},
   decksLoading: false,
   decks: null,
 }

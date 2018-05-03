@@ -101,6 +101,18 @@
 
 ### Max
 
+- Rework de la requête vers l'API :
+  - Une seule requête au chargement de l'app
+  - Tri des cartes directement depuis le component
+
+- Nouvelles fonctionnalités du builder :
+  - Ajout de cartes depuis le pool vers le deck
+  - Suppression de cartes du deck
+  - Mise à jour dynamique du coût du deck
+  - Mise à jour dynamique du nombre de cartes dans le deck
+  - Limite du deck à 30 cartes
+  - Limite de 2 mêmes cartes par deck (1 si legendaire)
+
 ## 04-05-2018
 
 ### Jonathan

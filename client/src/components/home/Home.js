@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 import Banner from '../common/Banner';
 import Sidebar from './Sidebar';
 import DecksFilter from './DecksFilter';
-import DeckSelectionBoard from './DeckSelectionBoard';
+import DeckListHeader from './DeckListHeader';
+import DeckItem from './DeckItem';
+import Svg from '../common/Svg';
 
 import axios from 'axios';
 
@@ -43,10 +45,17 @@ render () {
         <div className="container">
           <div className="columns">
               <div className="column is-9">
-                <DecksFilter />
-                {this.state.decks.map(deck => (
-                <DeckSelectionBoard  key={deck.author}{...deck} />
-                  ))}
+                <div className="deck-list">
+                  <DecksFilter />
+                  <table className="table deck-list--table is-fullwidth is-striped is-hoverable">
+                    <DeckListHeader />
+                    <tbody>
+                      {this.state.decks.map(deck => (
+                      <DeckItem  key={deck._id}{...deck} />
+                        ))}
+                    </tbody>
+                  </table>
+                </div>  
               </div>
                 <div className="column is-3">
                   <Sidebar />

@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
 import { setDecksLoading } from './actions/homeActions';
+import { setCardsLoading } from './actions/builderActions';
 
 import './styles/app.css';
 
@@ -41,6 +42,7 @@ if (localStorage.jwtToken) {
 }
 
 store.dispatch(setDecksLoading());
+store.dispatch(setCardsLoading());
 
 class App extends Component {
 

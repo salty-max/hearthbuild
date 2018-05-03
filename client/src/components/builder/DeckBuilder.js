@@ -7,10 +7,11 @@ import sortBy from '../../utils/sortBy';
 import TextFieldGroup from '../common/TextFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
-import Svg from '../common/Svg';
 import Spinner from '../common/Spinner';
 
+import DeckBuilderMetas from './DeckBuilderMetas';
 import PoolCard from './PoolCard';
+import DeckCard from './DeckCard';
 
 import magikarp from '../../assets/img/card-placeholder.png'
 
@@ -37,29 +38,97 @@ class DeckBuilder extends Component {
       description: '',
       format: '',
       class: '',
+      cost: 0,
+      cardCount: 0,
+      deckCards: [],
+      cardIndex: 0,
       errors: {}
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillMount() {
     let cards = [];
-    if (nextProps.cardsPool) {
-      if (nextProps.currentDeck.format === 'standard') {
-        cards = nextProps.cardsPool.filter(card => card.cardSet === 'The Witchwood' || card.cardSet === 'Knights of the Frozen Throne' || card.cardSet === 'Kobolds & Catacombs' || card.cardSet === 'Journey to Un\'Goro' || card.cardSet === 'Classic' || card.cardSet === 'Basic');
-        console.log(cards);
-      }
-      else {
-        cards = nextProps.cardsPool;
+    if(this.props.cardsPool) {
+      cards = this.sortByFormat(this.props.cardsPool, this.props.currentDeck.format)
+    }
+
+    cards = cards.sort(sortBy('cost'));
+
+    this.setState({
+      class: this.props.currentDeck.class,
+      format: this.props.currentDeck.format,
+      classCards: cards.filter(card => card.playerClass === this.props.currentDeck.class),
+      neutralCards: cards.filter(card => card.playerClass === 'Neutral'),
+    });
+  }
+
+  sortByFormat = (pool, format) => {
+    let cards = [];
+    if (format === 'standard') {
+      cards = pool.filter(card => card.cardSet === 'The Witchwood' || card.cardSet === 'Knights of the Frozen Throne' || card.cardSet === 'Kobolds & Catacombs' || card.cardSet === 'Journey to Un\'Goro' || card.cardSet === 'Classic' || card.cardSet === 'Basic');
+    }
+    else {
+      cards = pool;
+    }
+
+    return cards;
+  }
+
+  addCard = (card) => () => {
+    let newIndex = this.state.cardIndex;
+    newIndex += 1;
+    this.computeCost(card.rarity, 'add');
+    this.setState(prevState => ({
+
+      deckCards: [...prevState.deckCards, {...card, index: newIndex}],
+      cardIndex: ++newIndex,
+      cardCount: ++prevState.cardCount
+    }));
+  }
+
+  removeCard = (cardIndex) => () => {
+    const cardToRemove = this.state.deckCards.filter(card => card.index === cardIndex);
+    this.computeCost(cardToRemove[0].rarity, 'substract');
+
+    const cards = this.state.deckCards.filter(card => card.index !== cardIndex);
+
+    this.setState(prevState => ({
+      deckCards: cards,
+      cardCount: --prevState.cardCount
+    }));
+  }
+
+  computeCost = (rarity, operation) => {
+    let newCost = 0;
+    switch (rarity) {
+      case 'Common':
+        newCost = 40
+        break;
+      case 'Rare':
+        newCost = 100
+        break;
+      case 'Epic':
+        newCost = 400
+        break;
+      case 'Legendary':
+        newCost = 1600
+        break;
+      default:
+        break;
+    }
+
+    if (operation) {
+      if (operation === 'add') {
+        this.setState(prevState => ({
+          cost: prevState.cost + newCost
+        }));
       }
 
-      cards = cards.sort(sortBy('cost'));
-
-      this.setState({
-        classCards: cards.filter(card => card.playerClass === nextProps.currentDeck.class),
-        neutralCards: cards.filter(card => card.playerClass === 'Neutral'),
-        class: nextProps.currentDeck.class,
-        format: nextProps.currentDeck.format,
-      });
+      if (operation === 'substract') {
+        this.setState(prevState => ({
+          cost: prevState.cost - newCost
+        }));
+      }
     }
   }
 
@@ -98,12 +167,8 @@ class DeckBuilder extends Component {
     console.log('submit');
   }
 
-  getCard = (card) => () => {
-    console.log(card)
-  }
-
   render() {
-    const { tabs, hoverCard, deckTypes, errors } = this.state;
+    const { tabs, hoverCard, deckTypes, deckCards, errors } = this.state;
 
     const cardsToShow = this.showCards();
 
@@ -145,7 +210,7 @@ class DeckBuilder extends Component {
                         <li className={classnames('', {
                           'is-active': tabs.classTab
                         })} onClick={this.handleTab('classTab')}>
-                          <a>{this.state.class}</a>
+                          <a>{this.props.currentDeck.class}</a>
                         </li>
 
                         <li className={classnames('', {
@@ -165,7 +230,7 @@ class DeckBuilder extends Component {
                               key={card.cardId}
                               onCardHover={this.onCardHover}
                               card={card}
-                              onCardClick={this.getCard}
+                              onCardClick={this.addCard}
                             />
                           ))}
                         </tbody>
@@ -175,99 +240,18 @@ class DeckBuilder extends Component {
                 </div>
 
                 <div className="deck-builder--list">
-                  <div className="deck-builder--list-header">
-                    <h3 className="title">Deck preview</h3>
-                    <span className="tags has-addons">
-                      <span className="tag is-medium is-dark">
-                        <Svg type="misc" value="dust" />
-                        </span>
-                        <span className="tag is-medium is-light">15k</span>
-                    </span>
-                    <span className="tags has-addons">
-                      <span className="tag is-medium is-dark">
-                        <span className="icon">
-                          <i className="fab fa-slack-hash"></i>
-                        </span>
-                      </span>
-                      <span className="tag is-medium is-light">
-                        <span id="card-count">15</span> / 30
-                      </span>
-                    </span>
-                  </div>
+                  <DeckBuilderMetas count={this.state.cardCount} cost={this.state.cost} />
                   <div className="columns">
                     <div className="column is-8 deck-builder--list-table">
-                      <div className="tabs">
-                        <ul>
-                          <li className="is-active"><a>Warlock</a></li>
-                          <li><a>Neutrals</a></li>
-                        </ul>
-                      </div>
-                      <table className="table is-striped">
+                      <table className="table">
                         <tbody>
-                          <tr>
-                            <td>Magikarp</td>
-                            <td>
-                              <div className="deck-builder--cards-table--cost">
-                                <span>0</span>
-                                <Svg type="misc" value="mana" />
-                              </div>
-                            </td>
-                            <td>
-                              <button className="button is-danger is-small">
-                                <span className="icon">
-                                  <i className="fas fa-trash-alt"></i>
-                                </span>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="has-text-epic">Baston</td>
-                            <td>
-                              <div className="deck-builder--cards-table--cost">
-                                <span>5</span>
-                                <Svg type="misc" value="mana" />
-                              </div>
-                            </td>
-                            <td>
-                              <button className="button is-danger is-small">
-                                <span className="icon">
-                                  <i className="fas fa-trash-alt"></i>
-                                </span>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="has-text-legendary">Alexstrasza</td>
-                            <td>
-                              <div className="deck-builder--cards-table--cost">
-                                <span>9</span>
-                                <Svg type="misc" value="mana" />
-                              </div>
-                            </td>
-                            <td>
-                              <button className="button is-danger is-small">
-                                <span className="icon">
-                                  <i className="fas fa-trash-alt"></i>
-                                </span>
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="has-text-rare">Acolyte de la souffrance</td>
-                            <td>
-                              <div className="deck-builder--cards-table--cost">
-                                <span>3</span>
-                                <Svg type="misc" value="mana" />
-                              </div>
-                            </td>
-                            <td>
-                              <button className="button is-danger is-small">
-                                <span className="icon">
-                                  <i className="fas fa-trash-alt"></i>
-                                </span>
-                              </button>
-                            </td>
-                          </tr>
+                          {deckCards.map(card => (
+                            <DeckCard
+                              key={card.index}
+                              card={card}
+                              onDeleteClick={this.removeCard}
+                            />
+                          ))}
                         </tbody>
                       </table>
                     </div>

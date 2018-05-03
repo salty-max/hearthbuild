@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
+
+import sortBy from '../../utils/sortBy';
 
 import TextFieldGroup from '../common/TextFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
+import Svg from '../common/Svg';
+import Spinner from '../common/Spinner';
+
 import PoolCard from './PoolCard';
 
 import magikarp from '../../assets/img/card-placeholder.png'
@@ -14,7 +19,8 @@ class DeckBuilder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: [],
+      classCards: [],
+      neutralCards: [],
       hoverCard: magikarp,
       tabs: {
         classTab: true,
@@ -29,12 +35,41 @@ class DeckBuilder extends Component {
       title: '',
       type: '',
       description: '',
+      format: '',
+      class: '',
       errors: {}
     }
   }
 
-  componentDidMount(){
-    this.getCards('Warlock');
+  componentWillReceiveProps(nextProps) {
+    let cards = [];
+    if (nextProps.cardsPool) {
+      if (nextProps.currentDeck.format === 'standard') {
+        cards = nextProps.cardsPool.filter(card => card.cardSet === 'The Witchwood' || card.cardSet === 'Knights of the Frozen Throne' || card.cardSet === 'Kobolds & Catacombs' || card.cardSet === 'Journey to Un\'Goro' || card.cardSet === 'Classic' || card.cardSet === 'Basic');
+        console.log(cards);
+      }
+      else {
+        cards = nextProps.cardsPool;
+      }
+
+      cards = cards.sort(sortBy('cost'));
+
+      this.setState({
+        classCards: cards.filter(card => card.playerClass === nextProps.currentDeck.class),
+        neutralCards: cards.filter(card => card.playerClass === 'Neutral'),
+        class: nextProps.currentDeck.class,
+        format: nextProps.currentDeck.format,
+      });
+    }
+  }
+
+  showCards = () => {
+    if(this.state.tabs.neutralTab) {
+      return this.state.neutralCards
+    }
+    else {
+      return this.state.classCards;
+    }
   }
 
   onCardHover = (imgPath) => () => {
@@ -43,32 +78,12 @@ class DeckBuilder extends Component {
     });
   }
 
-  getCards = (hsClass) => {
-
-    let cards = [];
-    const instance = axios.create({
-      headers: { 'X-Mashape-Key': 'gRaaphoNnCmshKVbb6SrWfC2IHanp1QeWMMjsnTLA3mjewjtYW' }
-    });
-
-    instance.get(`https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/${hsClass}`, {
-      params: {
-        'collectible': 1
-      }
-    })
-      .then(res => {
-        this.setState({
-          cards: res.data.filter(card => card.type !== 'Hero')
-        })
-      });
-  }
-
-  handleTab = (hsClass, tabToActivate) => (e) => {
+  handleTab = (tabToActivate) => (e) => {
     this.setState(prevState => ({
       tabs: {
         [tabToActivate]: !prevState.tabs[tabToActivate]
       }
     }));
-    this.getCards(hsClass);
   }
 
   onChange = (e) => {
@@ -83,8 +98,14 @@ class DeckBuilder extends Component {
     console.log('submit');
   }
 
+  getCard = (card) => () => {
+    console.log(card)
+  }
+
   render() {
-    const { cards, tabs, hoverCard, deckTypes, errors } = this.state;
+    const { tabs, hoverCard, deckTypes, errors } = this.state;
+
+    const cardsToShow = this.showCards();
 
     return (
       <main>
@@ -92,7 +113,6 @@ class DeckBuilder extends Component {
           <div className="container">
             <div className="deck-builder">
               {/* FORM */}
-              
               <form onSubmit={this.onSubmit}>
                 <div className="deck-builder--form">
                   <div className="fields">
@@ -124,24 +144,33 @@ class DeckBuilder extends Component {
                       <ul>
                         <li className={classnames('', {
                           'is-active': tabs.classTab
-                        })} onClick={this.handleTab('Warlock', 'classTab')}>
-                          <a>Warlock</a>
+                        })} onClick={this.handleTab('classTab')}>
+                          <a>{this.state.class}</a>
                         </li>
 
                         <li className={classnames('', {
                           'is-active': tabs.neutralTab
-                        })} onClick={this.handleTab('Neutral', 'neutralTab')}>
+                        })} onClick={this.handleTab('neutralTab')}>
                           <a>Neutrals</a>
                         </li>
                       </ul>
                     </div>
-                    <table className="table">
-                      <tbody>
-                        {cards.map(card => (
-                          <PoolCard key={card.cardId} onCardHover={this.onCardHover} card={card} />
-                        ))}
-                      </tbody>
-                    </table>
+                    {this.props.cardsLoading ? (
+                      <Spinner />
+                    ) : (
+                      <table className="table">
+                        <tbody>
+                          {cardsToShow.map(card => (
+                            <PoolCard
+                              key={card.cardId}
+                              onCardHover={this.onCardHover}
+                              card={card}
+                              onCardClick={this.getCard}
+                            />
+                          ))}
+                        </tbody>
+                      </table>
+                    )}
                   </div>
                 </div>
 
@@ -150,9 +179,7 @@ class DeckBuilder extends Component {
                     <h3 className="title">Deck preview</h3>
                     <span className="tags has-addons">
                       <span className="tag is-medium is-dark">
-                        <svg>
-                          <use xlinkHref="img/misc/misc-dust.svg#misc-dust" />
-                        </svg>
+                        <Svg type="misc" value="dust" />
                         </span>
                         <span className="tag is-medium is-light">15k</span>
                     </span>
@@ -182,9 +209,7 @@ class DeckBuilder extends Component {
                             <td>
                               <div className="deck-builder--cards-table--cost">
                                 <span>0</span>
-                                <svg>
-                                  <use xlinkHref="img/misc/misc-mana.svg#misc-mana" />
-                                </svg>
+                                <Svg type="misc" value="mana" />
                               </div>
                             </td>
                             <td>
@@ -200,9 +225,7 @@ class DeckBuilder extends Component {
                             <td>
                               <div className="deck-builder--cards-table--cost">
                                 <span>5</span>
-                                <svg>
-                                  <use xlinkHref="img/misc/misc-mana.svg#misc-mana" />
-                                </svg>
+                                <Svg type="misc" value="mana" />
                               </div>
                             </td>
                             <td>
@@ -218,11 +241,9 @@ class DeckBuilder extends Component {
                             <td>
                               <div className="deck-builder--cards-table--cost">
                                 <span>9</span>
-                                <svg>
-                                  <use xlinkHref="img/misc/misc-mana.svg#misc-mana" />
-                                  </svg>
-                                </div>
-                              </td>
+                                <Svg type="misc" value="mana" />
+                              </div>
+                            </td>
                             <td>
                               <button className="button is-danger is-small">
                                 <span className="icon">
@@ -236,9 +257,7 @@ class DeckBuilder extends Component {
                             <td>
                               <div className="deck-builder--cards-table--cost">
                                 <span>3</span>
-                                <svg>
-                                  <use xlinkHref="img/misc/misc-mana.svg#misc-mana" />
-                                </svg>
+                                <Svg type="misc" value="mana" />
                               </div>
                             </td>
                             <td>
@@ -279,7 +298,12 @@ class DeckBuilder extends Component {
   }
 }
 
-
+DeckBuilder.propTypes = {
+  actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
+  cardsLoading: PropTypes.bool.isRequired,
+  cardsPool: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  currentDeck: PropTypes.object.isRequired
+}
 
 export default DeckBuilder;
 

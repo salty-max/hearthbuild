@@ -1,10 +1,44 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+import changeCase from 'change-case';
 import Svg from '../common/Svg';
 
-const DeckMeta = () => (
+import druid from '../../assets/img/deck-banners/banner-druid.png';
+import hunter from '../../assets/img/deck-banners/banner-hunter.png';
+import mage from '../../assets/img/deck-banners/banner-mage.png';
+import paladin from '../../assets/img/deck-banners/banner-paladin.png';
+import priest from '../../assets/img/deck-banners/banner-priest.png';
+import rogue from '../../assets/img/deck-banners/banner-rogue.png';
+import shaman from '../../assets/img/deck-banners/banner-shaman.png';
+import warlock from '../../assets/img/deck-banners/banner-warlock.png';
+import warrior from '../../assets/img/deck-banners/banner-warrior.png';
+
+const deckClasses = {
+  druid,
+  hunter,
+  mage,
+  paladin,
+  priest,
+  rogue,
+  shaman,
+  warlock,
+  warrior
+}
+
+const DeckMeta = ({ meta, author }) => (
   <div className="column is-9">
-    <div className="deck--title">Pew pew I'm a mage</div>
+    <div
+      className="deck--title"
+      style={{
+        backgroundImage: `url(${deckClasses[changeCase.lowerCase(meta.class)]})`,
+        backgroundPosition: 'center right',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {meta.title}
+    </div>
+
     <div className="deck--metas">
       <div className="deck--author">
         <span className=" tags has-addons">
@@ -14,7 +48,7 @@ const DeckMeta = () => (
             </span>
           </span>
           <span className="tag is-white">
-            John Doe
+            {author}
           </span>
         </span>
       </div>
@@ -26,7 +60,7 @@ const DeckMeta = () => (
             </span>
           </span>
           <span className="tag is-white">
-            2 days ago
+            <Moment fromNow>{meta.createdAt}</Moment>
           </span>
         </span>
       </div>
@@ -36,7 +70,7 @@ const DeckMeta = () => (
             <Svg type="misc" value="dust" />
           </span>
           <span className="tag is-white">
-            15k
+            {meta.cost}
           </span>
         </span>
       </div>
@@ -46,7 +80,7 @@ const DeckMeta = () => (
             <Svg type="misc" value="standard" />
           </span>
           <span className="tag is-white">
-            Standard
+            {meta.format}
           </span>
         </span>
       </div>
@@ -58,7 +92,7 @@ const DeckMeta = () => (
             </span>
           </span>
           <span className="tag is-white">
-            Midrange
+            {meta.type}
           </span>
         </span>
       </div>
@@ -68,12 +102,17 @@ const DeckMeta = () => (
             <Svg type="class" value="mage" />
           </span>
           <span className="tag is-white">
-            Mage
+            {meta.class}
           </span>
         </span>
       </div>
     </div>
   </div>
 );
+
+DeckMeta.propTypes = {
+  meta: PropTypes.object.isRequired,
+  author: PropTypes.string.isRequired,
+};
 
 export default DeckMeta;

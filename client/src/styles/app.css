@@ -6511,7 +6511,7 @@ label.panel-block {
   font-weight: 600; }
 
 .deck--title {
-  background: url("../assets/img/deck-banners/banner-warlock.png") no-repeat #ffdd57 right;
+  background-color: #ffdd57;
   border-radius: .375em .375em 0 0;
   color: #363636;
   padding: .8rem;
@@ -6546,7 +6546,7 @@ label.panel-block {
   position: relative;
   padding: 0; }
   .deck--list-card-cost {
-    width: 3rem;
+    width: 5rem;
     padding: .5em;
     background: #363636;
     color: whitesmoke;
@@ -6827,6 +6827,9 @@ body {
 
 nav, .app-content, footer {
   flex-shrink: 0; }
+
+.section {
+  padding: 3rem 0; }
 
 a {
   color: #363636; }

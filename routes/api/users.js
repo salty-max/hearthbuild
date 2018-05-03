@@ -124,4 +124,15 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
   });
 });
 
+// @route    GET api/users/id/:id
+// @desc     Get user by ID
+// @access   Public
+router.get('/id/:id', (req, res) => {
+  User.findOne({ _id: req.params.id })
+    .then((user) => {
+      res.json(user);
+    })
+    .catch(err => res.status(404).json({ noUser: 'No user found with this id' }));
+});
+
 module.exports = router;

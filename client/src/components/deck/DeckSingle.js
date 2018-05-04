@@ -8,7 +8,6 @@ import DeckDesc from './DeckDesc';
 import DeckComments from './comments/DeckComments';
 import Spinner from '../common/Spinner';
 
-
 const DeckSingle = ({ decksLoading, decks }) => {
   if (decksLoading) {
     return (
@@ -30,7 +29,6 @@ const DeckSingle = ({ decksLoading, decks }) => {
   const deckId = '5ae1ef6d40f923503e4ed403';
   // const deckId = '5ae321255b644c7477b1664d';
   const deck = decks.find(deck => deck._id === deckId );
-  console.log('DECK: ' + JSON.stringify(deck));
 
   return (
     <main>

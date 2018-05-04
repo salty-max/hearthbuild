@@ -39,6 +39,7 @@ router.get('/id/:id', (req, res) => {
 router.get('/', (req, res) => {
   Deck.find()
     .populate('author', ['name', 'avatar'])
+    .populate('comments.user', ['name', 'avatar'])
     .then((decks) => {
       res.json(decks);
     })

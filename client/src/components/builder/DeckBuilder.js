@@ -33,15 +33,15 @@ class DeckBuilder extends Component {
         { label: 'Control', value: 'Control' },
       ],
       classes: [
-        { label: 'Druid', value: 'druid' },
-        { label: 'Hunter', value: 'hunter' },
-        { label: 'Mage', value: 'mage' },
-        { label: 'Paladin', value: 'paladin' },
-        { label: 'Priest', value: 'priest' },
-        { label: 'Rogue', value: 'rogue' },
-        { label: 'Shaman', value: 'shaman' },
-        { label: 'Warlock', value: 'warlock' },
-        { label: 'Warrior', value: 'warrior' },
+        { label: 'Druid', value: 'Druid' },
+        { label: 'Hunter', value: 'Hunter' },
+        { label: 'Mage', value: 'Mage' },
+        { label: 'Paladin', value: 'Paladin' },
+        { label: 'Priest', value: 'Priest' },
+        { label: 'Rogue', value: 'Rogue' },
+        { label: 'Shaman', value: 'Shaman' },
+        { label: 'Warlock', value: 'Warlock' },
+        { label: 'Warrior', value: 'Warrior' },
       ],
       formats: [
         { label: 'Standard', value: 'standard' },
@@ -60,7 +60,7 @@ class DeckBuilder extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let cards = [];
     if(this.props.cardsPool) {
       cards = this.sortByFormat(this.props.cardsPool, this.props.currentDeck.format)

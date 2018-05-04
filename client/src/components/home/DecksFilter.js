@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ClassRadio from './ClassRadio';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class DecksFilter extends React.Component {
   state = {
@@ -16,7 +17,8 @@ class DecksFilter extends React.Component {
       'warrior'
     ],
     decks: [],
-    filters: {}
+    filters: {
+    }
   }
 
   onChange = (e) => {
@@ -39,15 +41,13 @@ class DecksFilter extends React.Component {
             ))}
           </div>
           <div className="fields">
-            <div className="field">
-              <label className="label">Search by name</label>
-              <div className="control has-icons-left">
-                <input type="text" name="name" className="input" placeholder="Search by name..." onChange={this.onChange} value={this.state.filters.name} />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-pencil-alt" />
-                </span>
-              </div>
-            </div>
+            <TextFieldGroup
+              name="title"
+              label="Search by title"
+              icon="fas fa-pencil-alt"
+              onChange={this.onChange}
+              value={this.state.filters.title}
+            />
             <div className="field">
               <label className="label" >By format</label>
               <div className="control">

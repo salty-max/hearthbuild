@@ -9,22 +9,26 @@ import DeckItem from './DeckItem';
 import AdBanner from './AdBanner';
 import Spinner from '../common/Spinner';
 
+import sortBy from '../../utils/sortBy';
+
 class Home extends Component {
   constructor() {
     super();
     this.state = {
-      decks: [],
       filters: {}
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      decks: nextProps.decks,
-    })
+    this.setState({})
   }
 
   render() {
+    const decksToShow = this.props.decks;
+    console.log()
+
+    decksToShow.sort(sortBy('likes'));
+
     return (
       <main>
         <Banner
@@ -49,7 +53,7 @@ class Home extends Component {
                       </tbody>
                     ) : (
                       <tbody>
-                        {this.state.decks.map(deck => (
+                        {decksToShow.map(deck => (
                           <DeckItem key={deck._id}{...deck} />
                         ))}
                       </tbody>

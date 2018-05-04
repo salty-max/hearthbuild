@@ -16,7 +16,7 @@ import PrivateRoute from './components/common/PrivateRoute';
 import store from './store';
 import Navbar from './containers/layout/Navbar';
 import Home from './containers/home/Home';
-import DeckSingle from './components/deck/DeckSingle';
+import DeckSingle from './containers/deck/DeckSingle';
 import DeckBuilder from './containers/builder/DeckBuilder';
 import PreBuilder from './containers/builder/PreBuilder';
 import Login from './containers/auth/Login';

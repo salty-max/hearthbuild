@@ -1,84 +1,66 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import DeckMeta from './DeckMeta';
 import DeckRating from './DeckRating';
 import DeckList from './DeckList';
 import DeckDesc from './DeckDesc';
 import DeckComments from './comments/DeckComments';
+import Spinner from '../common/Spinner';
 
-class DeckSingle extends Component {
-  constructor() {
-    super();
-    this.state = {
-      deck: {},
-      author: '',
-      cards: [],
-      desc: '',
-      comments: [],
-    };
-  }
 
-  componentDidMount() {
-    this.getDeck('5ae1ef6d40f923503e4ed403');
-    // this.getDeck('5ae321255b644c7477b1664d');
-  }
-
-  // Get deck by id
-  getDeck = (id) => {
-    axios.get(`/api/decks/id/${id}`)
-    .then(res => {
-      this.setState({
-        deck: res.data,
-        cards: res.data.cards,
-        desc: res.data.description,
-        comments: res.data.comments,
-      })
-
-      this.getAuthorName(res.data.author);
-    });
-  }
-  
-  // Get author name by id
-  getAuthorName = (id) => {
-    axios.get(`/api/users/id/${id}`)
-    .then(res => {
-      this.setState({
-        author: res.data.name,
-      })
-    });
-  }
-
-  render() {
-    const {
-      deck,
-      author,
-      cards,
-      desc,
-      comments
-    } = this.state;
-
+const DeckSingle = ({ decksLoading, decks }) => {
+  if (decksLoading) {
     return (
       <main>
         <section className="section" id="deck-single">
           <div className="container">
             <div className="deck">
               <div className="columns">
-                <DeckMeta
-                  meta={deck}
-                  author={author}
-                />
-                <DeckRating />
+                <Spinner />
               </div>
-              <DeckList cards={cards} />
-              <DeckDesc desc={desc} />
-              <DeckComments comments={comments} />
             </div>
           </div>
         </section>
       </main>
     );
   }
+
+  // TEMP (// TODO: retrieve deck id from url param)
+  const deckId = '5ae1ef6d40f923503e4ed403';
+  // const deckId = '5ae321255b644c7477b1664d';
+  const deck = decks.find(deck => deck._id === deckId );
+  console.log('DECK: ' + JSON.stringify(deck));
+
+  return (
+    <main>
+      <section className="section" id="deck-single">
+        <div className="container">
+          <div className="deck">
+            <div className="columns">                
+              <DeckMeta
+                meta={deck}
+                author={deck.author.name}
+              />
+              <DeckRating />
+            </div>
+            <DeckList cards={deck.cards} />
+            <DeckDesc desc={deck.description} />
+            <DeckComments comments={deck.comments} />
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+DeckSingle.propTypes = {
+  decksLoading: PropTypes.bool.isRequired,
+  decks: PropTypes.arrayOf(PropTypes.object),
+};
+
+DeckSingle.defaultProps = {
+  decks: [],
 }
 
 export default DeckSingle;

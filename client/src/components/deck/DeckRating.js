@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const DeckRating = () => (
+const DeckRating = ({ likes }) => (
   <div className="column is-3">
     <div className="box">
       <button className="button is-primary is-outlined is-medium deck--rating-btn">
@@ -18,7 +19,7 @@ const DeckRating = () => (
               </span>
             </span>
             <span className="tag is-light">
-              +52
+              {likes.length}
             </span>
           </span>
         </div>
@@ -38,5 +39,9 @@ const DeckRating = () => (
     </div>
   </div>
 );
+
+DeckRating.propTypes = {
+  likes: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+};
 
 export default DeckRating;

@@ -40,7 +40,7 @@ const DeckSingle = ({ decksLoading, decks }) => {
                 meta={deck}
                 author={deck.author.name}
               />
-              <DeckRating />
+              <DeckRating likes={deck.likes} />
             </div>
             <DeckList cards={deck.cards} />
             <DeckDesc desc={deck.description} />

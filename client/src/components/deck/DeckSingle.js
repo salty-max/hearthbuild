@@ -5,10 +5,10 @@ import DeckMeta from './DeckMeta';
 import DeckRating from './DeckRating';
 import DeckList from './DeckList';
 import DeckDesc from './DeckDesc';
-import DeckComments from '../../containers/deck/comments/DeckComments';
+import DeckComments from './comments/DeckComments';
 import Spinner from '../common/Spinner';
 
-const DeckSingle = ({ decksLoading, decks }) => {
+const DeckSingle = ({ auth, decksLoading, decks }) => {
   if (decksLoading) {
     return (
       <main>
@@ -44,11 +44,15 @@ const DeckSingle = ({ decksLoading, decks }) => {
                 deckId={deckId}
                 likes={deck.likes}
                 views={deck.views}
+                auth={auth}
               />
             </div>
             <DeckList cards={deck.cards} />
             <DeckDesc desc={deck.description} />
-            <DeckComments comments={deck.comments} />
+            <DeckComments
+              comments={deck.comments}
+              auth={auth}
+            />
           </div>
         </div>
       </section>

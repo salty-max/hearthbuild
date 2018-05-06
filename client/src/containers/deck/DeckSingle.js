@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import DeckSingle from '../../components/deck/DeckSingle';
 
 const mapStateToProps = state => ({
+  auth: state.auth,
   decksLoading: state.home.decksLoading,
   decks: state.home.decks,
   classes: state.home.classes,

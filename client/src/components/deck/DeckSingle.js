@@ -5,7 +5,7 @@ import DeckMeta from './DeckMeta';
 import DeckRating from './DeckRating';
 import DeckList from './DeckList';
 import DeckDesc from './DeckDesc';
-import DeckComments from './comments/DeckComments';
+import DeckComments from '../../containers/deck/comments/DeckComments';
 import Spinner from '../common/Spinner';
 
 const DeckSingle = ({ decksLoading, decks }) => {

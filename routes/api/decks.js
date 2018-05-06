@@ -151,6 +151,23 @@ router.post('/unlike/:id', passport.authenticate('jwt', { session: false }), (re
     .catch(err => res.status(404).json({ noDeck: 'No deck found' }));
 });
 
+// @route    POST api/decks/view/:id
+// @desc     Increment deck views
+// @access   Public
+router.post('/view/:id', (req, res) => {
+  Deck.findById(req.params.id)
+    .then((deck) => {
+      // Increment deck views
+      ++deck.views;
+
+      // Save
+      deck
+        .save()
+        .then(deck => res.json(deck));
+    })
+    .catch(err => res.status(404).json({ noDeck: 'No deck found' }));
+});
+
 // @route    POST api/decks/comment/:id
 // @desc     Comment in deck
 // @access   Private

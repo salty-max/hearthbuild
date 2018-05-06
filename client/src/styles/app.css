@@ -6501,6 +6501,26 @@ label.panel-block {
   .home-info .title, .home-info .subtitle {
     color: whitesmoke; }
 
+.deck--list-card {
+  position: relative; }
+  .deck--list-card:hover {
+    cursor: pointer; }
+  .deck--list-card-preview {
+    display: none;
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    margin-top: -155px;
+    width: 205px;
+    height: 310px;
+    background-color: white;
+    border: 1px solid whitesmoke;
+    border-radius: .375rem;
+    box-shadow: 0 5px 15px #dbdbdb;
+    z-index: 10; }
+    .deck--list-card:hover .deck--list-card-preview {
+      display: block; }
+
 .deck .content-top {
   display: flex;
   align-items: center; }

@@ -20,6 +20,7 @@ const DeckList = ({ cards }) => {
                 key={card._id}
                 cost={card.cost}
                 name={card.name}
+                img={card.img}
               />
             ))}
           </div>
@@ -34,6 +35,7 @@ const DeckList = ({ cards }) => {
                 key={card._id}
                 cost={card.cost}
                 name={card.name}
+                img={card.img}
               />
             ))}
           </div>

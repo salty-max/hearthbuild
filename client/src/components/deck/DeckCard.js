@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Svg from '../common/Svg';
 
-const DeckCard = ({ cost, name }) => (
+const DeckCard = ({ cost, name, img }) => (
   <div className="panel-block deck--list-card">
     <div className="deck--list-card-cost">
       <span className="deck--list-card-cost--text">{cost}</span>
@@ -14,12 +14,16 @@ const DeckCard = ({ cost, name }) => (
     <div className="deck--list-card-count is-rare">
       <span className="deck--list-card-count--text">2</span>
     </div>
+    <div className="deck--list-card-preview">
+      <img src={`${img}`} alt={name} />
+    </div>
   </div>
 );
 
 DeckCard.propTypes = {
   cost: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
 };
 
 export default DeckCard;

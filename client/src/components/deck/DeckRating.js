@@ -12,15 +12,6 @@ class DeckRating extends Component {
   }
 
   componentDidMount() {
-    const { auth, likes } = this.props;
-    let userHasLikedDeck = false;
-
-    if (auth.isAuthenticated) {
-      // userHasLikedDeck = likes.find(like => like.user === auth.user.id);
-    }
-
-    console.log(userHasLikedDeck);
-
     // set updated deck views value
     this.setState(prevState => ({
       deckViews: ++prevState.deckViews,
@@ -38,29 +29,50 @@ class DeckRating extends Component {
 
   render() {
     const { deckLikes, deckViews } = this.state;
+    const { auth, likes } = this.props;
+    let likeBtn;
+
+    if (auth.isAuthenticated) {
+      if (likes.find(like => like.user === auth.user.id) === undefined) {
+        likeBtn = (
+          <button className="button is-primary is-outlined is-medium deck--rating-btn">
+            <span className="icon">
+              <i className="fas fa-thumbs-up" />
+            </span>
+            <span>Like this deck</span>
+          </button>
+        );
+      }
+      else {
+        likeBtn = (
+          <button className="button is-danger is-outlined is-medium deck--rating-btn">
+            <span className="icon">
+              <i className="fas fa-thumbs-down" />
+            </span>
+            <span>Dislike this deck</span>
+          </button>
+        );
+      }
+    }
+    else {
+      likeBtn = (
+        <button
+          className="button is-primary is-outlined is-medium tooltip deck--rating-btn"
+          data-tooltip="You must be logged in to like this deck"
+          disabled
+        >
+          <span className="icon">
+            <i className="fas fa-thumbs-up" />
+          </span>
+          <span>Like this deck</span>
+        </button>
+      );
+    }
 
     return (
       <div className="column is-3">
         <div className="box">
-          {this.props.auth.isAuthenticated ?
-            <button className="button is-primary is-outlined is-medium deck--rating-btn">
-              <span className="icon">
-                <i className="fas fa-thumbs-up" />
-              </span>
-              <span>Like this deck</span>
-            </button>
-            :
-            <button
-              className="button is-primary is-outlined is-medium tooltip deck--rating-btn"
-              data-tooltip="You must be logged in to like this deck"
-              disabled
-            >
-              <span className="icon">
-                <i className="fas fa-thumbs-up" />
-              </span>
-              <span>Like this deck</span>
-            </button>
-          }
+          {likeBtn}
           <div className="deck--ratings">
             <div className="deck--rating">
               <span className=" tags has-addons">

@@ -34,7 +34,6 @@ class DeckRating extends Component {
   }
 
   handleLikeBtn = (deckIsLiked) => () => {
-    const { auth } = this.props;
     const action = deckIsLiked ? 'dislike' : 'like';
 
     // add or remove like depending on deckIsLiked value

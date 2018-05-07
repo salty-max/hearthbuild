@@ -95,8 +95,8 @@ class Navbar extends Component {
             <a href="" className="navbar-link">Decks</a>
             <div className="navbar-dropdown">
               {this.props.home.classes.map(hsClass => (
-                <a key={hsClass} className="navbar-item">
-                  {hsClass}
+                <a key={hsClass.value} className="navbar-item">
+                  {hsClass.label}
                 </a>
               ))}
             </div>

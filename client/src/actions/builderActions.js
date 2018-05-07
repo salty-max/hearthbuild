@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-import { PRE_BUILD, CARDS_LOADING, GET_CARDS_FROM_API } from './types';
+import { PRE_BUILD, CARDS_LOADING, GET_CARDS_FROM_API, SEND_DECK } from './types';
 
 export const prebuild = (format, hsClass) => dispatch => {
   dispatch({
@@ -15,10 +13,13 @@ export const prebuild = (format, hsClass) => dispatch => {
 export const getCardsFromApi = cards => ({
   type: GET_CARDS_FROM_API,
   payload: cards
-})
+});
 
-export const setCardsLoading = () => {
-  return {
-    type: CARDS_LOADING
-  }
-}
+export const setCardsLoading = () => ({
+  type: CARDS_LOADING
+});
+
+export const sendDeck = deckData => ({
+  type: SEND_DECK,
+  payload: deckData
+});

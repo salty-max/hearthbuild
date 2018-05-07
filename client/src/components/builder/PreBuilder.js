@@ -57,27 +57,35 @@ class PreBuilder extends Component {
           <div className="container">
             <div className="content">
               <h1 className="title">HearthBuilder</h1>
-              <p>Welcome to our deck builder. Here you can craft decks for every classes and for both standard and wild mode.</p>
-              <p>First of all, you must be logged to craft a deck. If you don't have an account, please register.</p>
-              <p>As we are nice people, you just have to click one of those marvelous buttons</p>
-              <div className="buttons field is-grouped is-grouped-centered">
-                <div className="control">
-                  <button className="button is-danger is-outlined is-medium">
-                    <span className="icon">
-                      <i className="fas fa-user-plus"></i>
-                    </span>
-                    <span>Register</span>
-                  </button>
-                </div>
-                <div className="control">
-                  <button className="button is-primary is-outlined is-medium">
-                    <span className="icon">
-                      <i className="fas fa-sign-in-alt"></i>
-                    </span>
-                    <span>Login</span>
-                  </button>
-                </div>
+              <div style={{
+                paddingBottom: '1em',
+              }}>
+                <p>Welcome to our deck builder. Here you can craft decks for every classes and for both standard and wild mode.</p>
+                <p>First of all, you must be logged to craft a deck. If you don't have an account, please register.</p>
               </div>
+              {!this.props.isAuthenticated && (
+                <div>
+                  <p>As we are nice people, you just have to click one of those marvelous buttons</p>
+                  <div className="buttons field is-grouped is-grouped-centered">
+                    <div className="control">
+                      <button className="button is-danger is-outlined is-medium">
+                        <span className="icon">
+                          <i className="fas fa-user-plus"></i>
+                        </span>
+                        <span>Register</span>
+                      </button>
+                    </div>
+                    <div className="control">
+                      <button className="button is-primary is-outlined is-medium">
+                        <span className="icon">
+                          <i className="fas fa-sign-in-alt"></i>
+                        </span>
+                        <span>Login</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
             <div className="box">
               <h2 className="title is-size-4">Choose a format and a class</h2>
@@ -106,11 +114,11 @@ class PreBuilder extends Component {
                 <div className="classes">
                   {classes.map(hsClass => (
                     <AvatarClassRadio
-                      key={hsClass}
-                      hsClass={hsClass.toLowerCase()}
-                      checked={this.state.hsClass === hsClass}
+                      key={hsClass.value}
+                      hsClass={hsClass.value.toLowerCase()}
+                      checked={this.state.hsClass === hsClass.label}
                       onChange={this.onChange}
-                      label={hsClass}
+                      label={hsClass.label}
                     />
                   ))}
                 </div>
@@ -135,7 +143,7 @@ class PreBuilder extends Component {
 
 PreBuilder.propTypes = {
   actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
-  classes: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  classes: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 }
 
 export default PreBuilder;

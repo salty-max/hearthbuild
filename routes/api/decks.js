@@ -50,9 +50,15 @@ router.get('/', (req, res) => {
 // @desc     Create & update deck
 // @access   Private
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { errors, isValid } = validateDeckBuilderInput(req.body);
+  let { errors, isValid } = validateDeckBuilderInput(req.body);
 
-  if (!isValid) {
+  if (!isValid || req.body.cards.length < 30) {
+    if (req.body.cards.length < 30) {
+      errors = {
+        ...errors,
+        cardCount: 'Your deck must contain 30 cards'
+      }
+    }
     return res.status(400).json(errors);
   }
 

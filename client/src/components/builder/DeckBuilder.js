@@ -27,26 +27,6 @@ class DeckBuilder extends Component {
         classTab: true,
         neutralTab: false
       },
-      deckTypes: [
-        { label: 'Aggro', value: 'Aggro' },
-        { label: 'Midrange', value: 'Midrange' },
-        { label: 'Control', value: 'Control' },
-      ],
-      classes: [
-        { label: 'Druid', value: 'Druid' },
-        { label: 'Hunter', value: 'Hunter' },
-        { label: 'Mage', value: 'Mage' },
-        { label: 'Paladin', value: 'Paladin' },
-        { label: 'Priest', value: 'Priest' },
-        { label: 'Rogue', value: 'Rogue' },
-        { label: 'Shaman', value: 'Shaman' },
-        { label: 'Warlock', value: 'Warlock' },
-        { label: 'Warrior', value: 'Warrior' },
-      ],
-      formats: [
-        { label: 'Standard', value: 'standard' },
-        { label: 'Wild', value: 'wild' },
-      ],
       title: '',
       type: '',
       description: '',
@@ -56,11 +36,18 @@ class DeckBuilder extends Component {
       cardCount: 0,
       deckCards: [],
       cardIndex: 0,
-      errors: {}
+      errors: {},
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      errors: nextProps.errors,
+    })
+  }
+
   componentDidMount() {
+
     let cards = [];
     if(this.props.cardsPool) {
       cards = this.sortByFormat(this.props.cardsPool, this.props.currentDeck.format)
@@ -183,11 +170,43 @@ class DeckBuilder extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log('submit');
+
+    const cards = [];
+
+    this.state.deckCards.forEach(card => {
+      cards.push({
+        name: card.name,
+        class: card.playerClass,
+        rarity: card.rarity,
+        cardSet: card.cardSet,
+        cost: card.cost,
+        img: card.img,
+      })
+    });
+
+    const deckData = {
+      title: this.state.title,
+      slug: this.state.title.trim(' ').toLowerCase(),
+      class: this.state.class,
+      format: this.state.format,
+      description: this.state.description,
+      type: this.state.type,
+      cost: this.state.cost,
+      cards,
+      views: 0,
+      likes: [],
+      comments: [],
+      createdAt: Date.now()
+    }
+
+    this.props.actions.sendDeck(deckData);
+    
   }
 
   render() {
-    const { tabs, hoverCard, formats, classes, deckTypes, deckCards, errors } = this.state;
+    const { tabs, hoverCard, deckCards, errors } = this.state;
+
+    const { deckTypes } = this.props;
 
     const cardsToShow = this.showCards();
 
@@ -215,22 +234,6 @@ class DeckBuilder extends Component {
                       error={errors.type}
                       onChange={this.onChange}
                       options={deckTypes}
-                    />
-                    <SelectListGroup
-                      name="format"
-                      label="Format"
-                      value={this.state.format}
-                      error={errors.format}
-                      onChange={this.onChange}
-                      options={formats}
-                    />
-                    <SelectListGroup
-                      name="class"
-                      label="Class"
-                      value={this.state.class}
-                      error={errors.class}
-                      onChange={this.onChange}
-                      options={classes}
                     />
                   </div>
                 </div>
@@ -306,6 +309,12 @@ class DeckBuilder extends Component {
                     placeholder="Explain how do you play this deck..."
                   />
                 </div>
+                
+                {errors.cardCount && (
+                  <div className="notification is-danger">
+                    {errors.cardCount}
+                  </div>
+                )}
 
                 <input type="submit" className="button is-primary is-medium deck-builder--submit" value="Submit" />
               </form>

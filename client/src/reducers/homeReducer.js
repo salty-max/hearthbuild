@@ -2,16 +2,25 @@
 import { DECKS_LOADING, GET_DECKS } from '../actions/types';
 
 const initialState= {
+  deckTypes: [
+    { label: 'Aggro', value: 'Aggro' },
+    { label: 'Midrange', value: 'Midrange' },
+    { label: 'Control', value: 'Control' },
+  ],
   classes: [
-    'Druid',
-    'Hunter',
-    'Mage',
-    'Paladin',
-    'Priest',
-    'Rogue',
-    'Shaman',
-    'Warlock',
-    'Warrior'
+    { label: 'Druid', value: 'Druid' },
+    { label: 'Hunter', value: 'Hunter' },
+    { label: 'Mage', value: 'Mage' },
+    { label: 'Paladin', value: 'Paladin' },
+    { label: 'Priest', value: 'Priest' },
+    { label: 'Rogue', value: 'Rogue' },
+    { label: 'Shaman', value: 'Shaman' },
+    { label: 'Warlock', value: 'Warlock' },
+    { label: 'Warrior', value: 'Warrior' },
+  ],
+  formats: [
+    { label: 'Standard', value: 'standard' },
+    { label: 'Wild', value: 'wild' },
   ],
   filters: {},
   decksLoading: false,

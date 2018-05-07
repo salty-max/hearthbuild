@@ -4,19 +4,19 @@ import Svg from '../common/Svg';
 
 
 
-const DeckListHeader = ({onclick}) => {
+const DeckListHeader = ({onClick}) => {
   return (
   <thead>
     <tr>
-      <th onClick={onclick}>Name</th>
-      <th onClick={onclick}><i className="fas fa-user"></i></th>
-      <th><i className="fas fa-calendar-alt" onClick={onclick}></i></th>
+      <th onClick={onClick}>Name</th>
+      <th onClick={onClick}><i className="fas fa-user"></i></th>
+      <th><i className="fas fa-calendar-alt" onClick={onClick}></i></th>
       <th>
         <Svg type="misc" value="dust" />
       </th>
-      <th><i className="fas fa-thumbs-up" onClick={onclick}></i></th>
-      <th><i className="fas fa-eye" onClick={onclick}></i></th>
-      <th><i className="fas fa-comments" onClick={onclick}></i></th>
+      <th><i className="fas fa-thumbs-up" onClick={onClick}></i></th>
+      <th><i className="fas fa-eye" onClick={onClick}></i></th>
+      <th><i className="fas fa-comments" onClick={onClick}></i></th>
     </tr>
   </thead>
 );

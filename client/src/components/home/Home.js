@@ -16,7 +16,6 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      decks: [],
       filters: {
       }
     };
@@ -24,13 +23,12 @@ class Home extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      decks: nextProps.decks,
       //filters: nextProps.filters
     })
   }
 
 
-  onclick = () => {
+  onClick = () => {
     const decksToShow = this.props.decks;
     // decksToShow.sort(sortBy('title'));
      decksToShow.sort(sortBy('user'));
@@ -52,7 +50,7 @@ class Home extends Component {
                 <div className="deck-list">
                   <DecksFilter />
                   <table className="table deck-list--table is-fullwidth is-striped is-hoverable">
-                    <DeckListHeader onclick={this.onclick}  />
+                    <DeckListHeader onClick={this.onClick}  />
                     {this.props.decksLoading ? (
                       <tbody>
                         <tr>
@@ -63,7 +61,7 @@ class Home extends Component {
                       </tbody>
                     ) : (
                       <tbody>
-                        {this.state.decks.map(deck => (
+                        {this.props.decks.map(deck => (
                           <DeckItem key={deck._id}{...deck} />
                         ))}
                       </tbody>

@@ -27,7 +27,9 @@ const SelectListGroup = ({
         {label}
       </label>
       <div className="control">
-        <span className="select">
+        <span className={classnames('select', {
+          'is-danger': error
+        })}>
           <select
             name={name}
             id={name}

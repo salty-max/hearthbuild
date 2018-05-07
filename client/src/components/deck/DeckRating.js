@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import DeckLikeButton from './DeckLikeButton';
+
 class DeckRating extends Component {
   constructor(props) {
     super(props);
+
+    const { auth, likes, views } = this.props;
+
     this.state = {
-      deckLikes: this.props.likes.length,
-      deckViews: this.props.views,
+      deckLikes: likes.length,
+      deckViews: views,
+      deckIsLiked: (likes.find(like => like.user === auth.user.id) === undefined) ? false : true,
     }
   }
 
@@ -27,52 +33,38 @@ class DeckRating extends Component {
       });
   }
 
-  render() {
-    const { deckLikes, deckViews } = this.state;
-    const { auth, likes } = this.props;
-    let likeBtn;
+  handleLikeBtn = (deckIsLiked) => () => {
+    const { auth } = this.props;
+    const action = deckIsLiked ? 'dislike' : 'like';
 
-    if (auth.isAuthenticated) {
-      if (likes.find(like => like.user === auth.user.id) === undefined) {
-        likeBtn = (
-          <button className="button is-primary is-outlined is-medium deck--rating-btn">
-            <span className="icon">
-              <i className="fas fa-thumbs-up" />
-            </span>
-            <span>Like this deck</span>
-          </button>
-        );
-      }
-      else {
-        likeBtn = (
-          <button className="button is-danger is-outlined is-medium deck--rating-btn">
-            <span className="icon">
-              <i className="fas fa-thumbs-down" />
-            </span>
-            <span>Dislike this deck</span>
-          </button>
-        );
-      }
-    }
-    else {
-      likeBtn = (
-        <button
-          className="button is-primary is-outlined is-medium tooltip deck--rating-btn"
-          data-tooltip="You must be logged in to like this deck"
-          disabled
-        >
-          <span className="icon">
-            <i className="fas fa-thumbs-up" />
-          </span>
-          <span>Like this deck</span>
-        </button>
-      );
-    }
+    // add or remove like depending on deckIsLiked value
+    axios.post(`/api/decks/${action}/${this.props.deckId}`)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log('Error when handling deck like');
+      });
+
+    this.setState(prevState => ({
+      deckLikes: prevState.deckIsLiked ? --prevState.deckLikes : ++prevState.deckLikes,
+      deckIsLiked: !deckIsLiked,
+    }));
+  }
+
+  render() {
+    const { deckLikes, deckViews, deckIsLiked } = this.state;
+    const { auth, likes } = this.props;
 
     return (
       <div className="column is-3">
         <div className="box">
-          {likeBtn}
+          <DeckLikeButton
+            auth={auth}
+            likes={likes}
+            deckIsLiked={deckIsLiked}
+            onBtnClick={this.handleLikeBtn}
+          />
           <div className="deck--ratings">
             <div className="deck--rating">
               <span className=" tags has-addons">

@@ -131,14 +131,14 @@ router.post('/like/:id', passport.authenticate('jwt', { session: false }), (req,
     .catch(err => res.status(404).json({ noDeck: 'No deck found' }));
 });
 
-// @route    POST api/decks/unlike/:id
-// @desc     Unlike deck
+// @route    POST api/decks/dislike/:id
+// @desc     Dislike deck
 // @access   Private
-router.post('/unlike/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.post('/dislike/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
   Deck.findById(req.params.id)
     .then((deck) => {
       if (deck.likes.filter(like => like.user.toString() === req.user.id).length === 0) {
-        return res.status(400).json({ notLiked: 'User has not yet liked this deck' });
+        return res.status(400).json({ notLiked: 'User has not liked this deck yet' });
       }
 
       // Get remove index

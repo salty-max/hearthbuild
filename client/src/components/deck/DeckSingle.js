@@ -26,8 +26,8 @@ const DeckSingle = ({ auth, decksLoading, decks }) => {
   }
 
   // TEMP (// TODO: retrieve deck id from url param)
-  // const deckId = '5ae1ef6d40f923503e4ed403';
-  const deckId = '5ae321255b644c7477b1664d';
+  const deckId = '5ae1ef6d40f923503e4ed403';
+  // const deckId = '5ae321255b644c7477b1664d';
   const deck = decks.find(deck => deck._id === deckId );
 
   return (

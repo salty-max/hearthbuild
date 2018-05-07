@@ -7,7 +7,7 @@ const ClassRadio = ({ hsClass }) => {
 
   return (
     <div className="control">
-      <input id={hsClass} name="class" type="radio" className="radio"  />
+      <input id={hsClass} name="hsClass" type="radio" className="radio" value={hsClass} />
       <label htmlFor={hsClass} >
         <Svg type="class" value={hsClass}  />
       </label>

@@ -11,24 +11,34 @@ import Spinner from '../common/Spinner';
 
 import sortBy from '../../utils/sortBy';
 
+
 class Home extends Component {
   constructor() {
     super();
     this.state = {
-      filters: {}
+      decks: [],
+      filters: {
+      }
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({})
+    this.setState({
+      decks: nextProps.decks,
+      //filters: nextProps.filters
+    })
   }
 
-  render() {
+
+  onclick = () => {
     const decksToShow = this.props.decks;
-    console.log()
+    // decksToShow.sort(sortBy('title'));
+     decksToShow.sort(sortBy('user'));
 
-    decksToShow.sort(sortBy('likes'));
+    console.log(decksToShow);
+   }
 
+  render() {
     return (
       <main>
         <Banner
@@ -42,7 +52,7 @@ class Home extends Component {
                 <div className="deck-list">
                   <DecksFilter />
                   <table className="table deck-list--table is-fullwidth is-striped is-hoverable">
-                    <DeckListHeader />
+                    <DeckListHeader onclick={this.onclick}  />
                     {this.props.decksLoading ? (
                       <tbody>
                         <tr>
@@ -53,7 +63,7 @@ class Home extends Component {
                       </tbody>
                     ) : (
                       <tbody>
-                        {decksToShow.map(deck => (
+                        {this.state.decks.map(deck => (
                           <DeckItem key={deck._id}{...deck} />
                         ))}
                       </tbody>

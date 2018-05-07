@@ -98,7 +98,8 @@
 ### Jonathan
 
 ### Cécile
-
+- finition de la requête vers l'api
+- pair programming pour le passage à redux
 ### Max
 
 - Rework de la requête vers l'API :
@@ -118,5 +119,6 @@
 ### Jonathan
 
 ### Cécile
+- début du formulaire de filtre et du sort du tableau
 
 ### Max

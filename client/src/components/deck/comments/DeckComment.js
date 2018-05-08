@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
 
 const DeckComment = ({ comment }) => (
   <article className="media deck--comments-comment">
@@ -10,8 +11,13 @@ const DeckComment = ({ comment }) => (
     </figure>
     <div className="media-content">
       <div className="content">
-        <p className="deck--comments-comment--username"><strong>{comment.name}</strong></p>
-        <p className="deck--comments-comment-content">{comment.text}</p>
+        <div className="deck--comments-comment--username">
+          <strong>{comment.name}</strong>
+          <div className="deck--comments-comment--date">
+            <Moment fromNow>{comment.date}</Moment>
+          </div>
+        </div>
+        <p className="deck--comments-comment--content">{comment.text}</p>
       </div>
     </div>
   </article>

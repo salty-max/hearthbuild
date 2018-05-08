@@ -177,8 +177,16 @@
       }
     }
 
-    &-comment-content {
-      font-family: $serif-font;
+    &-comment {
+      &--date {
+        float: right;
+        font-size: .875em;
+        color: $grey-dark;
+      }
+
+      &--content {
+        font-family: $serif-font;
+      }
     }
 
     .title {

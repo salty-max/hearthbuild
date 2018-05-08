@@ -6826,7 +6826,11 @@ label.panel-block {
     .deck--comments-form textarea:focus {
       border-color: #00d1b2;
       box-shadow: none; }
-  .deck--comments-comment-content {
+  .deck--comments-comment--date {
+    float: right;
+    font-size: .875em;
+    color: #4a4a4a; }
+  .deck--comments-comment--content {
     font-family: "Roboto Slab", serif; }
   .deck--comments .title {
     font-size: 1.5em;

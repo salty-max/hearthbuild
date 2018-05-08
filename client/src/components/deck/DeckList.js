@@ -15,14 +15,20 @@ const DeckList = ({ cards }) => {
             <p className="panel-heading">
               Neutrals
             </p>
-            {neutralCards.map(card => (
-              <DeckCard
-                key={card._id}
-                cost={card.cost}
-                name={card.name}
-                img={card.img}
-              />
-            ))}
+            {neutralCards.map(card => {
+              const isTwice = neutralCards.filter(card => card.cardId).length === 2;
+
+              return (
+                <DeckCard
+                  key={card._id}
+                  cost={card.cost}
+                  name={card.name}
+                  rarity={card.rarity}
+                  img={card.img}
+                  isTwice={isTwice}
+                />
+              );
+            })}
           </div>
         </div>
         <div className="column is-6">
@@ -30,14 +36,20 @@ const DeckList = ({ cards }) => {
             <p className="panel-heading">
               Warlock
             </p>
-            {deckClassCards.map(card => (
-              <DeckCard
-                key={card._id}
-                cost={card.cost}
-                name={card.name}
-                img={card.img}
-              />
-            ))}
+            {deckClassCards.map(card => {
+              const isTwice = deckClassCards.filter(card => card.cardId).length === 2;
+
+              return (
+                <DeckCard
+                  key={card._id}
+                  cost={card.cost}
+                  name={card.name}
+                  rarity={card.rarity}
+                  img={card.img}
+                  isTwice={isTwice}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

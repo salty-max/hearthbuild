@@ -165,6 +165,14 @@ svg {
   border-radius: 50%;
 }
 
+.is-common {
+  background: $dark;
+}
+
+.has-text-common {
+  color: $dark;
+}
+
 .is-epic {
   background: $epic-color;
 }

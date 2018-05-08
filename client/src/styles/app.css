@@ -7146,6 +7146,12 @@ svg {
 .is-rounded {
   border-radius: 50%; }
 
+.is-common {
+  background: #363636; }
+
+.has-text-common {
+  color: #363636; }
+
 .is-epic {
   background: #9b59b6; }
 

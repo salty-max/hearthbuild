@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Svg from '../common/Svg';
+import classnames from 'classnames';
 
-const DeckCard = ({ cost, name, img }) => (
+const DeckCard = ({ isTwice, rarity, cost, name, img }) => (
   <div className="panel-block deck--list-card">
     <div className="deck--list-card-cost">
       <span className="deck--list-card-cost--text">{cost}</span>
@@ -11,8 +12,13 @@ const DeckCard = ({ cost, name, img }) => (
       </span>
     </div>
     <span className="deck--list-card-name">{name}</span>
-    <div className="deck--list-card-count is-rare">
-      <span className="deck--list-card-count--text">2</span>
+    <div className={classnames('deck--list-card-count', {
+      'is-common': rarity === 'Common' || rarity === 'Basic' || rarity === 'Free',
+      'is-rare': rarity === 'Rare',
+      'is-epic': rarity === 'Epic',
+      'is-legendary': rarity === 'Legendary',
+    })}>
+      <span className="deck--list-card-count--text">{isTwice ? '2' : '1'}</span>
     </div>
     <div className="deck--list-card-preview">
       <img src={`${img}`} alt={name} />

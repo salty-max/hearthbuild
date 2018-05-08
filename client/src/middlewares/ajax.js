@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getDecks, setDecksLoading } from '../actions/homeActions';
 import { DECKS_LOADING, CARDS_LOADING, SEND_DECK, DELETE_DECK, GET_ERRORS, SEND_COMMENT, SET_COMMENTS_LOADING } from '../actions/types';
 import { getCardsFromApi } from '../actions/builderActions';
-import { getComments } from '../actions/deckActions';
+import { getComments, setCommentsLoading } from '../actions/deckActions';
 
 export default store => next => action => {
   switch (action.type) {
@@ -58,7 +58,9 @@ export default store => next => action => {
       break;
     case SEND_COMMENT:
       axios.post(`/api/decks/comment/${action.payload.deckId}`, action.payload.commentData)
-        .then(res => console.log(res.data))
+        .then(res => {
+          store.dispatch(setCommentsLoading(action.payload.deckId));
+        })
         .catch(err => {
           store.dispatch({
             type: GET_ERRORS,

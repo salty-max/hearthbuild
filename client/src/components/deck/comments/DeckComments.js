@@ -14,13 +14,9 @@ class DeckComments extends Component {
     }
   }
 
-  shouldComponentUpdate() {
-    this.props.actions.setCommentsLoading(this.props.deckId);
-    return true;
-  }
-
   onChange = (e) => {
     const { name, value } = e.target;
+
     this.setState({
       [name]: value
     })
@@ -34,6 +30,7 @@ class DeckComments extends Component {
     }
 
     this.props.actions.sendComment(newComment, this.props.deckId);
+
     this.setState({
       comment: ''
     });

@@ -79,10 +79,6 @@
 
 ## 02-05-2018
 
-### Jonathan
-
-### Cécile
-
 ### Max
 
 - Création du prebuilder
@@ -95,11 +91,11 @@
 
 ## 03-05-2018
 
-### Jonathan
-
 ### Cécile
+
 - finition de la requête vers l'api
 - pair programming pour le passage à redux
+
 ### Max
 
 - Rework de la requête vers l'API :
@@ -118,7 +114,69 @@
 
 ### Jonathan
 
+- Récupération du deck depuis le state local
+- Affichage des infos du user dans les commentaires
+
 ### Cécile
-- début du formulaire de filtre et du sort du tableau
+
+- Début du formulaire de filtre et du sort du tableau
 
 ### Max
+
+- Fix de la récupération des decks depuis la Home page
+- Diverses réparations
+
+## 05-05-2018
+
+### Jonathan
+
+- Récupération des likes d'un deck
+
+## 06-05-2018
+
+### Jonathan
+
+- Affichage des likes en fonction de l'authentification
+
+- Affichage du bouton de login dans les commentaires en fonction de l'authentification
+
+- Ajout d'un message si pas de commentaires
+
+## 07-05-2018
+
+### Jonathan
+
+- Gestion du like/dislike d'un deck
+- Affiche d'un bouton de dislike si le user a déjà like ce deck
+
+### Cecile
+
+- Début de la gestion des filtres en home page
+
+### Max
+
+- Envoi du deck sur la base de données
+- Validation des inputs du deck builder en front + back
+
+## 08-05-2018
+
+### Jonathan
+
+- Ajout d'une route en backend pour récupérer les commentaires
+
+- Ajout du formulaire de commentaire et affichage de ce dernier seulement si l'utilisateur est connecté
+
+- Récupération d'un deck par son id depuis la home page
+
+- Gestion de nombre de cartes et de leur rareté dans l'affichage de la liste du deck
+
+### Cecile
+
+- Création d'une route en front pour aller sur la page d'un deck via son id
+
+- Pagination des decks
+
+### Max
+
+- Suppression d'un deck
+- Fix des views dans le model de Deck

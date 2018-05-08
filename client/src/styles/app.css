@@ -6894,6 +6894,9 @@ label.panel-block {
     color: whitesmoke;
     font-weight: 600; }
 
+.deck-builder--cards .table td:first-child, .deck-builder--list .table td:first-child {
+  cursor: pointer; }
+
 .deck-builder--cards .table .deck-builder--cards-table--cost, .deck-builder--cards .table .deck-builder--list-table--cost, .deck-builder--list .table .deck-builder--cards-table--cost, .deck-builder--list .table .deck-builder--list-table--cost {
   display: flex;
   align-items: center;
@@ -7178,6 +7181,11 @@ svg {
 
 .has-text-rare {
   color: #209cee; }
+
+.pagination-link.is-current {
+  background-color: #00d1b2;
+  border-color: #00d1b2;
+  font-weight: 600; }
 
 @media screen and (max-width: 1024px) {
   .container {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +12,15 @@ class DeckComments extends Component {
     super();
     this.state = {
       comment: '',
+      currentPage: 1,
+      commentsPerPage: 5,
     }
+  }
+
+  handlePageClick = (e) => {
+    this.setState({
+      currentPage: Number(e.target.id)
+    });
   }
 
   onChange = (e) => {
@@ -38,6 +47,21 @@ class DeckComments extends Component {
 
   render () {
     const { auth } = this.props;
+    const { currentPage, commentsPerPage } = this.state;
+    const { comments } = this.props;
+    let currentComments = [];
+    let pageNumbers = [];
+
+    // Logic for displaying current comments
+    const indexOfLastComment = currentPage * commentsPerPage;
+    const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+    currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
+
+    // Logic for displaying page numbers
+    pageNumbers = [];
+    for(let i = 1; i <= Math.ceil(comments.length / commentsPerPage); i++) {
+      pageNumbers.push(i);
+    }
 
     const authContent = (                    
       <div className="deck--comments-form">
@@ -72,11 +96,30 @@ class DeckComments extends Component {
           <h3 className="title deck--comments-header--title">
             Comments
           </h3>
+
           {!auth.isAuthenticated ? guestContent: ''}
+
+          <nav className="pagination is-centered">
+            <ul className="pagination-list">
+              {pageNumbers.map(n => (
+                <li key={n}>
+                  <a
+                    className={classnames('pagination-link', {
+                      'is-current': n === currentPage
+                    })}
+                    id={n}
+                    onClick={this.handlePageClick}
+                  >
+                    {n}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
-        {this.props.comments.length > 0 ?
-          this.props.comments.map(comment => (
+        {currentComments.length > 0 ?
+          currentComments.map(comment => (
             <DeckComment key={comment._id} comment={comment} />
           ))
           : <div className="deck--comments-empty">There are no comments for this deck yet</div>

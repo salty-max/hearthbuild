@@ -40,8 +40,6 @@ class Home extends Component {
     const decksToShow = this.props.decks;
     // decksToShow.sort(sortBy('title'));
      decksToShow.sort(sortBy('user'));
-
-    console.log(decksToShow);
    }
 
   render() {
@@ -49,6 +47,7 @@ class Home extends Component {
     const { decks } = this.props;
     let currentDecks = [];
     let pageNumbers = [];
+
     if (!this.props.decksLoading) {
       // Logic for displaying current decks
       const indexOfLastDeck = currentPage * decksPerPage;
@@ -95,9 +94,8 @@ class Home extends Component {
                   <nav className="pagination is-centered">
                     <ul className="pagination-list">
                       {pageNumbers.map(n => (
-                        <li>
+                        <li key={n}>
                           <a
-                            key={n}
                             className={classnames('pagination-link', {
                               'is-current': n === currentPage
                             })}

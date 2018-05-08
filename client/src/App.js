@@ -56,9 +56,12 @@ class App extends Component {
             <div className="container app-content">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/decks/:id" component={DeckSingle} />
               <Route exact path="/pre-builder" component={PreBuilder} />
               <Switch>
+                <Route exact path="/decks/:id" render={({ match }) => {
+                  const { id } = match.params;
+                  return <DeckSingle deckId={id} />
+                }} />
                 <PrivateRoute exact path="/builder" component={DeckBuilder} />
               </Switch>
             </div>

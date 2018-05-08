@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { getDecks, setDecksLoading } from '../actions/homeActions';
-import { DECKS_LOADING, CARDS_LOADING, SEND_DECK, GET_ERRORS } from '../actions/types';
+import { DECKS_LOADING, CARDS_LOADING, SEND_DECK, DELETE_DECK, GET_ERRORS } from '../actions/types';
 import { getCardsFromApi } from '../actions/builderActions';
 
 export default store => next => action => {
@@ -49,6 +49,12 @@ export default store => next => action => {
           })
         });
         break;
+    case DELETE_DECK:
+      axios.delete(`/api/decks/${action.payload}`)
+        .then(res => console.log('Success'))
+        .catch(err => console.error(err));
+      window.location = '/';
+      break;
     default:
       break;
   }

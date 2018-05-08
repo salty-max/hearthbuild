@@ -14,3 +14,6 @@ export const CARDS_LOADING = 'CARDS_LOADING';
 export const GET_CARDS_FROM_API = 'GET_CARDS_FROM_API';
 export const ADD_CARD = 'ADD_CARD';
 export const SEND_DECK = 'SEND_DECK';
+
+// DECK
+export const DELETE_DECK = 'DELETE_DECK';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import DeckMeta from './DeckMeta';
@@ -8,55 +8,64 @@ import DeckDesc from './DeckDesc';
 import DeckComments from './comments/DeckComments';
 import Spinner from '../common/Spinner';
 
-const DeckSingle = ({ deckId, auth, decksLoading, decks }) => {
-  if (decksLoading) {
+class DeckSingle extends Component {
+  deleteDeck = (deckToDelete) => {
+    this.props.actions.deleteDeck(this.props.deckId);
+  }
+
+  render () {
+    const { deckId, auth, decksLoading, decks } = this.props;
+
+    if (decksLoading) {
+      return (
+        <main>
+          <section className="section" id="deck-single">
+            <div className="container">
+              <div className="deck">
+                <div className="columns">
+                  <Spinner />
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      );
+    }
+
+    const deck = decks.find(deck => deck._id === deckId);
+
     return (
       <main>
         <section className="section" id="deck-single">
           <div className="container">
             <div className="deck">
               <div className="columns">
-                <Spinner />
+                <DeckMeta
+                  meta={deck}
+                  author={deck.author.name}
+                />
+                <DeckRating
+                  deckId={deckId}
+                  likes={deck.likes}
+                  views={deck.views}
+                  auth={auth}
+                />
               </div>
+              <DeckList cards={deck.cards} />
+              <DeckDesc desc={deck.description} />
+              <DeckComments
+                comments={deck.comments}
+                auth={auth}
+              />
+              {(auth.isAuthenticated && (auth.user.id === deck.author._id)) && (
+                <button onClick={this.deleteDeck} className="button is-medium is-fullwidth is-danger delete-deck-button">Delete this deck</button>
+              )}
             </div>
           </div>
         </section>
       </main>
     );
   }
-
-  const deck = decks.find(deck => deck._id === deckId );
-
-  console.log(deck);
-
-  return (
-    <main>
-      <section className="section" id="deck-single">
-        <div className="container">
-          <div className="deck">
-            <div className="columns">                
-              <DeckMeta
-                meta={deck}
-                author={deck.author.name}
-              />
-              <DeckRating
-                deckId={deckId}
-                likes={deck.likes}
-                views={deck.views}
-                auth={auth}
-              />
-            </div>
-            <DeckList cards={deck.cards} />
-            <DeckDesc desc={deck.description} />
-            <DeckComments
-              comments={deck.comments}
-              auth={auth}
-            />
-          </div>
-        </div>
-      </section>
-    </main>
-  );
 }
 
 DeckSingle.propTypes = {

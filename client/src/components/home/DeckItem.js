@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Moment from 'react-moment'
+import Moment from 'react-moment';
+ import { Link } from 'react-router-dom';
 
-// import { Link } from 'react-router-dom';
-
-const DeckItem = ({title, author, createdAt, cost, likes, comments }) => {
+const DeckItem = ({_id, title, author, createdAt, cost, likes, comments }) => {
   return (
 
     <tr>
@@ -12,7 +11,7 @@ const DeckItem = ({title, author, createdAt, cost, likes, comments }) => {
         <div className="deck-list--deck-name">
           {/* <Svg type="class" value={hsCLass}  /> */}
 
-          <a href="deck.html">{title}</a>
+          <Link to={`/decks/${_id}`}>{title}</Link>
         </div>
       </td>
       <td className="deck-list--deck-author" >{author.name}</td>

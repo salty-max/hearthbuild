@@ -28,7 +28,7 @@ export default store => next => action => {
           Object.keys(res.data).map(set => {
             cards = cards.concat(res.data[set]);
           })
-          cards = cards.filter(card => card.type !== 'Hero')
+          cards = cards.filter(card => card.type !== 'Hero' || (card.type === 'Hero' && card.rarity === 'Legendary'))
           store.dispatch(getCardsFromApi(cards));
         })
         .catch(err => {

@@ -37,6 +37,7 @@ const DeckSchema = new Schema({
   },
   views: {
     type: Number,
+    default: 0
   },
   likes: [
     {

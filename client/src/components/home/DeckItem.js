@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
- import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const DeckItem = ({_id, title, author, createdAt, cost, likes, comments }) => {
+const DeckItem = ({ _id, title, author, createdAt, cost, likes, comments }) => {
   return (
 
     <tr>

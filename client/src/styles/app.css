@@ -6794,41 +6794,50 @@ label.panel-block {
     justify-content: center; }
 
 .deck--desc {
-  padding: 2.5em 0; }
+  padding: 2.5em 0;
+  font-family: "Roboto Slab", serif; }
+  .deck--desc h3 {
+    font-family: "Montserrat", sans-serif; }
 
-.deck--comments-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2em;
-  padding-bottom: 1.25em;
-  border-bottom: 1px solid #dbdbdb; }
-  .deck--comments-header-login {
+.deck--comments {
+  overflow: hidden; }
+  .deck--comments-header {
     display: flex;
-    align-items: center; }
-    .deck--comments-header-login .subtitle {
-      margin-bottom: 0;
-      padding-right: 1em; }
-
-.deck--comments-empty {
-  margin-bottom: .75em;
-  font-size: 1.25em;
-  font-weight: 600;
-  color: #b5b5b5;
-  text-align: center; }
-
-.deck--comments .title {
-  font-size: 1.5em;
-  font-weight: 600;
-  margin-bottom: 0; }
-
-.deck--comments .subtitle {
-  font-size: 1em;
-  color: #ff3860; }
-
-.deck--comments .actions {
-  display: flex;
-  justify-content: flex-end; }
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+    padding-bottom: 1.25em;
+    border-bottom: 1px solid #dbdbdb; }
+    .deck--comments-header-login {
+      display: flex;
+      align-items: center; }
+      .deck--comments-header-login .subtitle {
+        margin-bottom: 0;
+        padding-right: 1em; }
+  .deck--comments-empty {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #b5b5b5;
+    text-align: center; }
+  .deck--comments-form {
+    margin-top: 2rem;
+    padding-top: 1.5em;
+    border-top: 1px solid #dbdbdb; }
+    .deck--comments-form textarea:focus {
+      border-color: #00d1b2;
+      box-shadow: none; }
+  .deck--comments-comment-content {
+    font-family: "Roboto Slab", serif; }
+  .deck--comments .title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0; }
+  .deck--comments .subtitle {
+    font-size: 1em;
+    color: #ff3860; }
+  .deck--comments .actions {
+    display: flex;
+    justify-content: flex-end; }
 
 .deck--delete-button {
   width: 100%;

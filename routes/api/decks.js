@@ -174,6 +174,18 @@ router.post('/view/:id', (req, res) => {
     .catch(err => res.status(404).json({ noDeck: 'No deck found' }));
 });
 
+// @route    GET api/decks/comments/:id
+// @desc     Get comments from a deck
+// @access   Public
+
+router.get('/comments/:id', (req, res) => {
+  Deck.findById(req.params.id)
+    .then(deck => {
+      res.json(deck.comments)
+    })
+    .catch(err => res.status(404).json({ noComments: 'No comments found for this deck' }));
+})
+
 // @route    POST api/decks/comment/:id
 // @desc     Comment in deck
 // @access   Private
@@ -188,8 +200,8 @@ router.post('/comment/:id', passport.authenticate('jwt', { session: false }), (r
     .then((deck) => {
       const newComment = {
         text: req.body.text,
-        name: req.body.name,
-        avatar: req.body.avatar,
+        name: req.user.name,
+        avatar: req.user.avatar,
         user: req.user.id,
       };
 

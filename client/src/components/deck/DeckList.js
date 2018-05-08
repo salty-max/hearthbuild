@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import DeckCard from './DeckCard';
 
-const DeckList = ({ cards }) => {
+const DeckList = ({ cards, hsClass }) => {
   const neutralCards = cards.filter(card => card.class === 'Neutral');
   const deckClassCards = cards.filter(card => card.class !== 'Neutral');
 
@@ -34,7 +34,7 @@ const DeckList = ({ cards }) => {
         <div className="column is-6">
           <div className="panel">
             <p className="panel-heading">
-              Warlock
+              {hsClass}
             </p>
             {deckClassCards.map(card => {
               const isTwice = deckClassCards.filter(card => card.cardId).length === 2;

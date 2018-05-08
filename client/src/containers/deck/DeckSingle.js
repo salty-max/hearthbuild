@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import DeckSingle from '../../components/deck/DeckSingle';
-import { deleteDeck } from '../../actions/deckActions';
+import { deleteDeck, setCommentsLoading } from '../../actions/deckActions';
 
 const mapStateToProps = state => ({
   auth: state.auth,
@@ -13,7 +13,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({
-    deleteDeck
+    deleteDeck,
+    setCommentsLoading
   }, dispatch)
 });
 

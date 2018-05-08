@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 import { getDecks, setDecksLoading } from '../actions/homeActions';
-import { DECKS_LOADING, CARDS_LOADING, SEND_DECK, DELETE_DECK, GET_ERRORS } from '../actions/types';
+import { DECKS_LOADING, CARDS_LOADING, SEND_DECK, DELETE_DECK, GET_ERRORS, SEND_COMMENT, SET_COMMENTS_LOADING } from '../actions/types';
 import { getCardsFromApi } from '../actions/builderActions';
+import { getComments } from '../actions/deckActions';
 
 export default store => next => action => {
   switch (action.type) {
@@ -55,6 +56,22 @@ export default store => next => action => {
         .catch(err => console.error(err));
       window.location = '/';
       break;
+    case SEND_COMMENT:
+      axios.post(`/api/decks/comment/${action.payload.deckId}`, action.payload.commentData)
+        .then(res => console.log(res.data))
+        .catch(err => {
+          store.dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+          });
+        });
+      break;
+    case SET_COMMENTS_LOADING:
+      axios.get(`/api/decks/comments/${action.payload}`)
+        .then(res => {
+          console.log(res.data);
+          store.dispatch(getComments(res.data));
+        })
     default:
       break;
   }

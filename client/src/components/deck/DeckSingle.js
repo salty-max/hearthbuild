@@ -5,10 +5,14 @@ import DeckMeta from './DeckMeta';
 import DeckRating from './DeckRating';
 import DeckList from './DeckList';
 import DeckDesc from './DeckDesc';
-import DeckComments from './comments/DeckComments';
+import DeckComments from '../../containers/deck/DeckComments';
 import Spinner from '../common/Spinner';
 
 class DeckSingle extends Component {
+  componentWillMount() {
+    this.props.actions.setCommentsLoading(this.props.deckId);
+  }
+
   deleteDeck = (deckToDelete) => {
     this.props.actions.deleteDeck(this.props.deckId);
   }
@@ -51,11 +55,12 @@ class DeckSingle extends Component {
                   auth={auth}
                 />
               </div>
-              <DeckList cards={deck.cards} />
+              <DeckList cards={deck.cards} hsClass={deck.class} />
               <DeckDesc desc={deck.description} />
               <DeckComments
                 comments={deck.comments}
                 auth={auth}
+                deckId={deckId}
               />
               {(auth.isAuthenticated && (auth.user.id === deck.author._id)) && (
                 <button onClick={this.deleteDeck} className="button is-medium is-fullwidth is-danger delete-deck-button">Delete this deck</button>

@@ -17,3 +17,6 @@ export const SEND_DECK = 'SEND_DECK';
 
 // DECK
 export const DELETE_DECK = 'DELETE_DECK';
+export const SEND_COMMENT = 'SEND_COMMENT';
+export const GET_COMMENTS = 'GET_COMMENTS';
+export const SET_COMMENTS_LOADING = 'SET_COMMENTS_LOADING'

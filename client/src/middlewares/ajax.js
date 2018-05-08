@@ -1,7 +1,16 @@
 import axios from 'axios';
 
+import {
+  DECKS_LOADING,
+  CARDS_LOADING,
+  SEND_DECK,
+  DELETE_DECK,
+  GET_ERRORS,
+  SEND_COMMENT,
+  SET_COMMENTS_LOADING
+} from '../actions/types';
+
 import { getDecks, setDecksLoading } from '../actions/homeActions';
-import { DECKS_LOADING, CARDS_LOADING, SEND_DECK, DELETE_DECK, GET_ERRORS, SEND_COMMENT, SET_COMMENTS_LOADING } from '../actions/types';
 import { getCardsFromApi } from '../actions/builderActions';
 import { getComments, setCommentsLoading } from '../actions/deckActions';
 
@@ -16,6 +25,7 @@ export default store => next => action => {
           store.dispatch(getDecks([]))
         })
       break;
+
     case CARDS_LOADING:
       let cards = [];
       const instance = axios.create({
@@ -26,9 +36,7 @@ export default store => next => action => {
         params: { 'collectible': 1 }
       })
         .then(res => {
-          Object.keys(res.data).map(set => {
-            cards = cards.concat(res.data[set]);
-          })
+          Object.keys(res.data).map(set => cards = cards.concat(res.data[set]));
           cards = cards.filter(card => card.type !== 'Hero' || (card.type === 'Hero' && card.rarity === 'Legendary'))
           store.dispatch(getCardsFromApi(cards));
         })
@@ -37,6 +45,7 @@ export default store => next => action => {
           store.dispatch(getCardsFromApi([]));
         });
       break;
+
     case SEND_DECK:
       axios.post('/api/decks', action.payload)
         .then(res => {
@@ -49,13 +58,15 @@ export default store => next => action => {
             payload: err.response.data
           })
         });
-        break;
+      break;
+
     case DELETE_DECK:
       axios.delete(`/api/decks/${action.payload}`)
         .then(res => console.log('Success'))
         .catch(err => console.error(err));
       window.location = '/';
       break;
+
     case SEND_COMMENT:
       axios.post(`/api/decks/comment/${action.payload.deckId}`, action.payload.commentData)
         .then(res => {
@@ -68,12 +79,15 @@ export default store => next => action => {
           });
         });
       break;
+
     case SET_COMMENTS_LOADING:
       axios.get(`/api/decks/comments/${action.payload}`)
         .then(res => {
           console.log(res.data);
           store.dispatch(getComments(res.data));
         })
+      break;
+
     default:
       break;
   }

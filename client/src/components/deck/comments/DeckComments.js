@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import DeckComment from './DeckComment';
 import TextAreaFieldGroup from '../../common/TextAreaFieldGroup';
-import { format } from 'url';
 
 class DeckComments extends Component {
   constructor() {

@@ -1,5 +1,6 @@
 // import React from 'react';
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
 import Banner from '../common/Banner';
 import Sidebar from './Sidebar';
@@ -17,7 +18,9 @@ class Home extends Component {
     super();
     this.state = {
       filters: {
-      }
+      },
+      currentPage: 1,
+      decksPerPage: 10,
     };
   }
 
@@ -27,6 +30,11 @@ class Home extends Component {
     })
   }
 
+  handlePageClick = (e) => {
+    this.setState({
+      currentPage: Number(e.target.id)
+    });
+  }
 
   onClick = () => {
     const decksToShow = this.props.decks;
@@ -37,6 +45,23 @@ class Home extends Component {
    }
 
   render() {
+    const { currentPage, decksPerPage } = this.state;
+    const { decks } = this.props;
+    let currentDecks = [];
+    let pageNumbers = [];
+    if (!this.props.decksLoading) {
+      // Logic for displaying current decks
+      const indexOfLastDeck = currentPage * decksPerPage;
+      const indexOfFirstDeck = indexOfLastDeck - decksPerPage;
+      currentDecks = decks.slice(indexOfFirstDeck, indexOfLastDeck);
+
+      // Logic for displaying page numbers
+      pageNumbers = [];
+      for(let i = 1; i <= Math.ceil(decks.length / decksPerPage); i++) {
+        pageNumbers.push(i);
+      }
+    }
+
     return (
       <main>
         <Banner
@@ -61,12 +86,30 @@ class Home extends Component {
                       </tbody>
                     ) : (
                       <tbody>
-                        {this.props.decks.map(deck => (
+                        {currentDecks.map(deck => (
                           <DeckItem key={deck._id}{...deck} />
                         ))}
                       </tbody>
                     )}
                   </table>
+                  <nav className="pagination is-centered">
+                    <ul className="pagination-list">
+                      {pageNumbers.map(n => (
+                        <li>
+                          <a
+                            key={n}
+                            className={classnames('pagination-link', {
+                              'is-current': n === currentPage
+                            })}
+                            id={n}
+                            onClick={this.handlePageClick}
+                          >
+                            {n}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
                 </div>
                 <AdBanner />
               </div>

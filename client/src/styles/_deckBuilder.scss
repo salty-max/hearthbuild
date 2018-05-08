@@ -68,6 +68,11 @@
     }
 
     .table {
+
+      td:first-child {
+        cursor: pointer;
+      }
+
       .deck-builder--cards-table--cost, .deck-builder--list-table--cost {
         display: flex;
         align-items: center;

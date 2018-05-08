@@ -197,6 +197,12 @@ svg {
   color: $rare-color
 }
 
+.pagination-link.is-current {
+  background-color: $primary;
+  border-color: $primary;
+  font-weight: 600;
+}
+
 @media screen and (max-width: 1024px) {
   .container {
     margin: 0;

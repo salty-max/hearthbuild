@@ -10,15 +10,15 @@ class Sidebar extends React.Component {
     let topRatedDecks = [];
     let latestDecks = [];
     
-    {if (!this.props.loading) {
+    if (!this.props.loading) {
       topRatedDecks = this.props.decks
         .sort(sortBy('-likes'))
-        .slice(0, 4);
+        .slice(0, 5);
 
       latestDecks = this.props.decks
         .sort(sortBy('-createdAt'))
-        .slice(0, 4);
-    }}
+        .slice(0, 5);
+    }
 
     return (
       <aside className="sidebar">

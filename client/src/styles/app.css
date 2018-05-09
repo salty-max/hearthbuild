@@ -6677,8 +6677,6 @@ label.panel-block {
       color: #00d1b2;
       padding: 1rem;
       cursor: pointer; }
-      .deck-list .table thead th:first-child {
-        text-align: left; }
   .deck-list .table tbody {
     font-family: "Roboto Slab", serif; }
     .deck-list .table tbody .deck-list--deck-name {
@@ -6687,16 +6685,11 @@ label.panel-block {
       .deck-list .table tbody .deck-list--deck-name .class-icon {
         margin-right: .5em;
         fill: #363636;
-        min-width: 1.5em;
-        min-height: 1.5em; }
+        min-width: 2em;
+        min-height: 2em; }
     .deck-list .table tbody tr td {
       text-align: center;
       padding: 1rem; }
-      .deck-list .table tbody tr td:first-child {
-        text-align: left; }
-        .deck-list .table tbody tr td:first-child:hover {
-          color: #00d1b2;
-          cursor: pointer; }
 
 .home-info {
   padding: 3em;

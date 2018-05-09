@@ -22,7 +22,7 @@ class Home extends Component {
       filters: {},
       currentPage: 1,
       decksPerPage: 5,
-      sort: 'name'
+      sort: '-createdAt'
     };
   }
 
@@ -39,22 +39,18 @@ class Home extends Component {
 
     if (!isEmpty(filters)) {
       if (filters.title !== '') {
-        console.log('Title');
         filteredArr = filteredArr.filter(deck => deck.title.includes(filters.title))
       }
 
       if (filters.hsClass !== '') {
-        console.log('Class');
         filteredArr = filteredArr.filter(deck => deck.class === filters.hsClass)
       }
 
       if (filters.format !== '') {
-        console.log('Format');
         filteredArr = filteredArr.filter(deck => deck.format === filters.format)
       }
 
       if (filters.type !== '') {
-        console.log('Type');
         filteredArr = filteredArr.filter(deck => deck.type === filters.type)
       }
     }
@@ -83,18 +79,17 @@ class Home extends Component {
 
     if (!this.props.decksLoading) {
       // Logic for displaying current decks
-      const filteredDecks = this.filterDecks(decks);
+      let filteredDecks = this.filterDecks(decks);
+      const sortedDecks = filteredDecks.sort(sortBy(sort));
       const indexOfLastDeck = currentPage * decksPerPage;
       const indexOfFirstDeck = indexOfLastDeck - decksPerPage;
-      paginatedDecks = filteredDecks.slice(indexOfFirstDeck, indexOfLastDeck);
+      paginatedDecks = sortedDecks.slice(indexOfFirstDeck, indexOfLastDeck);
 
       // Logic for displaying page numbers
-      for (let i = 1; i <= Math.ceil(filteredDecks.length / decksPerPage); i++) {
+      for (let i = 1; i <= Math.ceil(sortedDecks.length / decksPerPage); i++) {
         pageNumbers.push(i);
       }
     }
-
-    paginatedDecks.sort(sortBy(sort));
     
     return (
       <main>

@@ -57,7 +57,6 @@ class DeckComments extends Component {
     currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
 
     // Logic for displaying page numbers
-    pageNumbers = [];
     for(let i = 1; i <= Math.ceil(comments.length / commentsPerPage); i++) {
       pageNumbers.push(i);
     }

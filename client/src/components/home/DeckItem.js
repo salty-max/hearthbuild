@@ -1,34 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 
-const DeckItem = ({ _id, title, author, createdAt, cost, likes, comments }) => (
+import Svg from '../common/Svg'
+
+const DeckItem = (props) => (
   <tr>
     <td>
+      <Svg className="class-icon" type="class" value={props.class.toLowerCase()} />
+    </td>
+    <td style={{ textAlign: 'left' }}>
       <div className="deck-list--deck-name">
-        <Link to={`/decks/${_id}`}>{title}</Link>
+        <Link to={`/decks/${props._id}`}>{props.title}</Link>
       </div>
     </td>
-    <td className="deck-list--deck-author" >{author.name}</td>
+    <td className="deck-list--deck-author" >{props.author.name}</td>
     <td className="deck-list--deck-updated">
-      <Moment fromNow>{createdAt}</Moment>
+      <Moment fromNow>{props.createdAt}</Moment>
     </td>
-    <td className="deck-list-deck--cost">{cost}</td>
-    <td className="deck-list--deck-rating">{likes.length}</td>
-    <td className="deck-list--deck-views">1k</td>
-    <td className="deck-list--deck-comments">{comments.length}</td>
+    <td className="deck-list-deck--cost">{props.cost}</td>
+    <td className="deck-list--deck-rating">{props.likes.length}</td>
+    <td className="deck-list--deck-views">{props.views}</td>
+    <td className="deck-list--deck-comments">{props.comments.length}</td>
   </tr>
 );
-
-DeckItem.propTypes = {
-  _id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  author: PropTypes.object.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  cost: PropTypes.number.isRequired,
-  likes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  comments: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
 
 export default DeckItem;

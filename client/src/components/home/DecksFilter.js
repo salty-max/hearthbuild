@@ -55,6 +55,7 @@ class DecksFilter extends React.Component {
     }
 
     this.props.actions.setFilters(newFilters);
+    evt.target.reset();
   }
 
   render() {

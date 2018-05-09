@@ -8,7 +8,8 @@ const DeckListHeader = ({ handleSortClick }) => {
   return (
     <thead>
       <tr>
-        <th onClick={handleSortClick("title")}>
+        <th></th>
+        <th onClick={handleSortClick("title")} style={{ textAlign: 'left' }}>
           Name
         </th>
 
@@ -16,7 +17,7 @@ const DeckListHeader = ({ handleSortClick }) => {
           <i className="fas fa-user"></i>
         </th>
 
-        <th onClick={handleSortClick("createdAt")}>
+        <th onClick={handleSortClick("-createdAt")}>
           <i className="fas fa-calendar-alt"></i>
         </th>
 
@@ -38,30 +39,4 @@ const DeckListHeader = ({ handleSortClick }) => {
     </thead>
   );
 };
-
-
-// class DeckListHeader extends React.Component {
-//
-//   onclick = () => {
-//      decksToShow.sort(sortBy('title'));
-//   }
-// render() {
-//     const decksToShow = this.props.decks;
-//     return (
-//   <thead>
-//     <tr>
-//       <th onClick={this.onclick}>Name</th>
-//       <th><i className="fas fa-user"></i></th>
-//       <th><i className="fas fa-calendar-alt"></i></th>
-//       <th>
-//         <Svg type="misc" value="dust" />
-//       </th>
-//       <th><i className="fas fa-thumbs-up"></i></th>
-//       <th><i className="fas fa-eye"></i></th>
-//       <th><i className="fas fa-comments"></i></th>
-//     </tr>
-//   </thead>
-// );
-// }
-// }
 export default DeckListHeader;

@@ -23,10 +23,6 @@
         color: $primary;
         padding: 1rem;
         cursor: pointer;
-
-        &:first-child {
-          text-align: left;
-        }
       }
     }
 
@@ -40,8 +36,8 @@
         .class-icon {
           margin-right: .5em;
           fill: $dark;
-          min-width: 1.5em;
-          min-height: 1.5em;
+          min-width: 2em;
+          min-height: 2em;
         }
       }
 
@@ -50,15 +46,6 @@
         td {
           text-align: center;
           padding: 1rem;
-
-          &:first-child {
-            text-align: left;
-
-            &:hover {
-              color: $primary;
-              cursor: pointer;
-            }
-          }
         }
       }
     }

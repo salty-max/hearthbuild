@@ -14,8 +14,7 @@ class Navbar extends Component {
     }
   }
 
-  onLogoutClick = (e) => {
-    e.preventDefault();
+  onLogoutClick = () => {
     this.props.actions.logoutUser();
     window.location = '/login';
   }
@@ -24,6 +23,12 @@ class Navbar extends Component {
     this.setState(prevState => ({
       isActive: !prevState.isActive
     }));
+  }
+
+  collapseNav = () => {
+    this.setState({
+      isActive: false
+    });
   }
 
   render() {
@@ -46,7 +51,10 @@ class Navbar extends Component {
           <span>{user.name}</span>
         </div>
         <div className="navbar-item">
-          <a className="button is-danger is-outlined" onClick={this.onLogoutClick}>
+          <a className="button is-danger is-outlined" onClick={() => {
+            this.onLogoutClick()
+            this.collapseNav()
+          }}>
             <span className="icon">
               <i className="fas fa-sign-out-alt" />
             </span>
@@ -58,7 +66,7 @@ class Navbar extends Component {
     const guestLinks = (
       <Fragment>
         <div className="navbar-item">
-          <Link to="/register" className="button is-info is-outlined">
+          <Link to="/register" className="button is-info is-outlined" onClick={this.collapseNav}>
             <span className="icon">
               <i className="fas fa-user-plus" />
             </span>
@@ -66,7 +74,7 @@ class Navbar extends Component {
           </Link>
         </div>
         <div className="navbar-item">
-          <Link to="/login" className="button is-primary is-outlined">
+          <Link to="/login" className="button is-primary is-outlined" onClick={this.collapseNav}>
             <span className="icon">
               <i className="fas fa-sign-in-alt" />
             </span>
@@ -81,7 +89,7 @@ class Navbar extends Component {
     <div className="container">
       <div className="navbar-brand">
         <Link to="/" className="navbar-item">
-          <img src={HBLogo} alt="" className="brand-logo" />
+          <img src={HBLogo} alt="" className="brand-logo" onClick={this.collapseNav}/>
         </Link>
         <div className="navbar-burger" onClick={this.menuActive}>
           <span aria-hidden="true" />
@@ -95,7 +103,7 @@ class Navbar extends Component {
             <a href="" className="navbar-link">Decks</a>
             <div className="navbar-dropdown">
               {this.props.home.classes.map(hsClass => (
-                <a key={hsClass.value} className="navbar-item">
+                <a key={hsClass.value} className="navbar-item" onClick={this.collapseNav}>
                   {hsClass.label}
                 </a>
               ))}
@@ -104,7 +112,7 @@ class Navbar extends Component {
         </div>
         <div className="navbar-end">
           <div className="navbar-item">
-            <Link to="/pre-builder" className="button is-primary">
+            <Link to="/pre-builder" className="button is-primary" onClick={this.collapseNav}>
               <span className="icon">
                 <i className="fas fa-plus-circle" />
               </span>

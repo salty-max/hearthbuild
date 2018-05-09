@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
+import { Formatizer } from 'formatizer';
 
 const DeckComment = ({ comment }) => (
   <article className="media deck--comments-comment">
@@ -17,7 +18,9 @@ const DeckComment = ({ comment }) => (
             <Moment fromNow>{comment.date}</Moment>
           </div>
         </div>
-        <p className="deck--comments-comment--content">{comment.text}</p>
+        <p className="deck--comments-comment--content">
+          <Formatizer>{comment.text}</Formatizer>
+        </p>
       </div>
     </div>
   </article>

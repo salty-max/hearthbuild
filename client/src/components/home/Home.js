@@ -20,9 +20,8 @@ class Home extends Component {
       filters: {
       },
       currentPage: 1,
-      decksPerPage: 10,
-      currentDecks: [],
-      pageNumbers: []
+      decksPerPage: 1,
+      sort: 'name'
     };
   }
 
@@ -32,14 +31,6 @@ class Home extends Component {
     });
   }
 
-  componentWillMount() {
-    this.paginate();
-  }
-
-  paginate = () => {
-    
-  }
-
   handlePageClick = (e) => {
     this.setState({
       currentPage: Number(e.target.id)
@@ -47,32 +38,32 @@ class Home extends Component {
   }
 
   handleSortClick = (prop) => () => {
-    console.log(prop);
-    const { currentDecks } = this.state;
-    currentDecks.sort(sortBy(prop));
-
     this.setState({
-      currentDecks
+      sort: prop
     });
   }
 
   render() {
 
-    const { currentPage, decksPerPage, currentDecks } = this.state;
+    const { currentPage, decksPerPage, sort } = this.state;
+    const { decks } = this.props;
     let paginatedDecks = [];
-
-    console.log('if');
-    // Logic for displaying current decks
-    const indexOfLastDeck = currentPage * decksPerPage;
-    const indexOfFirstDeck = indexOfLastDeck - decksPerPage;
-    paginatedDecks = currentDecks.slice(indexOfFirstDeck, indexOfLastDeck);
-
-    // Logic for displaying page numbers
     let pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(currentDecks.length / decksPerPage); i++) {
-      pageNumbers.push(i);
-      console.log(pageNumbers);
+
+    if (!this.props.decksLoading) {
+      // Logic for displaying current decks
+      const indexOfLastDeck = currentPage * decksPerPage;
+      const indexOfFirstDeck = indexOfLastDeck - decksPerPage;
+      paginatedDecks = decks.slice(indexOfFirstDeck, indexOfLastDeck);
+
+      // Logic for displaying page numbers
+      for (let i = 1; i <= Math.ceil(decks.length / decksPerPage); i++) {
+        pageNumbers.push(i);
+        console.log(pageNumbers);
+      }
     }
+
+    paginatedDecks.sort(sortBy(sort));
     
     return (
       <main>

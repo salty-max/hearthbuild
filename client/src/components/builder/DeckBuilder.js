@@ -13,7 +13,7 @@ import DeckBuilderMetas from './DeckBuilderMetas';
 import PoolCard from './PoolCard';
 import DeckCard from './DeckCard';
 
-import magikarp from '../../assets/img/card-placeholder.png'
+import zerowing from '../../assets/img/zerowing.png'
 
 class DeckBuilder extends Component {
 
@@ -22,7 +22,7 @@ class DeckBuilder extends Component {
     this.state = {
       classCards: [],
       neutralCards: [],
-      hoverCard: magikarp,
+      hoverCard: 'http://media.services.zam.com/v1/media/byName/hs/cards/enus/EX1_009.png',
       tabs: {
         classTab: true,
         neutralTab: false
@@ -37,12 +37,15 @@ class DeckBuilder extends Component {
       deckCards: [],
       cardIndex: 0,
       errors: {},
+      poolname: ''
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       errors: nextProps.errors,
+      class: nextProps.class,
+      format: nextProps.format,
     })
   }
 
@@ -50,15 +53,14 @@ class DeckBuilder extends Component {
 
     let cards = [];
     if(this.props.cardsPool) {
-      cards = this.sortByFormat(this.props.cardsPool, this.props.currentDeck.format)
+      cards = this.sortByFormat(this.props.cardsPool, this.props.format)
     }
 
     cards = cards.sort(sortBy('cost'));
 
     this.setState({
-      class: this.props.currentDeck.class,
-      format: this.props.currentDeck.format,
-      classCards: cards.filter(card => card.playerClass === this.props.currentDeck.class),
+      
+      classCards: cards.filter(card => card.playerClass === this.props.class),
       neutralCards: cards.filter(card => card.playerClass === 'Neutral'),
     });
   }
@@ -208,7 +210,11 @@ class DeckBuilder extends Component {
 
     const { deckTypes } = this.props;
 
-    const cardsToShow = this.showCards();
+    let cardsToShow = this.showCards();
+
+    if(this.state.poolname !== '') {
+      cardsToShow = cardsToShow.filter(card => card.name.toLowerCase().includes(this.state.poolname.toLowerCase()));
+    }
 
     return (
       <main>
@@ -243,20 +249,30 @@ class DeckBuilder extends Component {
                     <img src={hoverCard} alt="" />
                   </div>
                   <div className="column is-8 deck-builder--cards-table">
-                    <div className="tabs">
-                      <ul>
-                        <li className={classnames('', {
-                          'is-active': tabs.classTab
-                        })} onClick={this.handleTab('classTab')}>
-                          <a>{this.props.currentDeck.class}</a>
-                        </li>
+                    <div className="pool-header">
+                      <div className="tabs">
+                        <ul>
+                          <li className={classnames('', {
+                            'is-active': tabs.classTab
+                          })} onClick={this.handleTab('classTab')}>
+                            <a>{this.props.class}</a>
+                          </li>
 
-                        <li className={classnames('', {
-                          'is-active': tabs.neutralTab
-                        })} onClick={this.handleTab('neutralTab')}>
-                          <a>Neutrals</a>
-                        </li>
-                      </ul>
+                          <li className={classnames('', {
+                            'is-active': tabs.neutralTab
+                          })} onClick={this.handleTab('neutralTab')}>
+                            <a>Neutrals</a>
+                          </li>
+                        </ul>
+                      </div>
+                    
+                      <TextFieldGroup
+                        name="poolname"
+                        value={this.state.poolname}
+                        placeholder="Search by name"
+                        onChange={this.onChange}
+                        icon="fas fa-pencil-alt"
+                      />
                     </div>
                     {this.props.cardsLoading ? (
                       <Spinner />
@@ -281,17 +297,24 @@ class DeckBuilder extends Component {
                   <DeckBuilderMetas count={this.state.cardCount} cost={this.state.cost} />
                   <div className="columns">
                     <div className="column is-8 deck-builder--list-table">
-                      <table className="table">
-                        <tbody>
-                          {deckCards.map(card => (
-                            <DeckCard
-                              key={card.index}
-                              card={card}
-                              onDeleteClick={this.removeCard}
-                            />
-                          ))}
-                        </tbody>
-                      </table>
+                      {deckCards.length === 0 ? (
+                        <div className="box deck-builder--list-empty">
+                          <img src={zerowing} />
+                          <h2>All your cards are belong to us</h2>
+                        </div>  
+                      ) : (
+                        <table className="table">
+                          <tbody>
+                            {deckCards.map(card => (
+                              <DeckCard
+                                key={card.index}
+                                card={card}
+                                onDeleteClick={this.removeCard}
+                              />
+                            ))}
+                          </tbody>
+                        </table>
+                      )}
                     </div>
                     <div className="column is-4 deck-builder--curve">
                       <div className="box"></div>
@@ -330,7 +353,8 @@ DeckBuilder.propTypes = {
   actions: PropTypes.objectOf(PropTypes.func.isRequired).isRequired,
   cardsLoading: PropTypes.bool.isRequired,
   cardsPool: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  currentDeck: PropTypes.object.isRequired
+  class: PropTypes.string.isRequired,
+  format: PropTypes.string.isRequired,
 }
 
 export default DeckBuilder;

@@ -7,7 +7,8 @@ import { setDecksLoading } from '../../actions/homeActions';
 import DeckBuilder from '../../components/builder/DeckBuilder';
 
 const mapStateToProps = state => ({
-  currentDeck: state.builder.currentDeck,
+  class: state.builder.preClass,
+  format: state.builder.preFormat,
   cardsPool: state.builder.cardsPool,
   cardsLoading: state.builder.cardsLoading,
   classes: state.home.classes,

@@ -43,13 +43,26 @@
   }
 
   &--cards, &--list {
+    .pool-header {
+      margin-top: 1.5em;
+      display: flex;
+      border-bottom: 1px solid rgba($lighter-dark, .2);
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
     .tabs {
-      margin: 1.5em 0 0;
+      margin-bottom: 0;
+
+      ul {
+        border: none
+      }
 
       li {
         a {
           border-radius: .375em .375em 0 0;
           border: none;
+          padding: .75em 1em;
 
           &:hover {
             background: rgba($lighter-dark, .7);
@@ -150,6 +163,40 @@
   &--list {
 
     padding: 3em 0 3em;
+
+    &-table {
+      margin-top: 1.5rem;
+    }
+
+    &-empty {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      img {
+        background: $primary;
+        width: 50%;
+        display: block;
+        border: 1px solid $lighter-dark;
+        border-radius: .375em .375em 0 0;
+        margin: 0 auto;
+      }
+
+      h2 {
+        background: $lighter-dark;
+        color: $primary;
+        text-transform: uppercase;
+        padding: 1em;
+        text-align: center;
+        font-weight: 600;
+        width: 50%;
+        display: block;
+        margin: 0 auto;
+        border-radius: 0 0 .375em .375em;
+        box-shadow: 0 2px 3px rgba(10, 10, 10, .1);
+      }
+    }
 
     &-header {
       display: flex;

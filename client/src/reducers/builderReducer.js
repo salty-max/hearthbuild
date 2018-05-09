@@ -2,14 +2,8 @@ import { PRE_BUILD, CARDS_LOADING, GET_CARDS_FROM_API } from '../actions/types';
 
 const initialState = {
   cardsPool: [],
-  currentDeck: {
-    title: '',
-    format: '',
-    class: '',
-    description: '',
-    type: '',
-    cards: []
-  },
+  preClass: '',
+  preFormat: '',
   cardsLoading: false,
 }
 
@@ -29,10 +23,8 @@ export default function (state = initialState, action) {
     case PRE_BUILD:
       return {
         ...state,
-        currentDeck: {
-          format: action.payload.format,
-          class: action.payload.hsClass
-        }
+        preFormat: action.payload.format,
+        preClass: action.payload.hsClass
       }
     default:
       return state;

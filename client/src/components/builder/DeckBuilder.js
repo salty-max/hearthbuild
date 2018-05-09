@@ -299,7 +299,7 @@ class DeckBuilder extends Component {
                     <div className="column is-8 deck-builder--list-table">
                       {deckCards.length === 0 ? (
                         <div className="box deck-builder--list-empty">
-                          <img src={zerowing} />
+                          <img src={zerowing} alt="Zero Wing Meme"/>
                           <h2>All your cards are belong to us</h2>
                         </div>  
                       ) : (

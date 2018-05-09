@@ -18,9 +18,9 @@ const DeckComment = ({ comment }) => (
             <Moment fromNow>{comment.date}</Moment>
           </div>
         </div>
-        <p className="deck--comments-comment--content">
+        <div className="deck--comments-comment--content">
           <Formatizer>{comment.text}</Formatizer>
-        </p>
+        </div>
       </div>
     </div>
   </article>

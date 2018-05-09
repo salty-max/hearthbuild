@@ -6641,10 +6641,14 @@ label.panel-block {
     padding: 1rem;
     border: 1px solid rgba(245, 245, 245, 0.3);
     border-bottom: none;
-    color: white; }
+    font-weight: 600; }
+    .sidebar-item--list-item a {
+      color: whitesmoke; }
     .sidebar-item--list-item:hover {
       background: #00d1b2;
-      color: white; }
+      color: #363636; }
+      .sidebar-item--list-item:hover a {
+        color: #363636; }
     .sidebar-item--list-item:last-child {
       border-bottom: 1px solid rgba(245, 245, 245, 0.3); }
 
@@ -6671,7 +6675,8 @@ label.panel-block {
     .deck-list .table thead th {
       text-align: center;
       color: #00d1b2;
-      padding: 1rem; }
+      padding: 1rem;
+      cursor: pointer; }
       .deck-list .table thead th:first-child {
         text-align: left; }
   .deck-list .table tbody {

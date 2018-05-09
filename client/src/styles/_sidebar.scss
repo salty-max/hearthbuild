@@ -12,11 +12,19 @@
       padding: 1rem;
       border: 1px solid rgba($light, .3);
       border-bottom: none;
-      color: $white;
+      font-weight: 600;
+
+      a {
+        color: $light;
+      }
 
       &:hover {
         background: $primary;
-        color: $white;
+        color: $dark;
+
+        a {
+          color: $dark;
+        }
       }
 
       &:last-child {

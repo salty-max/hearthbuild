@@ -21,13 +21,23 @@ class Home extends Component {
       },
       currentPage: 1,
       decksPerPage: 10,
+      currentDecks: [],
+      pageNumbers: []
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      //filters: nextProps.filters
-    })
+      currentDecks: nextProps.decks
+    });
+  }
+
+  componentWillMount() {
+    this.paginate();
+  }
+
+  paginate = () => {
+    
   }
 
   handlePageClick = (e) => {
@@ -36,31 +46,34 @@ class Home extends Component {
     });
   }
 
-  onClick = () => {
-    const decksToShow = this.props.decks;
-    // decksToShow.sort(sortBy('title'));
-     decksToShow.sort(sortBy('user'));
-   }
+  handleSortClick = (prop) => () => {
+    console.log(prop);
+    const { currentDecks } = this.state;
+    currentDecks.sort(sortBy(prop));
+
+    this.setState({
+      currentDecks
+    });
+  }
 
   render() {
-    const { currentPage, decksPerPage } = this.state;
-    const { decks } = this.props;
-    let currentDecks = [];
+
+    const { currentPage, decksPerPage, currentDecks } = this.state;
+    let paginatedDecks = [];
+
+    console.log('if');
+    // Logic for displaying current decks
+    const indexOfLastDeck = currentPage * decksPerPage;
+    const indexOfFirstDeck = indexOfLastDeck - decksPerPage;
+    paginatedDecks = currentDecks.slice(indexOfFirstDeck, indexOfLastDeck);
+
+    // Logic for displaying page numbers
     let pageNumbers = [];
-
-    if (!this.props.decksLoading) {
-      // Logic for displaying current decks
-      const indexOfLastDeck = currentPage * decksPerPage;
-      const indexOfFirstDeck = indexOfLastDeck - decksPerPage;
-      currentDecks = decks.slice(indexOfFirstDeck, indexOfLastDeck);
-
-      // Logic for displaying page numbers
-      pageNumbers = [];
-      for(let i = 1; i <= Math.ceil(decks.length / decksPerPage); i++) {
-        pageNumbers.push(i);
-      }
+    for (let i = 1; i <= Math.ceil(currentDecks.length / decksPerPage); i++) {
+      pageNumbers.push(i);
+      console.log(pageNumbers);
     }
-
+    
     return (
       <main>
         <Banner
@@ -74,7 +87,9 @@ class Home extends Component {
                 <div className="deck-list">
                   <DecksFilter />
                   <table className="table deck-list--table is-fullwidth is-striped is-hoverable">
-                    <DeckListHeader onClick={this.onClick}  />
+                    <DeckListHeader
+                      handleSortClick={this.handleSortClick} 
+                    />
                     {this.props.decksLoading ? (
                       <tbody>
                         <tr>
@@ -85,7 +100,7 @@ class Home extends Component {
                       </tbody>
                     ) : (
                       <tbody>
-                        {currentDecks.map(deck => (
+                        {paginatedDecks.map(deck => (
                           <DeckItem key={deck._id}{...deck} />
                         ))}
                       </tbody>
@@ -97,7 +112,7 @@ class Home extends Component {
                         <li key={n}>
                           <a
                             className={classnames('pagination-link', {
-                              'is-current': n === currentPage
+                              'is-current': n === this.state.currentPage
                             })}
                             id={n}
                             onClick={this.handlePageClick}
@@ -112,7 +127,7 @@ class Home extends Component {
                 <AdBanner />
               </div>
               <div className="column is-3">
-                <Sidebar />
+                <Sidebar decks={this.props.decks} loading={this.props.decksLoading} />
               </div>
             </div>
           </div>

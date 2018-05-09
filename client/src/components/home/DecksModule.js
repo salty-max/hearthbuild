@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const DecksModule = ({ title, decks }) => (
+import Spinner from '../common/Spinner';
+
+const DecksModule = ({ title, decks, loading }) => (
   <div className="box sidebar-item">
     <h3 className="sidebar-item--title is-size-5">{title}</h3>
-    {decks.map(deck => (
-      <div key={deck.id} className="sidebar-item--list-item">{deck.title}</div>
-    ))}
+    {loading ? (
+      <Spinner />
+    ) : 
+      decks.map(deck => (
+        <div key={deck._id} className="sidebar-item--list-item">
+          <Link to={`/decks/${deck._id}`}>{deck.title}</Link>
+        </div>
+      )
+    )}
   </div>
 );
 

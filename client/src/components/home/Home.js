@@ -4,11 +4,13 @@ import classnames from 'classnames';
 
 import Banner from '../common/Banner';
 import Sidebar from './Sidebar';
-import DecksFilter from './DecksFilter';
+import DecksFilter from '../../containers/home/DecksFilter';
 import DeckListHeader from './DeckListHeader';
 import DeckItem from './DeckItem';
 import AdBanner from './AdBanner';
 import Spinner from '../common/Spinner';
+
+import isEmpty from '../../utils/is-empty';
 
 import sortBy from '../../utils/sortBy';
 
@@ -17,18 +19,47 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      filters: {
-      },
+      filters: {},
       currentPage: 1,
-      decksPerPage: 1,
+      decksPerPage: 5,
       sort: 'name'
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      currentDecks: nextProps.decks
+      currentDecks: nextProps.decks,
+      filters: nextProps.filters
     });
+  }
+
+  filterDecks = (arr) => {
+    const { filters } = this.props;
+    let filteredArr = arr;
+
+    if (!isEmpty(filters)) {
+      if (filters.title !== '') {
+        console.log('Title');
+        filteredArr = filteredArr.filter(deck => deck.title.includes(filters.title))
+      }
+
+      if (filters.hsClass !== '') {
+        console.log('Class');
+        filteredArr = filteredArr.filter(deck => deck.class === filters.hsClass)
+      }
+
+      if (filters.format !== '') {
+        console.log('Format');
+        filteredArr = filteredArr.filter(deck => deck.format === filters.format)
+      }
+
+      if (filters.type !== '') {
+        console.log('Type');
+        filteredArr = filteredArr.filter(deck => deck.type === filters.type)
+      }
+    }
+
+    return filteredArr;
   }
 
   handlePageClick = (e) => {
@@ -52,14 +83,14 @@ class Home extends Component {
 
     if (!this.props.decksLoading) {
       // Logic for displaying current decks
+      const filteredDecks = this.filterDecks(decks);
       const indexOfLastDeck = currentPage * decksPerPage;
       const indexOfFirstDeck = indexOfLastDeck - decksPerPage;
-      paginatedDecks = decks.slice(indexOfFirstDeck, indexOfLastDeck);
+      paginatedDecks = filteredDecks.slice(indexOfFirstDeck, indexOfLastDeck);
 
       // Logic for displaying page numbers
-      for (let i = 1; i <= Math.ceil(decks.length / decksPerPage); i++) {
+      for (let i = 1; i <= Math.ceil(filteredDecks.length / decksPerPage); i++) {
         pageNumbers.push(i);
-        console.log(pageNumbers);
       }
     }
 

@@ -1,5 +1,5 @@
 
-import { DECKS_LOADING, GET_DECKS } from '../actions/types';
+import { DECKS_LOADING, GET_DECKS, SET_FILTERS } from '../actions/types';
 
 const initialState= {
   deckTypes: [
@@ -39,6 +39,11 @@ export default function(state = initialState, action) {
         ...state,
         decks: action.payload,
         decksLoading: false
+      }
+    case SET_FILTERS:
+      return {
+        ...state,
+        filters: action.payload
       }
     default:
       return state;

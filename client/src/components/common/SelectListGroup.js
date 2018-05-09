@@ -35,6 +35,7 @@ const SelectListGroup = ({
             id={name}
             className={classnames('', { 'is-danger': error })}
             onChange={onChange}
+            value={value}
           >
             {selectOptions}
           </select>

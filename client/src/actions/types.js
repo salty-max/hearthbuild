@@ -7,6 +7,7 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 // HOME
 export const DECKS_LOADING = 'DECKS_LOADING';
 export const GET_DECKS = 'GET_DECKS';
+export const SET_FILTERS = 'SET_FILTERS';
 
 // BUILDER
 export const PRE_BUILD = 'PRE_BUILD';

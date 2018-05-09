@@ -1,4 +1,4 @@
-import { DECKS_LOADING, GET_DECKS } from './types';
+import { DECKS_LOADING, GET_DECKS, SET_FILTERS } from './types';
 
 export const getDecks = decks => ({
   type: GET_DECKS,
@@ -7,4 +7,9 @@ export const getDecks = decks => ({
 
 export const setDecksLoading = () => ({
   type: DECKS_LOADING
+})
+
+export const setFilters = filters => ({
+  type: SET_FILTERS,
+  payload: filters
 })

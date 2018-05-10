@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "bulma": "^0.7.1",
     "bulma-tooltip": "^1.0.4",
     "change-case": "^3.0.2",

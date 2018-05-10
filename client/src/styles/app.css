@@ -6943,6 +6943,9 @@ label.panel-block {
     .deck-builder--cards-preview img {
       max-width: 275px;
       max-height: 373px; }
+  .deck-builder--cards-table-count {
+    background-color: #494949;
+    color: whitesmoke; }
   .deck-builder--cards .table {
     width: 100%;
     margin: 0;
@@ -7011,19 +7014,6 @@ label.panel-block {
   width: 100%;
   text-transform: uppercase;
   font-weight: 600; }
-
-.deck-builder .mana-curve {
-  display: flex;
-  align-items: center; }
-  .deck-builder .mana-curve svg {
-    width: 100%;
-    height: 100%; }
-
-.deck-builder .no-curve {
-  font-size: 1.25em;
-  font-weight: 600;
-  color: #b5b5b5;
-  text-align: center; }
 
 #pre-builder {
   text-align: center; }
@@ -7201,6 +7191,19 @@ svg {
   margin-top: 1.5em;
   width: 100%;
   font-weight: 600; }
+
+.mana-curve {
+  display: flex;
+  align-items: center; }
+  .mana-curve svg {
+    width: 100%;
+    height: 100%; }
+
+.no-curve {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #b5b5b5;
+  text-align: center; }
 
 .invalid-feedback {
   font-size: .75em;

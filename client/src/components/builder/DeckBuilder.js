@@ -207,6 +207,12 @@ class DeckBuilder extends Component {
     
   }
 
+  removeDuplicates = (myArr, prop) => {
+    return myArr.filter((obj, pos, arr) => {
+      return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+    });
+  }
+
   render() {
     const { tabs, hoverCard, deckCards, errors } = this.state;
 
@@ -224,6 +230,8 @@ class DeckBuilder extends Component {
     for (let i = 0; i <= 10; i++) {
       chartData[0].data.push([i, deckCards.filter(card => card.cost === i).length]);
     }
+
+    const uniqueCards = this.removeDuplicates(deckCards, 'cardId');
 
     return (
       <main>
@@ -254,7 +262,7 @@ class DeckBuilder extends Component {
                 </div>
 
                 <div className="columns deck-builder--cards">
-                  <div className="column is-4 is-hidden-mobile deck-builder--cards-preview" onClick={() => console.log(chartData)}>
+                  <div className="column is-4 is-hidden-mobile deck-builder--cards-preview" onClick={() => console.log(uniqueCards)}>
                     <img src={hoverCard} alt="" />
                   </div>
                   <div className="column is-8 deck-builder--cards-table">
@@ -314,13 +322,16 @@ class DeckBuilder extends Component {
                       ) : (
                         <table className="table">
                           <tbody>
-                            {deckCards.map(card => (
-                              <DeckCard
-                                key={card.index}
-                                card={card}
-                                onDeleteClick={this.removeCard}
-                              />
-                            ))}
+                            {
+                              uniqueCards.map(card => (
+                                <DeckCard
+                                  key={card.index}
+                                  card={card}
+                                  onDeleteClick={this.removeCard}
+                                  isTwice={deckCards.filter(c => c.cardId === card.cardId).length > 1}
+                                />
+                              ))
+                            }
                           </tbody>
                         </table>
                       )}

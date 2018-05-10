@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import Svg from '../common/Svg';
 
-const DeckCard = ({ card, onDeleteClick }) => (
+const DeckCard = ({ card, onDeleteClick, isTwice }) => (
   <tr>
     <td className={classnames('', {
       'has-text-legendary': card.rarity === 'Legendary',
@@ -23,6 +23,7 @@ const DeckCard = ({ card, onDeleteClick }) => (
         </span>
       </button>
     </td>
+    <td className="deck-builder--cards-table-count">{isTwice ? (2) : (1)}</td>
   </tr>
 );
 

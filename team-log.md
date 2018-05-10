@@ -180,3 +180,38 @@
 
 - Suppression d'un deck
 - Fix des views dans le model de Deck
+
+## 09-05-2018
+
+### Jonathan
+
+- Fix des emojis et des warnings en console :sunglasses:
+- Fix de la pagination
+
+### Cecile
+
+- Tri du tableau de decks
+- Filtres pour les decks de la home page
+- Reset des filtres
+
+### Max
+
+- Fix de la navbar
+- Fix du chargement des decks et rework du tri du tableau de decks
+- Ajout de la recherche par nom dans le pool de cartes du builder
+
+## 10-05-2018
+
+### Jonathan
+
+- Mana curve dans la page d'un deck
+- Suppression des doubles de cartes et ajout d'un compteur pour chaque carte
+
+### Max
+
+- Mana curve dynamique dans le deck builder
+- Suppression des doubles de cartes et ajout d'un compteur pour chaque carte
+
+### Cecile
+
+- Petit fix du CSS

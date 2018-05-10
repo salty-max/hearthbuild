@@ -3,5 +3,6 @@ Thumbs.db
 /node_modules
 /public
 /theme
+/config/keys_dev.js
 credentials.md
 yarn-error.log

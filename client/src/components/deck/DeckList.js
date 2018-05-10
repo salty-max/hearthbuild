@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import removeDuplicates from '../../utils/remove-duplicates';
+
 import DeckCard from './DeckCard';
 
 const DeckList = ({ cards, hsClass }) => {
-  const neutralCards = cards.filter(card => card.class === 'Neutral');
-  const deckClassCards = cards.filter(card => card.class !== 'Neutral');
+  const uniqueCards = removeDuplicates(cards, 'name');
+
+  const neutralCards = uniqueCards.filter(card => card.class === 'Neutral');
+  const deckClassCards = uniqueCards.filter(card => card.class === hsClass);
 
   return (
     <div className="deck--list">
@@ -15,20 +19,16 @@ const DeckList = ({ cards, hsClass }) => {
             <p className="panel-heading">
               Neutrals
             </p>
-            {neutralCards.map(card => {
-              const isTwice = neutralCards.filter(card => card.cardId).length === 2;
-
-              return (
-                <DeckCard
-                  key={card._id}
-                  cost={card.cost}
-                  name={card.name}
-                  rarity={card.rarity}
-                  img={card.img}
-                  isTwice={isTwice}
-                />
-              );
-            })}
+            {neutralCards.map(card => (    
+              <DeckCard
+                key={card._id}
+                cost={card.cost}
+                name={card.name}
+                rarity={card.rarity}
+                img={card.img}
+                isTwice={cards.filter(c => c.name === card.name).length > 1}
+              />
+            ))}
           </div>
         </div>
         <div className="column is-6">
@@ -36,20 +36,16 @@ const DeckList = ({ cards, hsClass }) => {
             <p className="panel-heading">
               {hsClass}
             </p>
-            {deckClassCards.map(card => {
-              const isTwice = deckClassCards.filter(card => card.cardId).length === 2;
-
-              return (
-                <DeckCard
-                  key={card._id}
-                  cost={card.cost}
-                  name={card.name}
-                  rarity={card.rarity}
-                  img={card.img}
-                  isTwice={isTwice}
-                />
-              );
-            })}
+            {deckClassCards.map(card => (
+              <DeckCard
+                key={card._id}
+                cost={card.cost}
+                name={card.name}
+                rarity={card.rarity}
+                img={card.img}
+                isTwice={cards.filter(c => c.name === card.name).length > 1}
+              />
+            ))}
           </div>
         </div>
       </div>

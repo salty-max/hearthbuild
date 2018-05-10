@@ -5,6 +5,7 @@ import { Chart, Bars, Layer, Animate } from 'rumble-charts';
 
 
 import sortBy from '../../utils/sortBy';
+import removeDuplicates from '../../utils/remove-duplicates';
 
 import TextFieldGroup from '../common/TextFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
@@ -207,11 +208,7 @@ class DeckBuilder extends Component {
     
   }
 
-  removeDuplicates = (myArr, prop) => {
-    return myArr.filter((obj, pos, arr) => {
-      return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
-    });
-  }
+  
 
   render() {
     const { tabs, hoverCard, deckCards, errors } = this.state;
@@ -231,7 +228,7 @@ class DeckBuilder extends Component {
       chartData[0].data.push([i, deckCards.filter(card => card.cost === i).length]);
     }
 
-    const uniqueCards = this.removeDuplicates(deckCards, 'cardId');
+    const uniqueCards = removeDuplicates(deckCards, 'cardId');
 
     return (
       <main>

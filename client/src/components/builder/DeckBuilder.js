@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { Chart, Bars, Layer, Animate } from 'rumble-charts';
+
 
 import sortBy from '../../utils/sortBy';
 
@@ -216,6 +218,13 @@ class DeckBuilder extends Component {
       cardsToShow = cardsToShow.filter(card => card.name.toLowerCase().includes(this.state.poolname.toLowerCase()));
     }
 
+    // Chart
+    const chartData = [{ data:[] }];
+
+    for (let i = 0; i <= 10; i++) {
+      chartData[0].data.push([i, deckCards.filter(card => card.cost === i).length]);
+    }
+
     return (
       <main>
         <section className="section" id="deck-builder">
@@ -245,7 +254,7 @@ class DeckBuilder extends Component {
                 </div>
 
                 <div className="columns deck-builder--cards">
-                  <div className="column is-4 is-hidden-mobile deck-builder--cards-preview">
+                  <div className="column is-4 is-hidden-mobile deck-builder--cards-preview" onClick={() => console.log(chartData)}>
                     <img src={hoverCard} alt="" />
                   </div>
                   <div className="column is-8 deck-builder--cards-table">
@@ -317,7 +326,25 @@ class DeckBuilder extends Component {
                       )}
                     </div>
                     <div className="column is-4 deck-builder--curve">
-                      <div className="box"></div>
+                      <div className="box mana-curve">
+                        {deckCards.length >= 1 ? (
+                          <Chart width={400} height={400} series={chartData}>
+                            <Layer width="100%" height="100%" position="middle center">
+                              <Animate _ease="bounce" _ease="elastic">
+                                <Bars
+                                  colors={['#1EC2A7']}
+                                  barWidth="9%"
+                                  innerPadding="2%"
+                                />
+                              </Animate>
+                            </Layer>
+                          </Chart>
+                        ) : (
+                          <div className="no-curve">
+                            <p>Add cards to see the curve</p>
+                          </div> 
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div >

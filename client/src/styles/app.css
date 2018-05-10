@@ -7012,6 +7012,19 @@ label.panel-block {
   text-transform: uppercase;
   font-weight: 600; }
 
+.deck-builder .mana-curve {
+  display: flex;
+  align-items: center; }
+  .deck-builder .mana-curve svg {
+    width: 100%;
+    height: 100%; }
+
+.deck-builder .no-curve {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #b5b5b5;
+  text-align: center; }
+
 #pre-builder {
   text-align: center; }
   #pre-builder .radio:checked + label > .button {

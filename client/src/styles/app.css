@@ -6846,6 +6846,11 @@ label.panel-block {
   text-transform: uppercase;
   font-weight: 600; }
 
+.deck .mana-curve {
+  margin-top: 3em; }
+  .deck .mana-curve text {
+    font-weight: 600; }
+
 @media screen and (max-width: 1024px) {
   .deck--metas .tags .tag {
     margin-bottom: 1em; } }

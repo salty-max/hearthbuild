@@ -211,6 +211,14 @@
     text-transform: uppercase;
     font-weight: 600;
   }
+
+  .mana-curve {
+    margin-top: 3em;
+
+    text {
+      font-weight: 600;
+    }
+  }
 }
 
 @media screen and (max-width: 1024px) {

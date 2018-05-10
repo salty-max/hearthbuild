@@ -1,4 +1,6 @@
-module.exports = {
-  mongoURI: 'mongodb://hb_admin:F*94pwGm@ds255309.mlab.com:55309/hearthbuild',
-  secretOrKey: 'paschangerassiettepourfromage',
-};
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./keys_prod');
+}
+else {
+  module.exports = require('./keys_dev');
+}

@@ -44,13 +44,13 @@ class DeckBuilder extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      errors: nextProps.errors,
-      class: nextProps.class,
-      format: nextProps.format,
-    })
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({
+  //     errors: nextProps.errors,
+  //     class: nextProps.class,
+  //     format: nextProps.format,
+  //   })
+  // }
 
   componentDidMount() {
 
@@ -62,7 +62,9 @@ class DeckBuilder extends Component {
     cards = cards.sort(sortBy('cost'));
 
     this.setState({
-      
+      class: this.props.class,
+      format: this.props.format,
+      errors: this.props.errors,
       classCards: cards.filter(card => card.playerClass === this.props.class),
       neutralCards: cards.filter(card => card.playerClass === 'Neutral'),
     });

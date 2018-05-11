@@ -48,7 +48,7 @@ class Navbar extends Component {
               marginRight: '.5em'
             }}
           />
-          <span>{user.name}</span>
+          <Link onClick={this.collapseNav} to="/profile">{user.name}</Link>
         </div>
         <div className="navbar-item">
           <a className="button is-danger is-outlined" onClick={() => {

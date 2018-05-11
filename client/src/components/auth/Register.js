@@ -10,6 +10,7 @@ class Register extends Component {
     this.state = {
       name: '',
       email: '',
+      battletag: '',
       password: '',
       passwordConfirm: '',
       errors: {}
@@ -41,6 +42,7 @@ class Register extends Component {
     const {
       name,
       email,
+      battletag,
       password,
       passwordConfirm,
     } = this.state;
@@ -48,6 +50,7 @@ class Register extends Component {
     const newUser = {
       name,
       email,
+      battletag,
       password,
       passwordConfirm,
     };
@@ -59,6 +62,7 @@ class Register extends Component {
     const {
       name,
       email,
+      battletag,
       password,
       passwordConfirm,
       errors
@@ -86,6 +90,15 @@ class Register extends Component {
                   info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
                   icon="fas fa-envelope"
                   value={email}
+                  error={errors.email}
+                  onChange={this.onChange}
+                />
+                <TextFieldGroup
+                  name="battletag"
+                  label="Battletag"
+                  info="If you want other players to find you in game, fill in your B.NET battletag here"
+                  icon="fas fa-gamepad"
+                  value={battletag}
                   error={errors.email}
                   onChange={this.onChange}
                 />

@@ -20,6 +20,7 @@ import DeckSingle from './containers/deck/DeckSingle';
 import DeckBuilder from './containers/builder/DeckBuilder';
 import PreBuilder from './containers/builder/PreBuilder';
 import Guide from './components/guide/Guide';
+import Profile from './containers/profile/Profile';
 import Login from './containers/auth/Login';
 import Register from './containers/auth/Register';
 import Footer from './components/layout/Footer';
@@ -65,6 +66,7 @@ class App extends Component {
                   return <DeckSingle deckId={id} />
                 }} />
                 <PrivateRoute exact path="/builder" component={DeckBuilder} />
+                <PrivateRoute exact path="/profile" component={Profile} />
               </Switch>
             </div>
             <Footer />

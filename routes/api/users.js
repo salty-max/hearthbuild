@@ -45,6 +45,7 @@ router.post('/register', (req, res) => {
         name: req.body.name,
         email: req.body.email,
         avatar,
+        battletag: req.body.battletag,
         password: req.body.password,
       });
 
@@ -91,6 +92,7 @@ router.post('/login', (req, res) => {
             const payload = {
               id: user.id,
               name: user.name,
+              battletag: user.battletag,
               avatar: user.avatar,
             }; // Create jwt_payload
 
@@ -121,6 +123,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
     name: req.user.name,
     email: req.user.email,
     avatar: req.user.avatar,
+    battletag: req.user.battletag
   });
 });
 

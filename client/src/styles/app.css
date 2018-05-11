@@ -7139,9 +7139,7 @@ svg {
   width: 100%;
   padding: 3rem;
   display: flex;
-  align-items: center;
-  background-size: cover;
-  background-position: center center; }
+  align-items: center; }
   .banner .title {
     font-size: 3em;
     font-weight: 600;
@@ -7151,15 +7149,12 @@ svg {
     font-weight: 600;
     font-size: 2em;
     color: whitesmoke; }
-
-.home-banner {
-  background: url("../assets/img/banner-home.jpg"); }
-
-.guide-banner {
-  background: url("../assets/img/banner-guide.jpg"); }
-
-.builder-banner {
-  background: url("../assets/img/banner-builder.jpg"); }
+  .banner.home-banner {
+    background: url("../assets/img/banner-home.jpg") center center/cover no-repeat; }
+  .banner.guide-banner {
+    background: url("../assets/img/banner-guide.jpg") center center/cover no-repeat; }
+  .banner.builder-banner {
+    background: url("../assets/img/banner-builder.jpg") center center/cover no-repeat; }
 
 .classes {
   width: 80%;

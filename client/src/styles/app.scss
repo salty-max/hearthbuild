@@ -71,8 +71,6 @@ svg {
   padding: 3rem;
   display: flex;
   align-items: center;
-  background-size: cover;
-  background-position: center center;
 
   .title {
     font-size: 3em;
@@ -86,18 +84,18 @@ svg {
     font-size: 2em;
     color: $light;
   }
-}
+  
+  &.home-banner {
+    background: url('../assets/img/banner-home.jpg') center center / cover no-repeat;
+  }
 
-.home-banner {
-  background: url('../assets/img/banner-home.jpg');
-}
+  &.guide-banner {
+    background: url('../assets/img/banner-guide.jpg') center center / cover no-repeat;
+  }
 
-.guide-banner {
-  background: url('../assets/img/banner-guide.jpg');
-}
-
-.builder-banner {
-  background: url('../assets/img/banner-builder.jpg');
+  &.builder-banner {
+    background: url('../assets/img/banner-builder.jpg') center center / cover no-repeat;
+  }
 }
 
 .classes {

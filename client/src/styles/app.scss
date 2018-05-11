@@ -9,6 +9,7 @@
 @import '_deckSingle';
 @import '_deckBuilder';
 @import '_preBuilder';
+@import '_guide';
 @import '_footer';
 
 html, body, #root {
@@ -69,7 +70,6 @@ svg {
   padding: 3rem;
   display: flex;
   align-items: center;
-  background: url('../assets/img/banner-home.jpg') no-repeat;
   background-size: cover;
   background-position: center center;
 
@@ -85,6 +85,18 @@ svg {
     font-size: 2em;
     color: $light;
   }
+}
+
+.home-banner {
+  background: url('../assets/img/banner-home.jpg');
+}
+
+.guide-banner {
+  background: url('../assets/img/banner-guide.jpg');
+}
+
+.builder-banner {
+  background: url('../assets/img/banner-builder.jpg');
 }
 
 .classes {
@@ -224,6 +236,10 @@ svg {
 }
 
 @media screen and (max-width: 1024px) {
+
+  main {
+    padding: 0 2em;
+  }
   .container {
     margin: 0;
   }

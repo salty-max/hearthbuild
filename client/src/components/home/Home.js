@@ -92,64 +92,67 @@ class Home extends Component {
     }
     
     return (
-      <main>
+      <div>
         <Banner
-          title="Decks list"
-          subtitle="Decks from the community"
+        title="Decks list"
+        subtitle="Decks from the community"
+        bannerClass="home-banner"
         />
-        <section className="section" id="home">
-          <div className="container">
-            <div className="columns">
-              <div className="column is-9">
-                <div className="deck-list">
-                  <DecksFilter />
-                  <table className="table deck-list--table is-fullwidth is-striped is-hoverable">
-                    <DeckListHeader
-                      handleSortClick={this.handleSortClick} 
-                    />
-                    {this.props.decksLoading ? (
-                      <tbody>
-                        <tr>
-                          <td colSpan="7">
-                            <Spinner />
-                          </td>
-                        </tr>
-                      </tbody>
-                    ) : (
-                      <tbody>
-                        {paginatedDecks.map(deck => (
-                          <DeckItem key={deck._id}{...deck} />
+        <main>
+          <section className="section" id="home">
+            <div className="container">
+              <div className="columns is-tablet">
+                <div className="column is-three-quarter-desktop">
+                  <div className="deck-list">
+                    <DecksFilter />
+                    <table className="table deck-list--table is-fullwidth is-striped is-hoverable">
+                      <DeckListHeader
+                        handleSortClick={this.handleSortClick} 
+                      />
+                      {this.props.decksLoading ? (
+                        <tbody>
+                          <tr>
+                            <td colSpan="7">
+                              <Spinner />
+                            </td>
+                          </tr>
+                        </tbody>
+                      ) : (
+                        <tbody>
+                          {paginatedDecks.map(deck => (
+                            <DeckItem key={deck._id}{...deck} />
+                          ))}
+                        </tbody>
+                      )}
+                    </table>
+                    <nav className="pagination is-centered">
+                      <ul className="pagination-list">
+                        {pageNumbers.map(n => (
+                          <li key={n}>
+                            <a
+                              className={classnames('pagination-link', {
+                                'is-current': n === this.state.currentPage
+                              })}
+                              id={n}
+                              onClick={this.handlePageClick}
+                            >
+                              {n}
+                            </a>
+                          </li>
                         ))}
-                      </tbody>
-                    )}
-                  </table>
-                  <nav className="pagination is-centered">
-                    <ul className="pagination-list">
-                      {pageNumbers.map(n => (
-                        <li key={n}>
-                          <a
-                            className={classnames('pagination-link', {
-                              'is-current': n === this.state.currentPage
-                            })}
-                            id={n}
-                            onClick={this.handlePageClick}
-                          >
-                            {n}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
+                      </ul>
+                    </nav>
+                  </div>
+                  <AdBanner />
                 </div>
-                <AdBanner />
-              </div>
-              <div className="column is-3">
-                <Sidebar decks={this.props.decks} loading={this.props.decksLoading} />
+                <div className="column is-one-quarter-desktop">
+                  <Sidebar decks={this.props.decks} loading={this.props.decksLoading} />
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
+      </div>
     );
   }
 }

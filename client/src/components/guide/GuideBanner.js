@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Banner = ({ title, subtitle, bannerClass }) => (
-  <div className={`banner ${bannerClass}`}>
+const GuideBanner = ({ title, subtitle }) => (
+  <div className="guide-banner">
     <div className="container">
       <div className="content">
         <h1 className="title">{title}</h1>
@@ -12,9 +12,9 @@ const Banner = ({ title, subtitle, bannerClass }) => (
   </div>
 );
 
-Banner.propTypes = {
+GuideBanner.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
 };
 
-export default Banner;
+export default GuideBanner;

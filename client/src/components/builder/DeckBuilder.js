@@ -12,6 +12,7 @@ import SelectListGroup from '../common/SelectListGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import Spinner from '../common/Spinner';
 
+import Banner from '../common/Banner';
 import DeckBuilderMetas from './DeckBuilderMetas';
 import PoolCard from './PoolCard';
 import DeckCard from './DeckCard';
@@ -233,155 +234,158 @@ class DeckBuilder extends Component {
     const uniqueCards = removeDuplicates(deckCards, 'cardId');
 
     return (
-      <main>
-        <section className="section" id="deck-builder">
-          <div className="container">
-            <div className="deck-builder">
-              {/* FORM */}
-              <form onSubmit={this.onSubmit}>
-                <div className="deck-builder--form">
-                  <div className="fields">
-                    <TextFieldGroup
-                      name="title"
-                      label="Deck title"
-                      value={this.state.title}
-                      error={errors.title}
-                      onChange={this.onChange}
-                      icon="fas fa-pencil-alt"
-                    />
-                    <SelectListGroup
-                      name="type"
-                      label="Type"
-                      value={this.state.type}
-                      error={errors.type}
-                      onChange={this.onChange}
-                      options={deckTypes}
-                    />
-                  </div>
-                </div>
-
-                <div className="columns deck-builder--cards">
-                  <div className="column is-4 is-hidden-mobile deck-builder--cards-preview" onClick={() => console.log(uniqueCards)}>
-                    <img src={hoverCard} alt="" />
-                  </div>
-                  <div className="column is-8 deck-builder--cards-table">
-                    <div className="pool-header">
-                      <div className="tabs">
-                        <ul>
-                          <li className={classnames('', {
-                            'is-active': tabs.classTab
-                          })} onClick={this.handleTab('classTab')}>
-                            <a>{this.props.class}</a>
-                          </li>
-
-                          <li className={classnames('', {
-                            'is-active': tabs.neutralTab
-                          })} onClick={this.handleTab('neutralTab')}>
-                            <a>Neutrals</a>
-                          </li>
-                        </ul>
-                      </div>
-                    
+      <div>
+        <Banner title="Deck builder" subtitle="One deck to rule them all" bannerClass="builder-banner"/>
+        <main>
+          <section className="section" id="deck-builder">
+            <div className="container">
+              <div className="deck-builder">
+                {/* FORM */}
+                <form onSubmit={this.onSubmit}>
+                  <div className="deck-builder--form">
+                    <div className="fields">
                       <TextFieldGroup
-                        name="poolname"
-                        value={this.state.poolname}
-                        placeholder="Search by name"
+                        name="title"
+                        label="Deck title"
+                        value={this.state.title}
+                        error={errors.title}
                         onChange={this.onChange}
                         icon="fas fa-pencil-alt"
                       />
+                      <SelectListGroup
+                        name="type"
+                        label="Type"
+                        value={this.state.type}
+                        error={errors.type}
+                        onChange={this.onChange}
+                        options={deckTypes}
+                      />
                     </div>
-                    {this.props.cardsLoading ? (
-                      <Spinner />
-                    ) : (
-                      <table className="table">
-                        <tbody>
-                          {cardsToShow.map(card => (
-                            <PoolCard
-                              key={card.cardId}
-                              onCardHover={this.onCardHover}
-                              card={card}
-                              onCardClick={this.addCard}
-                            />
-                          ))}
-                        </tbody>
-                      </table>
-                    )}
                   </div>
-                </div>
 
-                <div className="deck-builder--list">
-                  <DeckBuilderMetas count={this.state.cardCount} cost={this.state.cost} />
-                  <div className="columns">
-                    <div className="column is-8 deck-builder--list-table">
-                      {deckCards.length === 0 ? (
-                        <div className="box deck-builder--list-empty">
-                          <img src={zerowing} alt="Zero Wing Meme"/>
-                          <h2>All your cards are belong to us</h2>
-                        </div>  
+                  <div className="columns deck-builder--cards">
+                    <div className="column is-4 is-hidden-mobile deck-builder--cards-preview" onClick={() => console.log(uniqueCards)}>
+                      <img src={hoverCard} alt="" />
+                    </div>
+                    <div className="column is-8 deck-builder--cards-table">
+                      <div className="pool-header">
+                        <div className="tabs">
+                          <ul>
+                            <li className={classnames('', {
+                              'is-active': tabs.classTab
+                            })} onClick={this.handleTab('classTab')}>
+                              <a>{this.props.class}</a>
+                            </li>
+
+                            <li className={classnames('', {
+                              'is-active': tabs.neutralTab
+                            })} onClick={this.handleTab('neutralTab')}>
+                              <a>Neutrals</a>
+                            </li>
+                          </ul>
+                        </div>
+                      
+                        <TextFieldGroup
+                          name="poolname"
+                          value={this.state.poolname}
+                          placeholder="Search by name"
+                          onChange={this.onChange}
+                          icon="fas fa-pencil-alt"
+                        />
+                      </div>
+                      {this.props.cardsLoading ? (
+                        <Spinner />
                       ) : (
                         <table className="table">
                           <tbody>
-                            {
-                              uniqueCards.map(card => (
-                                <DeckCard
-                                  key={card.index}
-                                  card={card}
-                                  onDeleteClick={this.removeCard}
-                                  isTwice={deckCards.filter(c => c.cardId === card.cardId).length > 1}
-                                />
-                              ))
-                            }
+                            {cardsToShow.map(card => (
+                              <PoolCard
+                                key={card.cardId}
+                                onCardHover={this.onCardHover}
+                                card={card}
+                                onCardClick={this.addCard}
+                              />
+                            ))}
                           </tbody>
                         </table>
                       )}
                     </div>
-                    <div className="column is-4 deck-builder--curve">
-                      <div className="box mana-curve">
-                        {deckCards.length >= 1 ? (
-                          <Chart width={400} height={400} series={chartData}>
-                            <Layer width="100%" height="100%" position="middle center">
-                              <Animate _ease="bounce" _ease="elastic">
-                                <Bars
-                                  colors={['#1EC2A7']}
-                                  barWidth="9%"
-                                  innerPadding="2%"
-                                />
-                              </Animate>
-                            </Layer>
-                          </Chart>
+                  </div>
+
+                  <div className="deck-builder--list">
+                    <DeckBuilderMetas count={this.state.cardCount} cost={this.state.cost} />
+                    <div className="columns">
+                      <div className="column is-8 deck-builder--list-table">
+                        {deckCards.length === 0 ? (
+                          <div className="box deck-builder--list-empty">
+                            <img src={zerowing} alt="Zero Wing Meme"/>
+                            <h2>All your cards are belong to us</h2>
+                          </div>  
                         ) : (
-                          <div className="no-curve">
-                            <p>Add cards to see the curve</p>
-                          </div> 
+                          <table className="table">
+                            <tbody>
+                              {
+                                uniqueCards.map(card => (
+                                  <DeckCard
+                                    key={card.index}
+                                    card={card}
+                                    onDeleteClick={this.removeCard}
+                                    isTwice={deckCards.filter(c => c.cardId === card.cardId).length > 1}
+                                  />
+                                ))
+                              }
+                            </tbody>
+                          </table>
                         )}
                       </div>
+                      <div className="column is-4 deck-builder--curve">
+                        <div className="box mana-curve">
+                          {deckCards.length >= 1 ? (
+                            <Chart width={400} height={400} series={chartData}>
+                              <Layer width="100%" height="100%" position="middle center">
+                                <Animate _ease="bounce" _ease="elastic">
+                                  <Bars
+                                    colors={['#1EC2A7']}
+                                    barWidth="9%"
+                                    innerPadding="2%"
+                                  />
+                                </Animate>
+                              </Layer>
+                            </Chart>
+                          ) : (
+                            <div className="no-curve">
+                              <p>Add cards to see the curve</p>
+                            </div> 
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div >
+                  </div >
 
-                <div className="deck-builder--desc">
-                  <h3 className="title">Deck guide</h3>
-                  <TextAreaFieldGroup
-                    name="description"
-                    value={this.state.description}
-                    error={errors.description}
-                    onChange={this.onChange}
-                    placeholder="Explain how do you play this deck..."
-                  />
-                </div>
-                
-                {errors.cardCount && (
-                  <div className="notification is-danger">
-                    {errors.cardCount}
+                  <div className="deck-builder--desc">
+                    <h3 className="title">Deck guide</h3>
+                    <TextAreaFieldGroup
+                      name="description"
+                      value={this.state.description}
+                      error={errors.description}
+                      onChange={this.onChange}
+                      placeholder="Explain how do you play this deck..."
+                    />
                   </div>
-                )}
+                  
+                  {errors.cardCount && (
+                    <div className="notification is-danger">
+                      {errors.cardCount}
+                    </div>
+                  )}
 
-                <input type="submit" className="button is-primary is-medium deck-builder--submit" value="Submit" />
-              </form>
+                  <input type="submit" className="button is-primary is-medium deck-builder--submit" value="Submit" />
+                </form>
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
+      </div> 
     )
   }
 }

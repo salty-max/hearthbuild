@@ -19,6 +19,7 @@ import Home from './containers/home/Home';
 import DeckSingle from './containers/deck/DeckSingle';
 import DeckBuilder from './containers/builder/DeckBuilder';
 import PreBuilder from './containers/builder/PreBuilder';
+import Guide from './components/guide/Guide';
 import Login from './containers/auth/Login';
 import Register from './containers/auth/Register';
 import Footer from './components/layout/Footer';
@@ -53,10 +54,11 @@ class App extends Component {
           <div id="app">
             <Navbar />
             <Route exact path="/" component={Home} />
-            <div className="container app-content">
+            <div className="app-content">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/pre-builder" component={PreBuilder} />
+              <Route exact path="/beginners-guide" component={Guide} />
               <Switch>
                 <Route exact path="/decks/:id" render={({ match }) => {
                   const { id } = match.params;

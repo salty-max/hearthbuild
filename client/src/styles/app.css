@@ -6656,7 +6656,7 @@ label.panel-block {
   background-color: #ffdd57; }
   .sidebar .guide .sidebar-item--title {
     color: #363636; }
-  .sidebar .guide button {
+  .sidebar .guide .button {
     width: 100%; }
 
 .deck-list--form {
@@ -6854,25 +6854,6 @@ label.panel-block {
 @media screen and (max-width: 1024px) {
   .deck--metas .tags .tag {
     margin-bottom: 1em; } }
-
-.builder-banner {
-  height: 20em;
-  width: 100%;
-  padding: 3rem;
-  display: flex;
-  align-items: center;
-  background: url("../assets/img/banner-builder.jpg") no-repeat;
-  background-size: cover;
-  background-position: center center; }
-  .builder-banner .title {
-    font-size: 3em;
-    font-weight: 600;
-    color: #00d1b2; }
-  .builder-banner .subtitle {
-    padding-top: 1rem;
-    font-weight: 600;
-    font-size: 2em;
-    color: whitesmoke; }
 
 .deck-builder--form {
   background-color: #494949;
@@ -7081,6 +7062,20 @@ label.panel-block {
     text-transform: uppercase;
     font-weight: 600; }
 
+#guide {
+  line-height: 1.6em;
+  font-family: "Roboto Slab", serif; }
+  #guide h2, #guide h3 {
+    font-family: "Montserrat", sans-serif; }
+  #guide h2, #guide strong {
+    color: #00d1b2; }
+  #guide strong {
+    font-size: 1.2em; }
+  #guide h3 {
+    font-size: 1.4em; }
+  #guide li:not(:last-child) {
+    margin-bottom: 1em; }
+
 .footer {
   background: #363636;
   color: #dbdbdb; }
@@ -7135,7 +7130,6 @@ svg {
   padding: 3rem;
   display: flex;
   align-items: center;
-  background: url("../assets/img/banner-home.jpg") no-repeat;
   background-size: cover;
   background-position: center center; }
   .banner .title {
@@ -7147,6 +7141,15 @@ svg {
     font-weight: 600;
     font-size: 2em;
     color: whitesmoke; }
+
+.home-banner {
+  background: url("../assets/img/banner-home.jpg"); }
+
+.guide-banner {
+  background: url("../assets/img/banner-guide.jpg"); }
+
+.builder-banner {
+  background: url("../assets/img/banner-builder.jpg"); }
 
 .classes {
   width: 80%;
@@ -7250,5 +7253,7 @@ svg {
   vertical-align: middle; }
 
 @media screen and (max-width: 1024px) {
+  main {
+    padding: 0 2em; }
   .container {
     margin: 0; } }

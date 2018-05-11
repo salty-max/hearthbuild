@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DecksModule from './DecksModule';
-// import Spinner from '../common/Spinner';
+import GuideModule from './GuideModule';
 import sortBy from '../../utils/sortBy';
 
 class Sidebar extends React.Component {
@@ -24,6 +24,7 @@ class Sidebar extends React.Component {
       <aside className="sidebar">
         <DecksModule title="Top rated decks" decks={topRatedDecks} loading={this.props.loading} />
         <DecksModule title="Latest decks" decks={latestDecks} loading={this.props.loading} />
+        <GuideModule />
       </aside>
     );
   }

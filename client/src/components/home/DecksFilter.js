@@ -91,7 +91,7 @@ class DecksFilter extends React.Component {
             />
             <SelectListGroup
               name="type"
-              label="By format"
+              label="By type"
               options={this.props.types}
               onChange={this.onChange}
               value={this.state.type}

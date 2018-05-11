@@ -94,6 +94,7 @@ router.post('/login', (req, res) => {
               name: user.name,
               battletag: user.battletag,
               avatar: user.avatar,
+              date: user.date
             }; // Create jwt_payload
 
             // Sign token
@@ -123,7 +124,8 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
     name: req.user.name,
     email: req.user.email,
     avatar: req.user.avatar,
-    battletag: req.user.battletag
+    battletag: req.user.battletag,
+    date: req.user.date
   });
 });
 

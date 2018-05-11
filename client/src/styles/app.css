@@ -7062,6 +7062,16 @@ label.panel-block {
     text-transform: uppercase;
     font-weight: 600; }
 
+#profile .deck--title {
+  display: flex;
+  justify-content: space-between; }
+
+#profile .deck--metas {
+  display: flex;
+  justify-content: flex-start; }
+  #profile .deck--metas .tags {
+    margin-right: 1em; }
+
 #guide {
   line-height: 1.6em;
   font-family: "Roboto Slab", serif; }

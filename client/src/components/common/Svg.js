@@ -13,6 +13,7 @@ import dust from '../../assets/img/misc/misc-dust.svg';
 import mana from '../../assets/img/misc/misc-mana.svg';
 import standard from '../../assets/img/misc/misc-standard.svg';
 import wild from '../../assets/img/misc/misc-wild.svg';
+import battlenet from '../../assets/img/misc/misc-battlenet.svg';
 
 const svgs = {
   druid,
@@ -27,7 +28,8 @@ const svgs = {
   dust,
   mana,
   standard,
-  wild
+  wild,
+  battlenet
 }
 
 const Svg = ({ type, value }) => (

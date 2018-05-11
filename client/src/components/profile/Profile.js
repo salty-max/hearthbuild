@@ -15,17 +15,19 @@ class Profile extends Component {
             <div className="container">
               <div className="profile-header">
                 <img className="profile--avatar" src={user.avatar} alt={user.name} />
-                <h1 className="profile--title" className="title">{user.name}</h1>
-                <p className="profile--battlenet">
-                  <Svg type="misc" value="battlenet" />
-                  {user.battletag}
-                </p>
-                <p className="profile--date">Registered <Moment fromNow>{user.date}</Moment></p>
+                <div>
+                  <h1 className="title profile--title">{user.name}</h1>
+                  <p className="profile--battlenet">
+                    <Svg type="misc" value="battlenet" />
+                    {user.battletag ? user.battletag : 'N/A'}
+                  </p>
+                  <p className="profile--date"><span>Registered <Moment fromNow>{user.date}</Moment></span></p>
+                </div>
               </div>
 
               <div className="profile--decks">
                 {ownDecks.map(ownDeck => (
-                  <ProfileDeck deck={ownDeck} onDeleteClick={this.props.actions.deleteDeck} />
+                  <ProfileDeck key={ownDeck._id} deck={ownDeck} onDeleteClick={this.props.actions.deleteDeck} />
                 ))}
               </div>
             </div>

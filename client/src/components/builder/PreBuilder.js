@@ -16,7 +16,6 @@ class PreBuilder extends Component {
 
   onChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target);
     this.setState({
       [name]: value
     });

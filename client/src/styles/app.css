@@ -6638,16 +6638,17 @@ label.panel-block {
     font-weight: 600;
     text-align: center; }
   .sidebar-item--list-item {
-    padding: 1rem;
+    display: flex;
+    width: 100%;
     border: 1px solid rgba(245, 245, 245, 0.3);
     border-bottom: none;
     font-weight: 600; }
     .sidebar-item--list-item a {
+      width: 100%;
+      padding: 1rem;
       color: whitesmoke; }
-    .sidebar-item--list-item:hover {
-      background: #00d1b2;
-      color: #363636; }
-      .sidebar-item--list-item:hover a {
+      .sidebar-item--list-item a:hover {
+        background: #00d1b2;
         color: #363636; }
     .sidebar-item--list-item:last-child {
       border-bottom: 1px solid rgba(245, 245, 245, 0.3); }
@@ -6665,6 +6666,9 @@ label.panel-block {
   border-radius: .375rem; }
 
 .deck-list .table {
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
   margin-top: 2rem;
   border-radius: .375em;
   overflow: hidden; }
@@ -6677,6 +6681,17 @@ label.panel-block {
       color: #00d1b2;
       padding: 1rem;
       cursor: pointer; }
+      .deck-list .table thead th:nth-child(1), .deck-list .table thead th:nth-last-child(-n + 3) {
+        width: 5%; }
+      .deck-list .table thead th:nth-child(2) {
+        width: 42.5%;
+        text-align: left; }
+      .deck-list .table thead th:nth-child(3) {
+        width: 17.5%; }
+      .deck-list .table thead th:nth-child(4) {
+        width: 12.5%; }
+      .deck-list .table thead th:nth-child(5) {
+        width: 7.5%; }
   .deck-list .table tbody {
     font-family: "Roboto Slab", serif; }
     .deck-list .table tbody .deck-list--deck-name {
@@ -6688,8 +6703,12 @@ label.panel-block {
         min-width: 2em;
         min-height: 2em; }
     .deck-list .table tbody tr td {
+      white-space: nowrap;
+      overflow: hidden;
       text-align: center;
       padding: 1rem; }
+      .deck-list .table tbody tr td:nth-child(2) {
+        text-align: left; }
 
 .home-info {
   padding: 3em;
@@ -6881,7 +6900,7 @@ label.panel-block {
   .deck-builder--cards .tabs li a, .deck-builder--list .tabs li a {
     border-radius: .375em .375em 0 0;
     border: none;
-    padding: .75em 1em; }
+    padding: 1em; }
     .deck-builder--cards .tabs li a:hover, .deck-builder--list .tabs li a:hover {
       background: rgba(73, 73, 73, 0.7);
       color: whitesmoke;
@@ -7062,15 +7081,36 @@ label.panel-block {
     text-transform: uppercase;
     font-weight: 600; }
 
-#profile .deck--title {
+#profile .profile-header {
   display: flex;
-  justify-content: space-between; }
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 3em; }
+  #profile .profile-header img {
+    width: auto;
+    height: 10em;
+    margin-right: 1.5em; }
+  #profile .profile-header p {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: .5em;
+    border-top: 1px solid #dbdbdb; }
+  #profile .profile-header svg {
+    margin-right: 1em;
+    width: 2em;
+    height: 2em; }
 
-#profile .deck--metas {
-  display: flex;
-  justify-content: flex-start; }
-  #profile .deck--metas .tags {
-    margin-right: 1em; }
+#profile .profile--deck {
+  margin-bottom: 1.5em; }
+  #profile .profile--deck .deck--title {
+    display: flex;
+    justify-content: space-between; }
+  #profile .profile--deck .deck--metas {
+    display: flex;
+    justify-content: flex-start; }
+    #profile .profile--deck .deck--metas .tags {
+      margin-right: 1em; }
 
 #guide {
   line-height: 1.6em;
@@ -7207,7 +7247,8 @@ svg {
 
 .mana-curve {
   display: flex;
-  align-items: center; }
+  align-items: center;
+  justify-content: center; }
   .mana-curve svg {
     width: 100%;
     height: 100%; }

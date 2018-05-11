@@ -80,7 +80,7 @@ const DeckMeta = ({ meta, author }) => (
             <Svg type="misc" value="standard" />
           </span>
           <span className="tag is-white">
-            {meta.format}
+            {changeCase.upperCaseFirst(meta.format)}
           </span>
         </span>
       </div>

@@ -6,7 +6,9 @@
 
 .deck-list {
   .table {
-
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
     margin-top: 2rem;
     border-radius: .375em;
     overflow: hidden;
@@ -23,6 +25,28 @@
         color: $primary;
         padding: 1rem;
         cursor: pointer;
+
+        &:nth-child(1),
+        &:nth-last-child(-n + 3) {
+          width: 5%;
+        }
+
+        &:nth-child(2) {
+          width: 42.5%;
+          text-align: left;
+        }
+
+        &:nth-child(3) {
+          width: 17.5%;
+        }
+
+        &:nth-child(4) {
+          width: 12.5%;
+        }
+        
+        &:nth-child(5) {
+          width: 7.5%;
+        }
       }
     }
 
@@ -42,10 +66,15 @@
       }
 
       tr {
-
         td {
+          white-space: nowrap;
+          overflow: hidden;
           text-align: center;
           padding: 1rem;
+
+          &:nth-child(2) {
+            text-align: left;
+          }
         }
       }
     }

@@ -9,10 +9,13 @@ const DeckItem = (props) => (
     <td>
       <Svg className="class-icon" type="class" value={props.class.toLowerCase()} />
     </td>
-    <td style={{ textAlign: 'left' }}>
-      <div className="deck-list--deck-name">
-        <Link to={`/decks/${props._id}`}>{props.title}</Link>
-      </div>
+    <td>
+      <Link
+        className="deck-list--deck-name"
+        to={`/decks/${props._id}`}
+      >
+        {props.title.length > 50 ? `${props.title.slice(0, 50)}...` : props.title}
+      </Link>
     </td>
     <td className="deck-list--deck-author" >{props.author.name}</td>
     <td className="deck-list--deck-updated">

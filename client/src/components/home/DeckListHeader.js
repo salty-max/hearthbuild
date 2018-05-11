@@ -9,7 +9,8 @@ const DeckListHeader = ({ handleSortClick }) => {
     <thead>
       <tr>
         <th></th>
-        <th onClick={handleSortClick("title")} style={{ textAlign: 'left' }}>
+
+        <th onClick={handleSortClick("title")}>
           Name
         </th>
 
@@ -32,6 +33,7 @@ const DeckListHeader = ({ handleSortClick }) => {
         <th onClick={handleSortClick("-views")}>
           <i className="fas fa-eye"></i>
         </th>
+
         <th onClick={handleSortClick("-comments")}>
           <i className="fas fa-comments"></i>
         </th>

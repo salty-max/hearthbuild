@@ -26,7 +26,7 @@ const deckClasses = {
 }
 
 const ProfileDeck = ({ deck, onDeleteClick }) => (
-  <div>
+  <div className="profile--deck">
     <div
       className="deck--title"
       style={{
@@ -37,7 +37,7 @@ const ProfileDeck = ({ deck, onDeleteClick }) => (
         color: '#1ec2a7'
       }}
     >
-      {`${deck.title.slice(0, 25)}...`}
+      {deck.title.length > 25 ? `${deck.title.slice(0, 25)}...` : deck.title}
       <button onClick={() => {onDeleteClick(deck._id)}} className="button is-danger">
         <span className="icon">
           <i className="fas fa-trash-alt" />
@@ -74,7 +74,7 @@ const ProfileDeck = ({ deck, onDeleteClick }) => (
             <Svg type="misc" value="standard" />
           </span>
           <span className="tag is-white">
-            {deck.format}
+            {changeCase.upperCaseFirst(deck.format)}
           </span>
         </span>
       </div>

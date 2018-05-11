@@ -1,14 +1,46 @@
 #profile {
-  .deck--title {
+  .profile-header {
     display: flex;
-    justify-content: space-between;
-  }
-  .deck--metas {
-    display: flex;
+    align-items: flex-start;
     justify-content: flex-start;
+    margin-bottom: 3em;
 
-    .tags {
+    img {
+      width: auto;
+      height: 10em;
+      margin-right: 1.5em;
+    }
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: .5em;
+      border-top: 1px solid $grey-lighter
+    }
+
+    svg {
       margin-right: 1em;
+      width: 2em;
+      height: 2em;
+    }
+  }
+
+  .profile--deck {
+    margin-bottom: 1.5em;
+
+    .deck--title {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .deck--metas {
+      display: flex;
+      justify-content: flex-start;
+
+      .tags {
+        margin-right: 1em;
+      }
     }
   }
 }

@@ -112,7 +112,7 @@ class Home extends Component {
                       {this.props.decksLoading ? (
                         <tbody>
                           <tr>
-                            <td colSpan="7">
+                            <td colSpan="8">
                               <Spinner />
                             </td>
                           </tr>

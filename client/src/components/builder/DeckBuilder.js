@@ -343,7 +343,7 @@ class DeckBuilder extends Component {
                           {deckCards.length >= 1 ? (
                             <Chart width={400} height={400} series={chartData}>
                               <Layer width="100%" height="100%" position="middle center">
-                                <Animate _ease="bounce" _ease="elastic">
+                                <Animate _ease="bounce elastic">
                                   <Bars
                                     colors={['#1EC2A7']}
                                     barWidth="9%"

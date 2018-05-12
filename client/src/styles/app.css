@@ -6831,11 +6831,6 @@ label.panel-block {
       .deck--comments-header-login .subtitle {
         margin-bottom: 0;
         padding-right: 1em; }
-  .deck--comments-empty {
-    font-size: 1.25em;
-    font-weight: 600;
-    color: #b5b5b5;
-    text-align: center; }
   .deck--comments-form {
     margin-top: 2rem;
     padding-top: 1.5em;
@@ -7101,6 +7096,12 @@ label.panel-block {
     width: 2em;
     height: 2em; }
 
+#profile .profile--avatar {
+  border-radius: .375em; }
+
+#profile .profile--title {
+  color: #00d1b2; }
+
 #profile .profile--deck {
   margin-bottom: 1.5em; }
   #profile .profile--deck .deck--title {
@@ -7253,10 +7254,10 @@ svg {
     width: 100%;
     height: 100%; }
 
-.no-curve {
+.empty {
   font-size: 1.25em;
   font-weight: 600;
-  color: #b5b5b5;
+  color: #dbdbdb;
   text-align: center; }
 
 .invalid-feedback {

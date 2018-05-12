@@ -101,7 +101,7 @@ class Home extends Component {
         <main>
           <section className="section" id="home">
             <div className="container">
-              <div className="columns is-tablet">
+              <div className="columns is-desktop">
                 <div className="column is-three-quarter-desktop">
                   <div className="deck-list">
                     <DecksFilter />

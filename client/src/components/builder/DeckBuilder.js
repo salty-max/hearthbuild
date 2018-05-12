@@ -353,7 +353,7 @@ class DeckBuilder extends Component {
                               </Layer>
                             </Chart>
                           ) : (
-                            <div className="no-curve">
+                            <div className="empty">
                               <p>Add cards to see the curve</p>
                             </div> 
                           )}

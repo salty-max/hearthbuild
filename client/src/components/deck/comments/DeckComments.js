@@ -120,7 +120,7 @@ class DeckComments extends Component {
           currentComments.map(comment => (
             <DeckComment key={comment._id} comment={comment} />
           ))
-          : <div className="deck--comments-empty">There are no comments for this deck yet</div>
+          : <div className="deck--comments empty">There are no comments for this deck yet</div>
         }
         {auth.isAuthenticated ? authContent : ''}
       </div>

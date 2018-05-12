@@ -26,6 +26,14 @@
     }
   }
 
+  .profile--avatar {
+    border-radius: .375em;
+  }
+
+  .profile--title {
+    color: $primary;
+  }
+
   .profile--deck {
     margin-bottom: 1.5em;
 

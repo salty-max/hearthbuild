@@ -2,12 +2,37 @@ import React, { Component } from 'react';
 import Moment from 'react-moment';
 
 import Svg from '../common/Svg';
+import Spinner from '../common/Spinner';
 import ProfileDeck from './ProfileDeck';
 
 class Profile extends Component {
+
   render() {
-    const { user, decks } = this.props;
-    const ownDecks = decks.filter(deck => deck.author._id === user.id);
+    const { user, decks, decksLoading } = this.props;
+    let decksView = null;
+    
+    if (decksLoading) {
+      decksView = (<Spinner />)
+    }
+    else {
+      const ownDecks = decks.filter(deck => deck.author._id === user.id);
+
+      if(ownDecks.length === 0) {
+        decksView = (
+          <div className="empty">
+            <h2>You have not created any deck yet</h2>
+          </div>  
+        )
+      }
+      else {
+        decksView = (
+          ownDecks.map(ownDeck => (
+            <ProfileDeck key={ownDeck._id} deck={ownDeck} onDeleteClick={this.props.actions.deleteDeck} />
+          ))
+        )
+      }
+    }
+
     return (
       <div>
         <main>
@@ -26,9 +51,7 @@ class Profile extends Component {
               </div>
 
               <div className="profile--decks">
-                {ownDecks.map(ownDeck => (
-                  <ProfileDeck key={ownDeck._id} deck={ownDeck} onDeleteClick={this.props.actions.deleteDeck} />
-                ))}
+                {decksView}
               </div>
             </div>
           </section>

@@ -1,11 +1,11 @@
 
-import React from 'react';
+import React, { Component, createRef } from 'react';
 
 import ClassRadio from './ClassRadio';
 import TextFieldGroup from '../common/TextFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
 
-class DecksFilter extends React.Component {
+class DecksFilter extends Component {
   constructor() {
     super();
     this.state = {
@@ -17,6 +17,7 @@ class DecksFilter extends React.Component {
       format: '',
       type: ''
     }
+    this.filterForm = createRef();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,6 +35,8 @@ class DecksFilter extends React.Component {
       format: '',
       type: ''
     });
+
+    this.filterForm.current.reset();
   }
 
   onChange = (e) => {
@@ -55,13 +58,12 @@ class DecksFilter extends React.Component {
     }
 
     this.props.actions.setFilters(newFilters);
-    evt.target.reset();
   }
 
   render() {
     return (
       <div className="deck-list--form">
-        <form onSubmit={this.onSubmit} >
+        <form ref={this.filterForm} onSubmit={this.onSubmit} >
           <div className="classes">
             {this.props.classes.map(hsClass => (
               <ClassRadio

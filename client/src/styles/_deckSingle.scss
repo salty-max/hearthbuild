@@ -12,13 +12,16 @@
   }
 
   &--title {
-    background-color: $warning;
+    background-color: $dark;
     border-radius: .375em .375em 0 0;
-    color: $dark;
+    color: $light;
+    text-shadow: 1px 1px 8px $dark;
     padding: .8rem;
     font-family: $serif-font;
     font-size: 1.6em;
-
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   &--metas {

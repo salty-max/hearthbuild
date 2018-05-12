@@ -6664,6 +6664,9 @@ label.panel-block {
   background-color: #494949;
   padding: 1.5rem;
   border-radius: .375rem; }
+  .deck-list--form .clear-button {
+    width: 100%;
+    margin-top: 1.5em; }
 
 .deck-list .table {
   table-layout: fixed;
@@ -6727,12 +6730,16 @@ label.panel-block {
   font-weight: 600; }
 
 .deck--title {
-  background-color: #ffdd57;
+  background-color: #363636;
   border-radius: .375em .375em 0 0;
-  color: #363636;
+  color: whitesmoke;
+  text-shadow: 1px 1px 8px #363636;
   padding: .8rem;
   font-family: "Roboto Slab", serif;
-  font-size: 1.6em; }
+  font-size: 1.6em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
 
 .deck--metas {
   background-color: whitesmoke;
@@ -7104,9 +7111,23 @@ label.panel-block {
 
 #profile .profile--deck {
   margin-bottom: 1.5em; }
-  #profile .profile--deck .deck--title {
+  #profile .profile--deck-title {
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    border-radius: .375em .375em 0 0;
+    background-color: #363636; }
+    #profile .profile--deck-title--text {
+      color: whitesmoke;
+      text-shadow: 1px 1px 8px #363636;
+      padding: .8rem;
+      font-family: "Roboto Slab", serif;
+      font-size: 1.6em;
+      width: 80%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+  #profile .profile--deck .buttons {
+    padding: .8rem; }
   #profile .profile--deck .deck--metas {
     display: flex;
     justify-content: flex-start; }
@@ -7304,3 +7325,9 @@ svg {
     padding: 0 2em; }
   .container {
     margin: 0; } }
+
+@media screen and (max-width: 768px) {
+  #profile .profile--deck-title--text {
+    width: 60%; }
+  .deck-list--form .clear-button {
+    margin-top: 0; } }

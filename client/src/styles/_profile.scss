@@ -37,9 +37,27 @@
   .profile--deck {
     margin-bottom: 1.5em;
 
-    .deck--title {
+    &-title {
       display: flex;
       justify-content: space-between;
+      border-radius: .375em .375em 0 0;
+      background-color: $dark;
+
+      &--text {
+        color: $light;
+        text-shadow: 1px 1px 8px $dark;
+        padding: .8rem;
+        font-family: $serif-font;
+        font-size: 1.6em;
+        width: 80%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    
+    .buttons {
+      padding: .8rem;
     }
 
     .deck--metas {

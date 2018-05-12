@@ -2,6 +2,11 @@
   background-color: $lighter-dark;
   padding: 1.5rem;
   border-radius: .375rem;
+
+  .clear-button {
+    width: 100%;
+    margin-top: 1.5em;
+  }
 }
 
 .deck-list {

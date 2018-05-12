@@ -107,7 +107,7 @@ class DecksFilter extends Component {
             </div>
             <div className="column is-3">
               <div className="field">
-                <button onClick={this.clearFilters} className="button is-warning is-outlined" style={{ width: '100%', marginTop: '1.5em' }}>Clear Filters</button>
+                <button onClick={this.clearFilters} className="button is-warning is-outlined clear-button">Clear Filters</button>
               </div>
             </div>
           </div>

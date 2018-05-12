@@ -54,7 +54,7 @@ class ProfileDeck extends Component {
     return (
       <div className="profile--deck">
         <div
-          className="deck--title"
+          className="profile--deck-title"
           style={{
             backgroundImage: `url(${deckClasses[changeCase.lowerCase(deck.class)]})`,
             backgroundPosition: 'center right',
@@ -63,7 +63,9 @@ class ProfileDeck extends Component {
             color: '#1ec2a7'
           }}
         >
-          {deck.title.length > 25 ? `${deck.title.slice(0, 25)}...` : deck.title}
+          <div className="profile--deck-title--text">
+            {deck.title}
+          </div>
           <div className="buttons">
             <Link to={`/decks/${deck._id}`} className="button is-dark">
               <span className="icon">

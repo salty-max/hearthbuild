@@ -14,17 +14,17 @@ const DeckItem = (props) => (
         className="deck-list--deck-name"
         to={`/decks/${props._id}`}
       >
-        {props.title.length > 50 ? `${props.title.slice(0, 50)}...` : props.title}
+        {props.title}
       </Link>
     </td>
-    <td className="deck-list--deck-author" >{props.author.name}</td>
+    <td className="deck-list--deck-author"><div>{props.author.name}</div></td>
     <td className="deck-list--deck-updated">
-      <Moment fromNow>{props.createdAt}</Moment>
+      <div><Moment fromNow>{props.createdAt}</Moment></div>
     </td>
-    <td className="deck-list-deck--cost">{props.cost}</td>
-    <td className="deck-list--deck-rating">{props.likes.length}</td>
-    <td className="deck-list--deck-views">{props.views}</td>
-    <td className="deck-list--deck-comments">{props.comments.length}</td>
+    <td className="deck-list-deck--cost"><div>{props.cost}</div></td>
+    <td className="deck-list--deck-rating"><div>{props.likes.length}</div></td>
+    <td className="deck-list--deck-views"><div>{props.views}</div></td>
+    <td className="deck-list--deck-comments"><div>{props.comments.length}</div></td>
   </tr>
 );
 

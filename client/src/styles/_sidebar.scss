@@ -19,7 +19,10 @@
         width: 100%;
         padding: 1rem;
         color: $light;
-        
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
         &:hover {
           background: $primary;
           color: $dark;

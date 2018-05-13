@@ -105,26 +105,28 @@ class Home extends Component {
                 <div className="column is-three-quarter-desktop">
                   <div className="deck-list">
                     <DecksFilter />
-                    <table className="table deck-list--table is-fullwidth is-striped is-hoverable">
-                      <DeckListHeader
-                        handleSortClick={this.handleSortClick} 
-                      />
-                      {this.props.decksLoading ? (
-                        <tbody>
-                          <tr>
-                            <td colSpan="8">
-                              <Spinner />
-                            </td>
-                          </tr>
-                        </tbody>
-                      ) : (
-                        <tbody>
-                          {paginatedDecks.map(deck => (
-                            <DeckItem key={deck._id}{...deck} />
-                          ))}
-                        </tbody>
-                      )}
-                    </table>
+                    <div className="deck-list--table-wrapper">
+                      <table className="table deck-list--table is-fullwidth is-striped is-hoverable">
+                        <DeckListHeader
+                          handleSortClick={this.handleSortClick} 
+                        />
+                        {this.props.decksLoading ? (
+                          <tbody>
+                            <tr>
+                              <td colSpan="8">
+                                <Spinner />
+                              </td>
+                            </tr>
+                          </tbody>
+                        ) : (
+                          <tbody>
+                            {paginatedDecks.map(deck => (
+                              <DeckItem key={deck._id}{...deck} />
+                            ))}
+                          </tbody>
+                        )}
+                      </table>
+                    </div>
                     <nav className="pagination is-centered">
                       <ul className="pagination-list">
                         {pageNumbers.map(n => (

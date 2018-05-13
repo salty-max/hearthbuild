@@ -13,7 +13,7 @@ const DecksModule = ({ title, decks, loading }) => (
       decks.map(deck => (
         <div key={deck._id} className="sidebar-item--list-item">
           <Link to={`/decks/${deck._id}`}>
-            {deck.title.length > 25 ? `${deck.title.slice(0, 25)}...` : deck.title}
+            {deck.title}
           </Link>
         </div>
       )

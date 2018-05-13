@@ -99,12 +99,11 @@ svg {
 }
 
 .classes {
-  width: 80%;
-  margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 
   svg {
     fill: $light;
@@ -134,12 +133,12 @@ svg {
 }
 
 .fields {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
   padding-top: 1rem;
   margin-top: 1em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
   border-top: 1px solid rgba($light, .3);
 
   .field {
@@ -234,15 +233,8 @@ svg {
   vertical-align: middle;
 }
 
-@media screen and (max-width: 1024px) {
-  main {
-    padding: 0 2em;
-  }
-  .container {
-    margin: 0;
-  }
-}
-
+/* Media queries */
+// Mobile
 @media screen and (max-width: 768px) {
   #profile .profile--deck-title--text {
     width: 60%;
@@ -250,5 +242,18 @@ svg {
 
   .deck-list--form .clear-button {
     margin-top: 0;
+  }
+  
+  .fields {
+    .field {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+// Tablet
+@media screen and (max-width: 1279px) {
+  main {
+    padding: 0 2em;
   }
 }

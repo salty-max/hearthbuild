@@ -6646,7 +6646,10 @@ label.panel-block {
     .sidebar-item--list-item a {
       width: 100%;
       padding: 1rem;
-      color: whitesmoke; }
+      color: whitesmoke;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
       .sidebar-item--list-item a:hover {
         background: #00d1b2;
         color: #363636; }
@@ -6668,13 +6671,14 @@ label.panel-block {
     width: 100%;
     margin-top: 1.5em; }
 
+.deck-list--table-wrapper {
+  overflow: hidden;
+  overflow-x: auto; }
+
 .deck-list .table {
-  table-layout: fixed;
-  width: 100%;
   white-space: nowrap;
   margin-top: 2rem;
-  border-radius: .375em;
-  overflow: hidden; }
+  border-radius: .375em; }
   .deck-list .table svg {
     fill: #00d1b2; }
   .deck-list .table thead {
@@ -6698,20 +6702,24 @@ label.panel-block {
   .deck-list .table tbody {
     font-family: "Roboto Slab", serif; }
     .deck-list .table tbody .deck-list--deck-name {
-      display: flex;
-      align-items: center; }
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
       .deck-list .table tbody .deck-list--deck-name .class-icon {
         margin-right: .5em;
         fill: #363636;
         min-width: 2em;
         min-height: 2em; }
     .deck-list .table tbody tr td {
-      white-space: nowrap;
-      overflow: hidden;
       text-align: center;
       padding: 1rem; }
       .deck-list .table tbody tr td:nth-child(2) {
         text-align: left; }
+      .deck-list .table tbody tr td div {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
 
 .home-info {
   padding: 3em;
@@ -6719,6 +6727,24 @@ label.panel-block {
   background-size: cover; }
   .home-info .title, .home-info .subtitle {
     color: whitesmoke; }
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+  .classes {
+    width: 80%; } }
+
+@media screen and (min-width: 769px) and (max-width: 1471px) {
+  .deck-list .table {
+    table-layout: fixed; }
+    .deck-list .table thead th {
+      padding: 1rem .5rem; }
+      .deck-list .table thead th:nth-child(2) {
+        width: 25%;
+        text-align: left; }
+      .deck-list .table thead th:nth-child(3), .deck-list .table thead th:nth-child(4) {
+        width: 15%; }
+      .deck-list .table thead th:nth-child(5) {
+        width: 10%; } }
 
 .deck .content-top {
   display: flex;
@@ -7219,12 +7245,11 @@ svg {
     background: url("../assets/img/banner-builder.jpg") center center/cover no-repeat; }
 
 .classes {
-  width: 80%;
-  margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  margin: 0 auto; }
   .classes svg {
     fill: whitesmoke;
     width: 3.5rem;
@@ -7245,12 +7270,12 @@ svg {
   transition: all .5s; }
 
 .fields {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
   padding-top: 1rem;
   margin-top: 1em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
   border-top: 1px solid rgba(245, 245, 245, 0.3); }
   .fields .field {
     margin-bottom: 0; }
@@ -7320,14 +7345,15 @@ svg {
 .emojione {
   vertical-align: middle; }
 
-@media screen and (max-width: 1024px) {
-  main {
-    padding: 0 2em; }
-  .container {
-    margin: 0; } }
-
+/* Media queries */
 @media screen and (max-width: 768px) {
   #profile .profile--deck-title--text {
     width: 60%; }
   .deck-list--form .clear-button {
-    margin-top: 0; } }
+    margin-top: 0; }
+  .fields .field {
+    margin-bottom: 1em; } }
+
+@media screen and (max-width: 1279px) {
+  main {
+    padding: 0 2em; } }

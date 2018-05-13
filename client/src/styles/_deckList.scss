@@ -9,14 +9,16 @@
   }
 }
 
+.deck-list--table-wrapper {
+  overflow: hidden;
+  overflow-x: auto;
+}
+
 .deck-list {
   .table {
-    table-layout: fixed;
-    width: 100%;
     white-space: nowrap;
     margin-top: 2rem;
     border-radius: .375em;
-    overflow: hidden;
 
     svg {
       fill: $primary;
@@ -59,8 +61,10 @@
       font-family: $serif-font;
 
       .deck-list--deck-name {
-        display: flex;
-        align-items: center;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
 
         .class-icon {
           margin-right: .5em;
@@ -72,13 +76,17 @@
 
       tr {
         td {
-          white-space: nowrap;
-          overflow: hidden;
           text-align: center;
           padding: 1rem;
 
           &:nth-child(2) {
             text-align: left;
+          }
+
+          div {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
         }
       }
@@ -93,5 +101,42 @@
 
   .title, .subtitle {
     color: $light;
+  }
+}
+
+/* Media queries */
+// Mobile
+@media screen and (max-width: 768px) {
+  .classes {
+    width: 80%;
+  }
+}
+
+// Tablet & Desktop
+@media screen and (min-width: 769px) and (max-width: 1471px) {
+  .deck-list {
+    .table {
+      table-layout: fixed;
+
+      thead {
+        th {
+          padding: 1rem .5rem;
+
+          &:nth-child(2) {
+            width: 25%;
+            text-align: left;
+          }
+
+          &:nth-child(3),
+          &:nth-child(4) {
+            width: 15%;
+          }
+
+          &:nth-child(5) {
+            width: 10%;
+          }
+        }
+      }
+    }
   }
 }

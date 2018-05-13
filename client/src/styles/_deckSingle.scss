@@ -231,3 +231,10 @@
     margin-bottom: 1em;
   }
 }
+
+// Tablet and above
+@media screen and (max-width: 1087px) {  
+  .deck--metas .tags .tag {
+    margin-bottom: 1em;
+  }
+}

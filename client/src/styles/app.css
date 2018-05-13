@@ -6908,6 +6908,10 @@ label.panel-block {
   .deck--metas .tags .tag {
     margin-bottom: 1em; } }
 
+@media screen and (max-width: 1087px) {
+  .deck--metas .tags .tag {
+    margin-bottom: 1em; } }
+
 .deck-builder--form {
   background-color: #494949;
   padding: 1.5rem;

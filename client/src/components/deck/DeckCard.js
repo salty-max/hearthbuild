@@ -11,7 +11,7 @@ const DeckCard = ({ isTwice, rarity, cost, name, img }) => (
         <Svg type="misc" value="mana" />
       </span>
     </div>
-    <span className="deck--list-card-name">{name}</span>
+    <div className="deck--list-card-name">{name}</div>
     <div className={classnames('deck--list-card-count', {
       'is-common': rarity === 'Common' || rarity === 'Basic' || rarity === 'Free',
       'is-rare': rarity === 'Rare',

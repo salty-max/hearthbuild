@@ -6898,7 +6898,13 @@ label.panel-block {
   .deck .mana-curve text {
     font-weight: 600; }
 
-@media screen and (max-width: 1024px) {
+/* Media queries */
+@media screen and (max-width: 768px) {
+  .deck--list-card-name {
+    width: 60%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
   .deck--metas .tags .tag {
     margin-bottom: 1em; } }
 

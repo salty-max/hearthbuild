@@ -3,8 +3,10 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 const DeckLikeButton = ({ auth, likes, deckIsLiked, onBtnClick }) => {
+  // If user is connected
   if (auth.isAuthenticated) {
     return (
+      // Change button color and text depending if its like or dislike
       <button
         className={classnames('button is-primary is-outlined is-medium deck--rating-btn', {
           'is-primary': !deckIsLiked,
@@ -23,6 +25,7 @@ const DeckLikeButton = ({ auth, likes, deckIsLiked, onBtnClick }) => {
       </button>
     );
   }
+  // If user is not connected, disable button
   else {
     return (
       <button

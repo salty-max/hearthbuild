@@ -28,6 +28,7 @@ const deckClasses = {
 
 const DeckMeta = ({ meta, author }) => (
   <div className="column is-9">
+    {/* Change background image depending on deck class */}
     <div
       className="deck--title"
       style={{

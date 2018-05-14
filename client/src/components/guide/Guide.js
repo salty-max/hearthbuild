@@ -13,6 +13,7 @@ export default () => {
         <section className="section" id="guide">
           <div className="container">
             <div className="content">
+              {/* Parse markdown to HTML */}
               <ReactMarkdown source={content} />
             </div>
           </div>

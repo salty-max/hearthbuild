@@ -19,6 +19,7 @@ const DeckComment = ({ comment }) => (
           </div>
         </div>
         <div className="deck--comments-comment--content">
+          {/* Allow use of emojis. Thanks to Alex <3 */}
           <Formatizer>{comment.text}</Formatizer>
         </div>
       </div>

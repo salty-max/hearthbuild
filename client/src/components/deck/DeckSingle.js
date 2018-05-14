@@ -11,10 +11,12 @@ import Spinner from '../common/Spinner';
 
 class DeckSingle extends Component {
   componentWillMount() {
+    // Get comments from database
     this.props.actions.setCommentsLoading(this.props.deckId);
   }
 
   deleteDeck = (deckToDelete) => {
+    // Delete deck
     this.props.actions.deleteDeck(this.props.deckId);
   }
 
@@ -37,9 +39,10 @@ class DeckSingle extends Component {
       );
     }
 
+    // Get deck info from Redux
     const deck = decks.find(deck => deck._id === deckId);
 
-    // Chart
+    // Mana curve
     const chartData = [{ data: [] }];
 
     for (let i = 0; i <= 10; i++) {

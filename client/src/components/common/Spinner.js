@@ -1,3 +1,7 @@
+/*
+ * Spinner for loadings
+*/
+
 import React from 'react';
 
 import spinner from '../../assets/img/spinner.gif';

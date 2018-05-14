@@ -12,12 +12,14 @@ const DeckCard = ({ isTwice, rarity, cost, name, img }) => (
       </span>
     </div>
     <div className="deck--list-card-name">{name}</div>
+    {/* Change card name depending on its rarity */}
     <div className={classnames('deck--list-card-count', {
       'is-common': rarity === 'Common' || rarity === 'Basic' || rarity === 'Free',
       'is-rare': rarity === 'Rare',
       'is-epic': rarity === 'Epic',
       'is-legendary': rarity === 'Legendary',
     })}>
+      {/* If thre is twice the same card, display 2 else display 1 */}
       <span className="deck--list-card-count--text">{isTwice ? '2' : '1'}</span>
     </div>
     <div className="deck--list-card-preview">
@@ -27,7 +29,9 @@ const DeckCard = ({ isTwice, rarity, cost, name, img }) => (
 );
 
 DeckCard.propTypes = {
+  isTwice: PropTypes.bool.isRequired,
   cost: PropTypes.number.isRequired,
+  rarity: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
 };

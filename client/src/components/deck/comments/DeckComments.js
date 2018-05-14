@@ -16,6 +16,7 @@ class DeckComments extends Component {
     }
   }
 
+  // Go to selected page
   handlePageClick = (e) => {
     this.setState({
       currentPage: Number(e.target.id)
@@ -33,24 +34,28 @@ class DeckComments extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
+    // Data to send to axios
     const newComment = {
       text: this.state.comment
     }
 
+    // Send data to axios
     this.props.actions.sendComment(newComment, this.props.deckId);
 
+    // Reset comment text area
     this.setState({
       comment: ''
     });
   }
 
   render () {
-    const { auth } = this.props;
+    const { auth, comments } = this.props;
     const { currentPage, commentsPerPage } = this.state;
-    const { comments } = this.props;
+
     let currentComments = [];
     let pageNumbers = [];
 
+    // PAGINATION
     // Logic for displaying current comments
     const indexOfLastComment = currentPage * commentsPerPage;
     const indexOfFirstComment = indexOfLastComment - commentsPerPage;
@@ -61,6 +66,7 @@ class DeckComments extends Component {
       pageNumbers.push(i);
     }
 
+    // User is connected => display
     const authContent = (                    
       <div className="deck--comments-form">
         <form onSubmit={this.onSubmit}>
@@ -75,6 +81,7 @@ class DeckComments extends Component {
       </div>
     );
 
+    // User is not connected => display
     const guestContent = (
       <div className="deck--comments-header-login">
         <span className="subtitle">You must be logged in to add a new comment</span>
@@ -97,6 +104,7 @@ class DeckComments extends Component {
 
           {!auth.isAuthenticated ? guestContent: ''}
 
+          {/* Pagination */}
           <nav className="pagination is-centered">
             <ul className="pagination-list">
               {pageNumbers.map(n => (

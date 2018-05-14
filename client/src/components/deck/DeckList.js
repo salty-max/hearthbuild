@@ -6,9 +6,12 @@ import removeDuplicates from '../../utils/remove-duplicates';
 import DeckCard from './DeckCard';
 
 const DeckList = ({ cards, hsClass }) => {
+  // Remove duplicates from deck display
   const uniqueCards = removeDuplicates(cards, 'name');
 
+  // Filter neutral cards
   const neutralCards = uniqueCards.filter(card => card.class === 'Neutral');
+  // Filter class cards
   const deckClassCards = uniqueCards.filter(card => card.class === hsClass);
 
   return (
@@ -55,6 +58,7 @@ const DeckList = ({ cards, hsClass }) => {
 
 DeckList.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  hsClass: PropTypes.string.isRequired,
 };
 
 export default DeckList;

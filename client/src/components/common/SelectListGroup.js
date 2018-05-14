@@ -1,3 +1,7 @@
+/*
+ * General component for select inputs
+*/
+
 import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';

@@ -1,3 +1,7 @@
+/*
+ * Prevent non authenticated user to go to URL
+*/
+
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,9 +11,11 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => (
   <Route
     {...rest}
     render={props =>
+      // If a user is authenticated, let him go to this route
       auth.isAuthenticated ? (
         <Component {...props} />
       ) : (
+          // If not, send him back to login
           <Redirect to="/login" />
         )
     }

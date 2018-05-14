@@ -1,3 +1,7 @@
+/*
+ * Component rendering SVG depending on what is passed in it
+*/
+
 import React from 'react'
 
 import druid from '../../assets/img/classes/badges/class-druid.svg';

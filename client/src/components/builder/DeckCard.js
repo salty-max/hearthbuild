@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 import Svg from '../common/Svg';
 
@@ -23,8 +24,17 @@ const DeckCard = ({ card, onDeleteClick, isTwice }) => (
         </span>
       </button>
     </td>
-    <td className="deck-builder--cards-table-count">{isTwice ? (2) : (1)}</td>
+    <td className="deck-builder--cards-table-count">
+      {/* If there is twice the same card in the deck display 2. If not display 1 */}
+      {isTwice ? (2) : (1)}
+    </td>
   </tr>
 );
+
+DeckCard.propTypes = {
+  card: PropTypes.object.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
+  isTwice: PropTypes.bool.isRequired
+}
 
 export default DeckCard;

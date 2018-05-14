@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames'
+
 import FormatRadio from './FormatRadio';
 import AvatarClassRadio from './AvatarClassRadio';
 
@@ -25,6 +26,7 @@ class PreBuilder extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { format, hsClass } = this.state;
+    // Errors handling
     if (format === '') {
       this.setState({
         errors: {
@@ -39,11 +41,17 @@ class PreBuilder extends Component {
         }
       })
     }
+
+    // If form izoké
     if (hsClass !== '' && format !== '') {
+      // Reset errors
       this.setState({
         errors: {}
       });
+      // Send data to Redux
       this.props.actions.prebuild(format, hsClass);
+
+      // Redirect to builder
       this.props.history.push('/builder');
     }
   }

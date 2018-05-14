@@ -45,27 +45,34 @@ class DeckBuilder extends Component {
     }
   }
 
+  // If there is errors in the form, display them
   static getDerivedStateFromProps = (nextProps) => {
     return {errors: nextProps.errors};
   }
 
   componentDidMount() {
-
     let cards = [];
+
+    // If there are cards in pool, filter them by format
     if(this.props.cardsPool) {
       cards = this.sortByFormat(this.props.cardsPool, this.props.format)
     }
 
+    // Sort cards by cost
     cards = cards.sort(sortBy('cost'));
 
+    // Transfer data from REdux to local state
     this.setState({
       class: this.props.class,
       format: this.props.format,
+      // Filter class cards
       classCards: cards.filter(card => card.playerClass === this.props.class),
+      // Filter neutral cards
       neutralCards: cards.filter(card => card.playerClass === 'Neutral'),
     });
   }
 
+  // Sort cards from pool by format
   sortByFormat = (pool, format) => {
     let cards = [];
     if (format === 'standard') {
@@ -78,35 +85,50 @@ class DeckBuilder extends Component {
     return cards;
   }
 
+  // Add card to deck
   addCard = (cardToAdd) => () => {
     let newIndex = this.state.cardIndex;
     const { deckCards } = this.state;
+    // If there are less than 30 cards in the deck
     if (deckCards.length < 30) {
+      // If card is legendary, set the limit to 1.
+      // If not, set the limit to 2
       if ((cardToAdd.rarity === 'Legendary' && deckCards.filter(card => cardToAdd.cardId === card.cardId).length < 1) || (cardToAdd.rarity !== "Legendary" && deckCards.filter(card => cardToAdd.cardId === card.cardId).length < 2)) {
+        // Increment card index
         newIndex += 1;
+        // Add card cost to total cost
         this.computeCost(cardToAdd.rarity, 'add');
+        // Send new card to the deck
         this.setState(prevState => ({
 
           deckCards: [...prevState.deckCards, { ...cardToAdd, index: newIndex }],
           cardIndex: ++newIndex,
+          // Increment card count
           cardCount: ++prevState.cardCount
         }));
       }
     }
   }
 
+  // Remove a card from deck
   removeCard = (cardIndex) => () => {
+    // Get card by its index
     const cardToRemove = this.state.deckCards.filter(card => card.index === cardIndex);
+    // Substract card cost from total cost
     this.computeCost(cardToRemove[0].rarity, 'substract');
 
+    // Get a new array without ward to remove
     const cards = this.state.deckCards.filter(card => card.index !== cardIndex);
 
+    // Send new deck to local state
     this.setState(prevState => ({
       deckCards: cards,
+      // Decrement card count
       cardCount: --prevState.cardCount
     }));
   }
 
+  // Add card cost to total cost, depending on card rarity
   computeCost = (rarity, operation) => {
     let newCost = 0;
     switch (rarity) {
@@ -126,13 +148,16 @@ class DeckBuilder extends Component {
         break;
     }
 
+    // If operation parameter is passed to the function
     if (operation) {
+      // Add cost 
       if (operation === 'add') {
         this.setState(prevState => ({
           cost: prevState.cost + newCost
         }));
       }
 
+      //Substract cost
       if (operation === 'substract') {
         this.setState(prevState => ({
           cost: prevState.cost - newCost
@@ -141,6 +166,7 @@ class DeckBuilder extends Component {
     }
   }
 
+  // On tab click, display classCards or neutralCards
   showCards = () => {
     if(this.state.tabs.neutralTab) {
       return this.state.neutralCards
@@ -150,12 +176,14 @@ class DeckBuilder extends Component {
     }
   }
 
+  // Send card image to local state
   onCardHover = (imgPath) => () => {
     this.setState({
       hoverCard: imgPath
     });
   }
 
+  // Set active state to clicked tab
   handleTab = (tabToActivate) => (e) => {
     this.setState(prevState => ({
       tabs: {
@@ -176,6 +204,7 @@ class DeckBuilder extends Component {
 
     const cards = [];
 
+    // Create a array of cards with specific props
     this.state.deckCards.forEach(card => {
       cards.push({
         name: card.name,
@@ -187,8 +216,10 @@ class DeckBuilder extends Component {
       })
     });
 
+    // Data to send to axios
     const deckData = {
       title: this.state.title,
+      // Clean title for URL format
       slug: this.state.title.trim(' ').toLowerCase(),
       class: this.state.class,
       format: this.state.format,
@@ -202,30 +233,32 @@ class DeckBuilder extends Component {
       createdAt: Date.now()
     }
 
+    // Send data to axios
     this.props.actions.sendDeck(deckData);
     
   }
-
-  
 
   render() {
     const { tabs, hoverCard, deckCards, errors } = this.state;
 
     const { deckTypes } = this.props;
 
+    // Set cards to show in pool
     let cardsToShow = this.showCards();
 
+    // Search by card name system
     if(this.state.poolname !== '') {
       cardsToShow = cardsToShow.filter(card => card.name.toLowerCase().includes(this.state.poolname.toLowerCase()));
     }
 
-    // Chart
+    // Mana curve
     const chartData = [{ data:[] }];
 
     for (let i = 0; i <= 10; i++) {
       chartData[0].data.push([i, deckCards.filter(card => card.cost === i).length]);
     }
 
+    // Remove duplicates from deck display
     const uniqueCards = removeDuplicates(deckCards, 'cardId');
 
     return (
@@ -325,6 +358,7 @@ class DeckBuilder extends Component {
                                     key={card.index}
                                     card={card}
                                     onDeleteClick={this.removeCard}
+                                    // Handle double cards
                                     isTwice={deckCards.filter(c => c.cardId === card.cardId).length > 1}
                                   />
                                 ))

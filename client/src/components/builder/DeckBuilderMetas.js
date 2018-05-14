@@ -1,6 +1,7 @@
 import React from 'react';
 import Svg from '../common/Svg';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 export default ({ count, cost }) => (
   <div className="deck-builder--list-header">
@@ -33,3 +34,8 @@ export default ({ count, cost }) => (
     </div>
   </div>
 )
+
+DeckBuilderMetas.propTypes = {
+  count: PropTypes.number.isRequired,
+  cost: PropTypes.number.isRequired,
+}

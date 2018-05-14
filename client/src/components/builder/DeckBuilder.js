@@ -45,13 +45,9 @@ class DeckBuilder extends Component {
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({
-  //     errors: nextProps.errors,
-  //     class: nextProps.class,
-  //     format: nextProps.format,
-  //   })
-  // }
+  static getDerivedStateFromProps = (nextProps) => {
+    return {errors: nextProps.errors};
+  }
 
   componentDidMount() {
 
@@ -65,7 +61,6 @@ class DeckBuilder extends Component {
     this.setState({
       class: this.props.class,
       format: this.props.format,
-      errors: this.props.errors,
       classCards: cards.filter(card => card.playerClass === this.props.class),
       neutralCards: cards.filter(card => card.playerClass === 'Neutral'),
     });

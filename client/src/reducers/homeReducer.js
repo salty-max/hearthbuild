@@ -3,6 +3,7 @@ import { DECKS_LOADING, GET_DECKS, SET_FILTERS } from '../actions/types';
 
 const initialState= {
   deckTypes: [
+    { label: 'Choose a type', value: '' },
     { label: 'Aggro', value: 'Aggro' },
     { label: 'Midrange', value: 'Midrange' },
     { label: 'Control', value: 'Control' },
@@ -19,6 +20,7 @@ const initialState= {
     { label: 'Warrior', value: 'Warrior' },
   ],
   formats: [
+    { label: 'Choose a format', value: '' },
     { label: 'Standard', value: 'standard' },
     { label: 'Wild', value: 'wild' },
   ],

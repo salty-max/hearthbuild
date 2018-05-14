@@ -14,22 +14,15 @@ class Login extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
+    // If a user is already authenticated, send back to home
     if(nextProps.auth.isAuthenticated) {
-      this.props.history.push('/');
+      nextProps.history.push('/');
     }
 
+    // If there is errors in the form, display them
     if (nextProps.errors) {
-      this.setState({
-        errors: nextProps.errors
-      });
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      console.log('coucou');
-      this.props.history.push('/');
+      return { errors: nextProps.errors }
     }
   }
 
@@ -44,6 +37,7 @@ class Login extends Component {
 
     const userData = { email, password };
 
+    // Send data to axios
     this.props.actions.loginUser(userData);
   }
 

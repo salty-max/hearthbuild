@@ -17,15 +17,17 @@ class Register extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
+    // If there is errors in the form display them
     if (nextProps.errors) {
-      this.setState({
+      return {
         errors: nextProps.errors
-      });
+      };
     }
   }
 
   componentDidMount() {
+    // If a user is already authenticated, send back to home
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/');
     }
@@ -55,6 +57,7 @@ class Register extends Component {
       passwordConfirm,
     };
 
+    // Send data from the form to axios
     this.props.actions.registerUser(newUser, this.props.history);
   }
 

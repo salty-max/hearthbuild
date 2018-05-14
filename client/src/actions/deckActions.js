@@ -23,6 +23,7 @@ export const setCommentsLoading = (deckId) => ({
   payload: deckId
 })
 
+// What to do => like or dislike
 export const likeDeck = (deckId, whatToDo) => ({
   type: LIKE_DECK,
   payload: {

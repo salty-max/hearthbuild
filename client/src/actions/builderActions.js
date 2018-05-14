@@ -1,6 +1,7 @@
 import { PRE_BUILD, CARDS_LOADING, GET_CARDS_FROM_API, SEND_DECK } from './types';
 
 export const prebuild = (format, hsClass) => dispatch => {
+  // Send required data to builder
   dispatch({
     type: PRE_BUILD,
     payload: {

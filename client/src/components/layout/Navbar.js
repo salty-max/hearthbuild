@@ -15,17 +15,21 @@ class Navbar extends Component {
   }
 
   onLogoutClick = () => {
+    // Delete auth key and user from Redux
     this.props.actions.logoutUser();
+    // Redirect to login page
     window.location = '/login';
   }
 
+  // Menu collapsing in responsive
   menuActive = () => {
     this.setState(prevState => ({
       isActive: !prevState.isActive
     }));
   }
 
-  collapseNav = () => {
+  // Retract menu
+  hideMenu = () => {
     this.setState({
       isActive: false
     });
@@ -33,7 +37,7 @@ class Navbar extends Component {
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
-
+    // If user is connected, display profile link and logout button
     const authLinks = (
       <Fragment>
         <div className="navbar-item profile-item">
@@ -48,12 +52,12 @@ class Navbar extends Component {
               marginRight: '.5em'
             }}
           />
-          <Link onClick={this.collapseNav} to="/profile">{user.name}</Link>
+          <Link onClick={this.hideMenu} to="/profile">{user.name}</Link>
         </div>
         <div className="navbar-item">
           <a className="button is-danger is-outlined" onClick={() => {
             this.onLogoutClick()
-            this.collapseNav()
+            this.hideMenu()
           }}>
             <span className="icon">
               <i className="fas fa-sign-out-alt" />
@@ -63,10 +67,12 @@ class Navbar extends Component {
         </div>
       </Fragment>
     );
+
+    // If user is not connected, display register and login button
     const guestLinks = (
       <Fragment>
         <div className="navbar-item">
-          <Link to="/register" className="button is-info is-outlined" onClick={this.collapseNav}>
+          <Link to="/register" className="button is-info is-outlined" onClick={this.hideMenu}>
             <span className="icon">
               <i className="fas fa-user-plus" />
             </span>
@@ -74,7 +80,7 @@ class Navbar extends Component {
           </Link>
         </div>
         <div className="navbar-item">
-          <Link to="/login" className="button is-primary is-outlined" onClick={this.collapseNav}>
+          <Link to="/login" className="button is-primary is-outlined" onClick={this.hideMenu}>
             <span className="icon">
               <i className="fas fa-sign-in-alt" />
             </span>
@@ -89,7 +95,7 @@ class Navbar extends Component {
     <div className="container">
       <div className="navbar-brand">
         <Link to="/" className="navbar-item">
-          <img src={HBLogo} alt="" className="brand-logo" onClick={this.collapseNav}/>
+          <img src={HBLogo} alt="" className="brand-logo" onClick={this.hideMenu}/>
         </Link>
         <div className="navbar-burger" onClick={this.menuActive}>
           <span aria-hidden="true" />
@@ -103,7 +109,7 @@ class Navbar extends Component {
             <a href="" className="navbar-link">Decks</a>
             <div className="navbar-dropdown">
               {this.props.home.classes.map(hsClass => (
-                <a key={hsClass.value} className="navbar-item" onClick={this.collapseNav}>
+                <a key={hsClass.value} className="navbar-item" onClick={this.hideMenu}>
                   {hsClass.label}
                 </a>
               ))}
@@ -112,7 +118,7 @@ class Navbar extends Component {
         </div> */}
         <div className="navbar-end">
           <div className="navbar-item">
-            <Link to="/pre-builder" className="button is-primary" onClick={this.collapseNav}>
+            <Link to="/pre-builder" className="button is-primary" onClick={this.hideMenu}>
               <span className="icon">
                 <i className="fas fa-plus-circle" />
               </span>

@@ -2,8 +2,6 @@ import React from 'react';
 
 import Svg from '../common/Svg';
 
-
-
 const DeckListHeader = ({ handleSortClick }) => {
   return (
     <thead>

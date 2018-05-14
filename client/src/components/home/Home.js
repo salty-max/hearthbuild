@@ -1,6 +1,6 @@
-// import React from 'react';
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 import Banner from '../common/Banner';
 import Sidebar from './Sidebar';
@@ -26,35 +26,38 @@ class Home extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
+  static getDerivedStateFromProps(nextProps) {
+    return{
       currentDecks: nextProps.decks,
       filters: nextProps.filters
-    });
+    };
   }
 
+  // Handle decks filtering
   filterDecks = (arr) => {
     const { filters } = this.props;
     let filteredArr = arr;
 
+    // If there is filters
     if (!isEmpty(filters)) {
+      // Filter decks by title
       if (filters.title !== '') {
         filteredArr = filteredArr.filter(deck => deck.title.includes(filters.title))
       }
-
+      // Filter decks by class
       if (filters.hsClass !== '') {
         filteredArr = filteredArr.filter(deck => deck.class === filters.hsClass)
       }
-
+      // Filter decks by format
       if (filters.format !== '') {
         filteredArr = filteredArr.filter(deck => deck.format === filters.format)
       }
-
+      // Filter decks by type
       if (filters.type !== '') {
         filteredArr = filteredArr.filter(deck => deck.type === filters.type)
       }
     }
-
+    // If no filters set, return all decks
     return filteredArr;
   }
 
@@ -64,6 +67,7 @@ class Home extends Component {
     });
   }
 
+  // Table sorting
   handleSortClick = (prop) => () => {
     this.setState({
       sort: prop
@@ -77,7 +81,9 @@ class Home extends Component {
     let paginatedDecks = [];
     let pageNumbers = [];
 
+    // Id there is decks to display
     if (!this.props.decksLoading) {
+      // PAGINATION
       // Logic for displaying current decks
       let filteredDecks = this.filterDecks(decks);
       const sortedDecks = filteredDecks.sort(sortBy(sort));
@@ -158,4 +164,11 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  decks: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  filters: PropTypes.object.isRequired,
+  decksLoading: PropTypes.bool.isRequired,
+}
+
 export default Home;

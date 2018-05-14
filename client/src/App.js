@@ -43,7 +43,9 @@ if (localStorage.jwtToken) {
   }
 }
 
+// Get decks from database
 store.dispatch(setDecksLoading());
+// Get cards from API
 store.dispatch(setCardsLoading());
 
 class App extends Component {

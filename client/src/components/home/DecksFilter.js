@@ -1,5 +1,6 @@
 
 import React, { Component, createRef } from 'react';
+import PropTypes from 'prop-types';
 
 import ClassRadio from './ClassRadio';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -17,18 +18,21 @@ class DecksFilter extends Component {
       format: '',
       type: ''
     }
+    // Create reference for filters form
     this.filterForm = createRef();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
+  // Get game data form Redux
+  static getDerivedStateFromProps(nextProps) {
+    return {
       classes: nextProps.classes,
       formats: nextProps.formats,
       types: nextProps.types
-    });
+    };
   }
 
   clearFilters = () => {
+    // Reset filters in local state
     this.setState({
       title: '',
       hsClass: '',
@@ -36,6 +40,7 @@ class DecksFilter extends Component {
       type: ''
     });
 
+    // Get form reference and reset it
     this.filterForm.current.reset();
   }
 
@@ -50,6 +55,7 @@ class DecksFilter extends Component {
     evt.preventDefault();
     const { title, format, hsClass, type } = this.state;
     
+    // Data to send to middleware
     const newFilters = {
       title,
       hsClass,
@@ -57,6 +63,7 @@ class DecksFilter extends Component {
       type
     }
 
+    // Set filters
     this.props.actions.setFilters(newFilters);
   }
 
@@ -115,6 +122,12 @@ class DecksFilter extends Component {
       </div>
     );
   }
+}
+
+DecksFilter.propTypes = {
+  classes: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  types: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  formats: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 }
 
 export default DecksFilter;

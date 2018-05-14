@@ -42,6 +42,7 @@ export default function(state = initialState, action) {
         decks: action.payload,
         decksLoading: false
       }
+    // Set filters in Home via Redux
     case SET_FILTERS:
       return {
         ...state,

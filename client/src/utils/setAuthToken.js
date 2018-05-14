@@ -1,3 +1,8 @@
+/*
+ * Set auth token for every request to backend
+*/
+
+
 import axios from 'axios';
 
 const setAuthToken = token => {

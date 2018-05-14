@@ -1,3 +1,7 @@
+/*
+ * Check if an object or a string is empty or undefined or null
+*/ 
+
 const isEmpty = value => (
   value === undefined ||
   value === null ||

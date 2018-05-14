@@ -20,6 +20,7 @@ export default function (state = initialState, action) {
         cardsPool: action.payload,
         cardsLoading: false
       }
+    // Send prebuilder data to builder
     case PRE_BUILD:
       return {
         ...state,

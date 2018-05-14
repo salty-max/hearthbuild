@@ -8,9 +8,11 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    // Send user to Redux
     case SET_CURRENT_USER:
       return {
         ...state,
+        // No user is sent
         isAuthenticated: !isEmpty(action.payload),
         user: action.payload
       }

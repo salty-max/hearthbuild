@@ -1,3 +1,8 @@
+/*
+ * Sort an array by property passed in
+*/
+
+
 export default function(property) {
   var sortOrder = 1;
   if (property[0] === "-") {

@@ -14,6 +14,7 @@ class Profile extends Component {
     }
   }
 
+  // MODAL HANDLING
   openModal = () => {
     this.setState({
       modalActive: true
@@ -30,12 +31,15 @@ class Profile extends Component {
     const { user, decks, decksLoading } = this.props;
     let decksView = null;
     
+    // Wait for decks to load
     if (decksLoading) {
       decksView = (<Spinner />)
     }
     else {
+      // Display only user's decks
       const ownDecks = decks.filter(deck => deck.author._id === user.id);
 
+      // If there is no deck to display
       if(ownDecks.length === 0) {
         decksView = (
           <div className="empty">

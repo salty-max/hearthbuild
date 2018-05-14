@@ -35,7 +35,8 @@ class ProfileDeck extends Component {
       modalActive: false
     }
   }
-
+  
+  // MODAL HANDLING
   openModal = () => {
     this.setState({
       modalActive: true
@@ -52,6 +53,7 @@ class ProfileDeck extends Component {
     const { deck, onDeleteClick } = this.props;
 
     return (
+      // Change backgroung image depending on deck class
       <div className="profile--deck">
         <div
           className="profile--deck-title"

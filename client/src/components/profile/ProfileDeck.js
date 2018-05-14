@@ -66,7 +66,7 @@ class ProfileDeck extends Component {
           <div className="profile--deck-title--text">
             {deck.title}
           </div>
-          <div className="buttons">
+          <div className="action-buttons">
             <Link to={`/decks/${deck._id}`} className="button is-dark">
               <span className="icon">
                 <i className="fas fa-eye" />
@@ -178,17 +178,17 @@ class ProfileDeck extends Component {
         })}>
           <div className="modal-background"></div>
           <div className="modal-content">
-            <article className="message is-danger">
+            <article className="message is-light">
               <div className="message-header">
                 <p>Delete this deck ?</p>
                 <div className="buttons">
                   <button className="button is-dark is-outlined" onClick={this.closeModal}>Cancel</button>
-                  <button className="button is-primary" onClick={() => onDeleteClick(deck._id)}>Confirm</button>
+                  <button className="button is-danger" onClick={() => onDeleteClick(deck._id)}>Confirm</button>
                 </div>
               </div>
             </article>
           </div>
-          <button className="modal-close is-large" aria-label="close"></button>
+          <button onClick={this.closeModal} className="modal-close is-large" aria-label="close"></button>
         </div>
       </div>
     );

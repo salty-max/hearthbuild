@@ -1,6 +1,5 @@
 
 import React, { Component, createRef } from 'react';
-import classnames from 'classnames';
 
 import ClassRadio from './ClassRadio';
 import TextFieldGroup from '../common/TextFieldGroup';

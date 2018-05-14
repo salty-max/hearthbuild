@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 
 import Profile from '../../components/profile/Profile';
 import { deleteDeck } from '../../actions/deckActions';
+import { deleteUser } from '../../actions/authActions';
 
 const mapStateToProps = state => ({
   user: state.auth.user,
@@ -11,7 +12,8 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({
-    deleteDeck
+    deleteDeck,
+    deleteUser
   }, dispatch)
 })
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames'
 import FormatRadio from './FormatRadio';
@@ -60,27 +61,27 @@ class PreBuilder extends Component {
                 paddingBottom: '1em',
               }}>
                 <p>Welcome to our deck builder. Here you can craft decks for every classes and for both standard and wild mode.</p>
-                <p>First of all, you must be logged to craft a deck. If you don't have an account, please register.</p>
               </div>
               {!this.props.isAuthenticated && (
                 <div>
+                  <p>First of all, you must be logged to craft a deck. If you don't have an account, please register.</p>
                   <p>As we are nice people, you just have to click one of those marvelous buttons</p>
                   <div className="buttons field is-grouped is-grouped-centered">
                     <div className="control">
-                      <button className="button is-danger is-outlined is-medium">
+                      <Link to="/register" className="button is-info is-outlined is-medium">
                         <span className="icon">
                           <i className="fas fa-user-plus"></i>
                         </span>
                         <span>Register</span>
-                      </button>
+                      </Link>
                     </div>
                     <div className="control">
-                      <button className="button is-primary is-outlined is-medium">
+                      <Link to="/login" className="button is-primary is-outlined is-medium">
                         <span className="icon">
                           <i className="fas fa-sign-in-alt"></i>
                         </span>
                         <span>Login</span>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

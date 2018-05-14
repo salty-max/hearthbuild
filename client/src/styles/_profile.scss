@@ -61,9 +61,13 @@
         text-overflow: ellipsis;
       }
     }
-    
-    .buttons {
+
+    .action-buttons {
       padding: .8rem;
+
+      .button:last-child {
+        margin-left: .5em;
+      }
     }
 
     .deck--metas {
@@ -74,5 +78,9 @@
         margin-right: 1em;
       }
     }
+  }
+
+  .user-delete-btn {
+    margin-top: 1em;
   }
 }

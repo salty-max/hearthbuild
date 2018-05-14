@@ -140,4 +140,15 @@ router.get('/id/:id', (req, res) => {
     .catch(err => res.status(404).json({ noUser: 'No user found with this id' }));
 });
 
+// @route    DELETE api/users/id/:id
+// @desc     Delete current user
+// @access   Private
+router.delete('/id/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  User.findOneAndRemove({ _id: req.params.id })
+    .then((user) => {
+      res.json({success: 'success'})
+    })
+    .catch(err => res.json({ error: err }))
+});
+
 module.exports = router;

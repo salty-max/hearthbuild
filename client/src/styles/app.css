@@ -7153,13 +7153,18 @@ label.panel-block {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis; }
-  #profile .profile--deck .buttons {
+  #profile .profile--deck .action-buttons {
     padding: .8rem; }
+    #profile .profile--deck .action-buttons .button:last-child {
+      margin-left: .5em; }
   #profile .profile--deck .deck--metas {
     display: flex;
     justify-content: flex-start; }
     #profile .profile--deck .deck--metas .tags {
       margin-right: 1em; }
+
+#profile .user-delete-btn {
+  margin-top: 1em; }
 
 #guide {
   line-height: 1.6em;
@@ -7372,6 +7377,14 @@ svg {
   .mana-curve svg {
     width: 100%;
     height: 100%; }
+
+.modal .message-header {
+  display: block;
+  text-align: center; }
+  .modal .message-header .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5em; }
 
 .empty {
   font-size: 1.25em;

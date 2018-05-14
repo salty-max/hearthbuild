@@ -9,10 +9,12 @@ import {
   DELETE_DECK,
   GET_ERRORS,
   SEND_COMMENT,
-  SET_COMMENTS_LOADING
+  SET_COMMENTS_LOADING,
+  DELETE_USER
 } from '../actions/types';
 
 import { getDecks, setDecksLoading } from '../actions/homeActions';
+import { logoutUser } from '../actions/authActions';
 import { getCardsFromApi } from '../actions/builderActions';
 import { getComments, setCommentsLoading } from '../actions/deckActions';
 
@@ -109,6 +111,15 @@ export default store => next => action => {
           store.dispatch(getComments(res.data));
         })
       break;
+    
+    case DELETE_USER:
+      axios.delete(`/api/users/id/${action.payload}`) 
+        .then(res => {
+          console.log(res.data);
+        });
+      store.dispatch(logoutUser());
+      window.location = '/';
+      break;    
 
     default:
       break;

@@ -176,6 +176,19 @@ svg {
   justify-content: center;
 }
 
+.modal {
+  .message-header {
+    display: block;
+    text-align: center;
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5em;
+    }
+  }
+}
+
 .empty {
   font-size: 1.25em;
   font-weight: 600;
@@ -233,3 +246,5 @@ svg {
 .emojione {
   vertical-align: middle;
 }
+
+

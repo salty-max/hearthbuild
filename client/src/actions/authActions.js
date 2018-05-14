@@ -2,7 +2,7 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
 import setAuthToken from '../utils/setAuthToken';
-import { GET_ERRORS, SET_CURRENT_USER } from './types';
+import { GET_ERRORS, SET_CURRENT_USER, DELETE_USER } from './types';
 
 // Register user
 export const registerUser = (userData, history) => dispatch => {
@@ -59,3 +59,9 @@ export const setCurrentUser = decoded => {
     payload: decoded
   }
 }
+
+// Delete user
+export const deleteUser = userId => ({
+  type: DELETE_USER,
+  payload: userId
+})

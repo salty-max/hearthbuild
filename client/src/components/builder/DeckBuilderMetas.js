@@ -3,7 +3,7 @@ import Svg from '../common/Svg';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-export default ({ count, cost }) => (
+const DeckBuilderMetas =  ({ count, cost }) => (
   <div className="deck-builder--list-header">
     <h3 className="title">Deck preview</h3>
     <div className="deck-builder--list-header--metas">
@@ -39,3 +39,5 @@ DeckBuilderMetas.propTypes = {
   count: PropTypes.number.isRequired,
   cost: PropTypes.number.isRequired,
 }
+
+export default DeckBuilderMetas;

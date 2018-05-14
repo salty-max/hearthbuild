@@ -166,9 +166,13 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  decks: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  decks: PropTypes.arrayOf(PropTypes.object),
   filters: PropTypes.object.isRequired,
   decksLoading: PropTypes.bool.isRequired,
+}
+
+Home.defaultProps ={
+  decks: []
 }
 
 export default Home;

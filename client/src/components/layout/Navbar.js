@@ -36,7 +36,7 @@ class Navbar extends Component {
 
     const authLinks = (
       <Fragment>
-        <div className="navbar-item">
+        <div className="navbar-item profile-item">
           <img
             src={user.avatar}
             alt={user.name}
@@ -98,7 +98,7 @@ class Navbar extends Component {
         </div>
       </div>
       <div className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
-        <div className="navbar-start">
+        {/* <div className="navbar-start">
           <div className="navbar-item has-dropdown is-hoverable">
             <a href="" className="navbar-link">Decks</a>
             <div className="navbar-dropdown">
@@ -109,7 +109,7 @@ class Navbar extends Component {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="navbar-end">
           <div className="navbar-item">
             <Link to="/pre-builder" className="button is-primary" onClick={this.collapseNav}>

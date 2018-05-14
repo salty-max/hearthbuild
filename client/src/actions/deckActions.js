@@ -1,4 +1,4 @@
-import { DELETE_DECK, SEND_COMMENT, SET_COMMENTS_LOADING, GET_COMMENTS } from "./types";
+import { DELETE_DECK, SEND_COMMENT, SET_COMMENTS_LOADING, GET_COMMENTS, ADD_DECK_VIEW, LIKE_DECK } from "./types";
 
 export const deleteDeck = (deckToDelete) => ({
   type: DELETE_DECK,
@@ -22,3 +22,16 @@ export const setCommentsLoading = (deckId) => ({
   type: SET_COMMENTS_LOADING,
   payload: deckId
 })
+
+export const likeDeck = (deckId, whatToDo) => ({
+  type: LIKE_DECK,
+  payload: {
+    deckId,
+    whatToDo
+  }
+})
+
+export const addDeckView = deckId => ({
+  type: ADD_DECK_VIEW,
+  payload: deckId
+});

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Chart, Bars, Layer, Ticks } from 'rumble-charts';
 
 import DeckMeta from './DeckMeta';
-import DeckRating from './DeckRating';
+import DeckRating from '../../containers/deck/DeckRating';
 import DeckList from './DeckList';
 import DeckDesc from './DeckDesc';
 import DeckComments from '../../containers/deck/DeckComments';

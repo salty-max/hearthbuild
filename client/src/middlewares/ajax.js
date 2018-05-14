@@ -4,6 +4,8 @@ import {
   DECKS_LOADING,
   CARDS_LOADING,
   SEND_DECK,
+  LIKE_DECK,
+  ADD_DECK_VIEW,
   DELETE_DECK,
   GET_ERRORS,
   SEND_COMMENT,
@@ -65,6 +67,26 @@ export default store => next => action => {
         .then(res => console.log('Success'))
         .catch(err => console.error(err));
       window.location = '/';
+      break;
+
+    case ADD_DECK_VIEW:
+      axios.post(`/api/decks/view/${action.payload}`)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log('Error when incrementing deck views');
+        });
+      break;
+
+    case LIKE_DECK:
+      axios.post(`/api/decks/${action.payload.whatToDo}/${action.payload.deckId}`)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log('Error when handling deck like');
+        });
       break;
 
     case SEND_COMMENT:

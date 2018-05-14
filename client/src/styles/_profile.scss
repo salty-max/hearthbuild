@@ -34,6 +34,12 @@
     color: $primary;
   }
 
+  .profile--battlenet {
+    svg {
+      fill: $blizzard-color;
+    }
+  }
+
   .profile--deck {
     margin-bottom: 1.5em;
 

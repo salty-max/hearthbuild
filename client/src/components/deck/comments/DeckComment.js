@@ -14,7 +14,7 @@ const DeckComment = ({ comment }) => (
       <div className="content">
         <div className="deck--comments-comment--username">
           <strong>{comment.name}</strong>
-          <div className="deck--comments-comment--date">
+          <div className="deck--comments-comment--date is-hidden-mobile">
             <Moment fromNow>{comment.date}</Moment>
           </div>
         </div>

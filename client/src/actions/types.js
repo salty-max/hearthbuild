@@ -21,3 +21,5 @@ export const DELETE_DECK = 'DELETE_DECK';
 export const SEND_COMMENT = 'SEND_COMMENT';
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const SET_COMMENTS_LOADING = 'SET_COMMENTS_LOADING'
+export const LIKE_DECK = 'LIKE_DECK'
+export const ADD_DECK_VIEW = 'ADD_DECK_VIEW'

@@ -3,7 +3,7 @@
   padding: 1.5rem;
   border-radius: .375rem;
 
-  .clear-button {
+  button {
     width: 100%;
     margin-top: 1.5em;
   }
@@ -101,42 +101,5 @@
 
   .title, .subtitle {
     color: $light;
-  }
-}
-
-/* Media queries */
-// Mobile
-@media screen and (max-width: 768px) {
-  .classes {
-    width: 80%;
-  }
-}
-
-// Tablet & Desktop
-@media screen and (min-width: 769px) and (max-width: 1471px) {
-  .deck-list {
-    .table {
-      table-layout: fixed;
-
-      thead {
-        th {
-          padding: 1rem .5rem;
-
-          &:nth-child(2) {
-            width: 25%;
-            text-align: left;
-          }
-
-          &:nth-child(3),
-          &:nth-child(4) {
-            width: 15%;
-          }
-
-          &:nth-child(5) {
-            width: 10%;
-          }
-        }
-      }
-    }
   }
 }

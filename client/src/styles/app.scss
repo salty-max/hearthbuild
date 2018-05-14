@@ -12,6 +12,7 @@
 @import '_profile';
 @import '_guide';
 @import '_footer';
+@import '_mediaQueries';
 
 html, body, #root {
   width: 100%;
@@ -231,29 +232,4 @@ svg {
 
 .emojione {
   vertical-align: middle;
-}
-
-/* Media queries */
-// Mobile
-@media screen and (max-width: 768px) {
-  #profile .profile--deck-title--text {
-    width: 60%;
-  }
-
-  .deck-list--form .clear-button {
-    margin-top: 0;
-  }
-  
-  .fields {
-    .field {
-      margin-bottom: 1em;
-    }
-  }
-}
-
-// Tablet
-@media screen and (max-width: 1279px) {
-  main {
-    padding: 0 2em;
-  }
 }

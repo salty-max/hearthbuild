@@ -19,7 +19,7 @@ const DeckLikeButton = ({ auth, likes, deckIsLiked, onBtnClick }) => {
             })}
           />
         </span>
-        <span>{deckIsLiked ? 'Dislike' : 'Like'} this deck</span>
+        <span>{deckIsLiked ? 'Dislike' : 'Like'}</span>
       </button>
     );
   }
@@ -33,7 +33,7 @@ const DeckLikeButton = ({ auth, likes, deckIsLiked, onBtnClick }) => {
         <span className="icon">
           <i className="fas fa-thumbs-up" />
         </span>
-        <span>Like this deck</span>
+        <span>Like</span>
       </button>
     );
   }

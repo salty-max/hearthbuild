@@ -15,3 +15,10 @@
     font-weight: 600;
   }
 }
+
+.navbar-menu.is-active {
+  .profile-item {
+    display: flex;
+    align-items: center;
+  }
+} 

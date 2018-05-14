@@ -6630,6 +6630,10 @@ label.panel-block {
   .navbar-item {
     font-weight: 600; }
 
+.navbar-menu.is-active .profile-item {
+  display: flex;
+  align-items: center; }
+
 .sidebar-item {
   background-color: #363636; }
   .sidebar-item--title {
@@ -6667,7 +6671,7 @@ label.panel-block {
   background-color: #494949;
   padding: 1.5rem;
   border-radius: .375rem; }
-  .deck-list--form .clear-button {
+  .deck-list--form button {
     width: 100%;
     margin-top: 1.5em; }
 
@@ -6727,24 +6731,6 @@ label.panel-block {
   background-size: cover; }
   .home-info .title, .home-info .subtitle {
     color: whitesmoke; }
-
-/* Media queries */
-@media screen and (max-width: 768px) {
-  .classes {
-    width: 80%; } }
-
-@media screen and (min-width: 769px) and (max-width: 1471px) {
-  .deck-list .table {
-    table-layout: fixed; }
-    .deck-list .table thead th {
-      padding: 1rem .5rem; }
-      .deck-list .table thead th:nth-child(2) {
-        width: 25%;
-        text-align: left; }
-      .deck-list .table thead th:nth-child(3), .deck-list .table thead th:nth-child(4) {
-        width: 15%; }
-      .deck-list .table thead th:nth-child(5) {
-        width: 10%; } }
 
 .deck .content-top {
   display: flex;
@@ -6822,7 +6808,7 @@ label.panel-block {
     .deck--list-card-cost--icon {
       padding-left: .25em; }
       .deck--list-card-cost--icon svg {
-        fill: whitesmoke;
+        fill: #209cee;
         width: .9em;
         height: .9em; }
     .deck--list-card-cost--text {
@@ -7034,6 +7020,8 @@ label.panel-block {
   .deck-builder--list-header {
     display: flex;
     align-items: center; }
+    .deck-builder--list-header--metas {
+      display: flex; }
     .deck-builder--list-header .title {
       margin-bottom: 0; }
     .deck-builder--list-header .tags {
@@ -7145,6 +7133,9 @@ label.panel-block {
 #profile .profile--title {
   color: #00d1b2; }
 
+#profile .profile--battlenet svg {
+  fill: #13AFFB; }
+
 #profile .profile--deck {
   margin-bottom: 1.5em; }
   #profile .profile--deck-title {
@@ -7193,6 +7184,78 @@ label.panel-block {
     align-items: center; }
   .footer a, .footer .icon {
     color: #00d1b2; }
+
+/* Media queries */
+@media screen and (max-width: 400px) {
+  #profile .profile-header img {
+    height: 6em; }
+  #profile .profile-header .profile--title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem; }
+  #profile .profile-header .profile--battlenet, #profile .profile-header .profile--date {
+    font-size: .8em; } }
+
+@media screen and (max-width: 500px) {
+  .deck-builder--form .fields .field:last-child {
+    margin-top: 1.5em;
+    margin-left: 0; }
+  .pool-header .field {
+    width: 30%; }
+  .deck-builder--list-header {
+    flex-direction: column; }
+    .deck-builder--list-header--metas {
+      margin-top: 1em; } }
+
+@media screen and (max-width: 767px) {
+  .classes {
+    width: 80%; }
+  #profile .profile--deck-title--text {
+    width: 60%; }
+  #deck-single .mana-curve {
+    margin-top: 0; }
+  .deck-list--form .clear-button {
+    margin-top: 0; }
+  .deck--desc {
+    padding: 2.5em 0 0; }
+  .fields .field {
+    margin-bottom: 1em; }
+  .deck--ratings {
+    justify-content: center; }
+  footer .container {
+    display: block;
+    text-align: center; } }
+
+@media screen and (max-width: 1279px) {
+  main {
+    padding: 0 2em; }
+  #deck-single .mana-curve svg {
+    width: 50%;
+    height: 50%; } }
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .rating-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+  .deck--ratings {
+    padding-top: 0; }
+  .deck--rating-btn {
+    width: 60%; }
+  #deck-single .mana-curve {
+    margin-top: 0; } }
+
+@media screen and (min-width: 769px) and (max-width: 1471px) {
+  .deck-list .table {
+    table-layout: fixed; }
+    .deck-list .table thead th {
+      padding: 1rem .5rem; }
+      .deck-list .table thead th:nth-child(2) {
+        width: 25%;
+        text-align: left; }
+      .deck-list .table thead th:nth-child(3), .deck-list .table thead th:nth-child(4) {
+        width: 15%; }
+      .deck-list .table thead th:nth-child(5) {
+        width: 10%; } }
 
 html, body, #root {
   width: 100%;
@@ -7354,16 +7417,3 @@ svg {
 
 .emojione {
   vertical-align: middle; }
-
-/* Media queries */
-@media screen and (max-width: 768px) {
-  #profile .profile--deck-title--text {
-    width: 60%; }
-  .deck-list--form .clear-button {
-    margin-top: 0; }
-  .fields .field {
-    margin-bottom: 1em; } }
-
-@media screen and (max-width: 1279px) {
-  main {
-    padding: 0 2em; } }

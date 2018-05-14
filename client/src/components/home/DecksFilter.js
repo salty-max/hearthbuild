@@ -1,5 +1,6 @@
 
 import React, { Component, createRef } from 'react';
+import classnames from 'classnames';
 
 import ClassRadio from './ClassRadio';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -102,7 +103,7 @@ class DecksFilter extends Component {
           <div className="columns">
             <div className="column is-9">
               <div className="field">
-                <button type="submit" className="button is-primary is-outlined" style={{ width: '100%', marginTop: '1.5em' }}>Submit</button>
+                <button type="submit" className="button is-primary is-outlined">Submit</button>
               </div>
             </div>
             <div className="column is-3">

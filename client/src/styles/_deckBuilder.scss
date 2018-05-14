@@ -181,6 +181,10 @@
       display: flex;
       align-items: center;
 
+      &--metas {
+        display: flex;
+      }
+
       .title {
         margin-bottom: 0;
       }

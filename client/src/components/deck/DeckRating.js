@@ -18,32 +18,20 @@ class DeckRating extends Component {
   }
 
   componentDidMount() {
-    // set updated deck views value
+    // Set updated deck views value
     this.setState(prevState => ({
       deckViews: ++prevState.deckViews,
     }));
     
-    // increment deck views on page display/refresh
-    axios.post(`/api/decks/view/${this.props.deckId}`)
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log('Error when incrementing deck views');
-      });
+    // Increment deck views on page display/refresh
+    this.props.actions.addDeckView(this.props.deckId);
   }
 
   handleLikeBtn = (deckIsLiked) => () => {
     const action = deckIsLiked ? 'dislike' : 'like';
 
-    // add or remove like depending on deckIsLiked value
-    axios.post(`/api/decks/${action}/${this.props.deckId}`)
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log('Error when handling deck like');
-      });
+    // Add or remove like depending on deckIsLiked value
+    this.props.actions.likeDeck(this.props.deckId, action);
 
     this.setState(prevState => ({
       deckLikes: prevState.deckIsLiked ? --prevState.deckLikes : ++prevState.deckLikes,
@@ -57,7 +45,7 @@ class DeckRating extends Component {
 
     return (
       <div className="column is-3">
-        <div className="box">
+        <div className="box rating-box">
           <DeckLikeButton
             auth={auth}
             likes={likes}
@@ -66,7 +54,7 @@ class DeckRating extends Component {
           />
           <div className="deck--ratings">
             <div className="deck--rating">
-              <span className=" tags has-addons">
+              <span className=" tags is-medium-mobile has-addons">
                 <span className="tag is-dark">
                   <span className="icon">
                     <i className="fas fa-thumbs-up" />

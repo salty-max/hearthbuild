@@ -1,0 +1,143 @@
+/* Media queries */
+
+// Mobile portrait
+@media screen and (max-width: 400px) {
+  #profile {
+    .profile-header {
+      img {
+        height: 6em;
+      }
+
+      .profile--title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .profile--battlenet, .profile--date {
+        font-size: .8em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .deck-builder--form .fields .field:last-child {
+    margin-top: 1.5em;
+    margin-left: 0;
+  }
+
+  .pool-header {
+    .field {
+      width: 30%;
+    }
+  }
+  
+  .deck-builder--list-header {
+    flex-direction: column;
+
+    &--metas {
+      margin-top: 1em;
+    }
+  }
+}
+
+// Mobile
+@media screen and (max-width: 767px) {
+  .classes {
+    width: 80%;
+  }
+
+  #profile .profile--deck-title--text {
+    width: 60%;
+  }
+
+  #deck-single .mana-curve {
+    margin-top: 0;
+  }
+
+  .deck-list--form .clear-button {
+    margin-top: 0;
+  }
+
+  .deck--desc {
+    padding: 2.5em 0 0;
+  }
+
+  .fields {
+    .field {
+      margin-bottom: 1em;
+    }
+  }
+
+  .deck--ratings {
+    justify-content: center;
+  }
+
+  footer {
+    .container {
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+// Mobile & Tablet
+@media screen and (max-width: 1279px) {
+  main {
+    padding: 0 2em;
+  }
+
+  #deck-single .mana-curve {
+    svg {
+      width: 50%;
+      height: 50%;
+    }
+  }
+}
+
+// Tablet
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .rating-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+  }
+
+  .deck--ratings {
+    padding-top: 0;
+  }
+
+  .deck--rating-btn {
+    width: 60%;
+  }
+
+  #deck-single .mana-curve {
+    margin-top: 0;
+  }
+}
+
+// Tablet & Desktop
+@media screen and (min-width: 769px) and (max-width: 1471px) {
+
+  .deck-list {
+    .table {
+      table-layout: fixed;
+      thead {
+        th {
+          padding: 1rem .5rem;
+          &:nth-child(2) {
+            width: 25%;
+            text-align: left;
+          }
+          &:nth-child(3),
+          &:nth-child(4) {
+            width: 15%;
+          }
+          &:nth-child(5) {
+            width: 10%;
+          }
+        }
+      }
+    }
+  }
+}

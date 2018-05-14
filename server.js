@@ -4,8 +4,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const cors = require('cors');
+const compression = require('compression')
 
 const app = express();
+app.use(compression());
 
 const users = require('./routes/api/users');
 const decks = require('./routes/api/decks');

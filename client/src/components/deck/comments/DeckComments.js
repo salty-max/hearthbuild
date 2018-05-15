@@ -96,7 +96,7 @@ class DeckComments extends Component {
         <div className="emoji-picker" style={{ position: 'relative', width: '50%' }}>
           <button onClick={this.handlePicker} className="button is-medium is-light">
             <span className="icon">
-              <i className="fas fa-login" />
+              <i className="fas fa-smile" />
             </span>
           </button>
           {/* Picker */}

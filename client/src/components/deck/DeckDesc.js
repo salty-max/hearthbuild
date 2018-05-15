@@ -10,23 +10,34 @@ class DeckDesc extends Component {
   }
 
   colorize = () => {
+    // Get only deck cards names
     const cardNames = this.props.cards.map(card => card.name);
     const foundCardNames = [];
     const cardNamesFormatized = [];
     let cardClass = '';
 
     cardNames.forEach(name => {
+      // Check if each card name is in description
       const match = this.props.desc.match(name);
+
+      // If so
       if (match) {
+        // Find matched card in deck cards
+        // Set className based on its rarity
         cardClass = `has-text-${this.props.cards.find(card => card.name === match[0]).rarity.toLowerCase()}`;
 
+        // Get matched cards names
         foundCardNames.push(name);
 
+        // HTMLize card name with class based on rarity
         cardNamesFormatized.push(`<span class="card-name ${cardClass}">${name}</span>`);
       }
     })
 
+    // Replace cards names in description with their HTML version 
     this.newDesc = replaceArray(this.props.desc, foundCardNames, cardNamesFormatized);
+
+    // Return HTML version of string
     return { __html: this.newDesc }
   }
 

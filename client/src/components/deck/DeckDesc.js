@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import ReactMarkdown from 'react-markdown';
 
 import replaceArray from '../../utils/replace-array';
 
@@ -11,7 +12,7 @@ class DeckDesc extends Component {
 
   colorize = () => {
     // Get only deck cards names
-    const cardNames = this.props.cards.map(card => card.name);
+    const cardNames = this.props.cardsPool.map(card => card.name);
     const foundCardNames = [];
     const cardNamesFormatized = [];
     let cardClass = '';
@@ -24,7 +25,7 @@ class DeckDesc extends Component {
       if (match) {
         // Find matched card in deck cards
         // Set className based on its rarity
-        cardClass = `has-text-${this.props.cards.find(card => card.name === match[0]).rarity.toLowerCase()}`;
+        cardClass = `has-text-${this.props.cardsPool.find(card => card.name === match[0]).rarity.toLowerCase()}`;
 
         // Get matched cards names
         foundCardNames.push(name);
@@ -36,6 +37,11 @@ class DeckDesc extends Component {
 
     // Replace cards names in description with their HTML version 
     this.newDesc = replaceArray(this.props.desc, foundCardNames, cardNamesFormatized);
+    // Replace line breaks with <br>
+    this.newDesc = this.newDesc.replace(/\r?\n/g, '<br />');
+
+    // Replace paragraphs breaks with crappy double <br>
+    this.newDesc = this.newDesc.replace(/\r\r?\n\n/g, '<br /><br />');
 
     // Return HTML version of string
     return { __html: this.newDesc }

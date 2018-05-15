@@ -5,7 +5,7 @@ import { Chart, Bars, Layer, Ticks } from 'rumble-charts';
 import DeckMeta from './DeckMeta';
 import DeckRating from '../../containers/deck/DeckRating';
 import DeckList from './DeckList';
-import DeckDesc from './DeckDesc';
+import DeckDesc from '../../containers/deck/DeckDesc';
 import DeckComments from '../../containers/deck/DeckComments';
 import Spinner from '../common/Spinner';
 

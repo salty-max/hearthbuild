@@ -55,6 +55,12 @@
         margin-bottom: 1em;
       }
     }
+
+    .deck-list {
+      .table {
+        table-layout: auto;
+      }
+    }
   }
 
   #profile .profile--deck-title--text {
@@ -128,10 +134,8 @@
 
 // Tablet & Desktop
 @media screen and (min-width: 769px) and (max-width: 1471px) {
-
   .deck-list {
     .table {
-      table-layout: fixed;
       thead {
         th {
           padding: 1rem .5rem;
@@ -147,6 +151,17 @@
             width: 10%;
           }
         }
+      }
+    }
+  }
+}
+
+// Desktop & upwards
+@media screen and (min-width: 1024px) {
+  #home {
+    .deck-list {
+      .table {
+        table-layout: fixed;
       }
     }
   }

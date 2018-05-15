@@ -6676,6 +6676,7 @@ label.panel-block {
     margin-top: 1.5em; }
 
 .deck-list--table-wrapper {
+  margin-bottom: 1em;
   overflow: hidden;
   overflow-x: auto; }
 
@@ -6692,17 +6693,19 @@ label.panel-block {
       color: #00d1b2;
       padding: 1rem;
       cursor: pointer; }
-      .deck-list .table thead th:nth-child(1), .deck-list .table thead th:nth-last-child(-n + 3) {
+      .deck-list .table thead th:nth-child(1) {
         width: 5%; }
       .deck-list .table thead th:nth-child(2) {
-        width: 42.5%;
+        width: 40%;
         text-align: left; }
       .deck-list .table thead th:nth-child(3) {
-        width: 17.5%; }
+        width: 16.5%; }
       .deck-list .table thead th:nth-child(4) {
-        width: 12.5%; }
+        width: 12.25%; }
       .deck-list .table thead th:nth-child(5) {
         width: 7.5%; }
+      .deck-list .table thead th:nth-last-child(-n + 3) {
+        width: 6.25%; }
   .deck-list .table tbody {
     font-family: "Roboto Slab", serif; }
     .deck-list .table tbody .deck-list--deck-name {
@@ -7376,6 +7379,8 @@ label.panel-block {
     display: block; }
     #home .fields .field {
       margin-bottom: 1em; }
+  #home .deck-list .table {
+    table-layout: auto; }
   #profile .profile--deck-title--text {
     width: 60%; }
   #deck-single .mana-curve {
@@ -7412,17 +7417,19 @@ label.panel-block {
     margin-top: 0; } }
 
 @media screen and (min-width: 769px) and (max-width: 1471px) {
-  .deck-list .table {
-    table-layout: fixed; }
-    .deck-list .table thead th {
-      padding: 1rem .5rem; }
-      .deck-list .table thead th:nth-child(2) {
-        width: 25%;
-        text-align: left; }
-      .deck-list .table thead th:nth-child(3), .deck-list .table thead th:nth-child(4) {
-        width: 15%; }
-      .deck-list .table thead th:nth-child(5) {
-        width: 10%; } }
+  .deck-list .table thead th {
+    padding: 1rem .5rem; }
+    .deck-list .table thead th:nth-child(2) {
+      width: 25%;
+      text-align: left; }
+    .deck-list .table thead th:nth-child(3), .deck-list .table thead th:nth-child(4) {
+      width: 15%; }
+    .deck-list .table thead th:nth-child(5) {
+      width: 10%; } }
+
+@media screen and (min-width: 1024px) {
+  #home .deck-list .table {
+    table-layout: fixed; } }
 
 html, body, #root {
   width: 100%;

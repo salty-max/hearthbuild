@@ -10,6 +10,7 @@
 }
 
 .deck-list--table-wrapper {
+  margin-bottom: 1em;
   overflow: hidden;
   overflow-x: auto;
 }
@@ -33,26 +34,29 @@
         padding: 1rem;
         cursor: pointer;
 
-        &:nth-child(1),
-        &:nth-last-child(-n + 3) {
+        &:nth-child(1) {
           width: 5%;
         }
 
         &:nth-child(2) {
-          width: 42.5%;
+          width: 40%;
           text-align: left;
         }
 
         &:nth-child(3) {
-          width: 17.5%;
+          width: 16.5%;
         }
 
         &:nth-child(4) {
-          width: 12.5%;
+          width: 12.25%;
         }
-        
+
         &:nth-child(5) {
           width: 7.5%;
+        }
+
+        &:nth-last-child(-n + 3) {
+          width: 6.25%;
         }
       }
     }

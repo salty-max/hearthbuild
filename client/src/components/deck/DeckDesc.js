@@ -16,33 +16,35 @@ class DeckDesc extends Component {
     const cardNamesFormatized = [];
     let cardClass = '';
     let cardImg = '';
+    if (this.props.desc) {
+      cardNames.forEach(name => {
+        // Check if each card name is in description
+        const match = this.props.desc.match(name);
 
-    cardNames.forEach(name => {
-      // Check if each card name is in description
-      const match = this.props.desc.match(name);
+        // If so
+        if (match) {
+          // Find matched card in deck cards
+          // Set className based on its rarity
+          cardClass = `has-text-${this.props.cardsPool.find(card => card.name === match[0]).rarity.toLowerCase()}`;
+          cardImg = this.props.cardsPool.find(card => card.name === match[0]).img;
 
-      // If so
-      if (match) {
-        // Find matched card in deck cards
-        // Set className based on its rarity
-        cardClass = `has-text-${this.props.cardsPool.find(card => card.name === match[0]).rarity.toLowerCase()}`;
-        cardImg = this.props.cardsPool.find(card => card.name === match[0]).img;
+          // Get matched cards names
+          foundCardNames.push(name);
 
-        // Get matched cards names
-        foundCardNames.push(name);
+          // HTMLize card name with class based on rarity
+          cardNamesFormatized.push(`<span class="card-name ${cardClass}">${name}<div class="card-preview"><img src="${cardImg}" alt="${name}" /></div></span>`);
+        }
+      })
 
-        // HTMLize card name with class based on rarity
-        cardNamesFormatized.push(`<span class="card-name ${cardClass}">${name}<div class="card-preview"><img src="${cardImg}" alt="${name}" /></div></span>`);
-      }
-    })
+      // Replace cards names in description with their HTML version
+      this.newDesc = replaceArray(this.props.desc, foundCardNames, cardNamesFormatized);
+      // Replace line breaks with <br>
+      this.newDesc = this.newDesc.replace(/\r?\n/g, '<br />');
 
-    // Replace cards names in description with their HTML version 
-    this.newDesc = replaceArray(this.props.desc, foundCardNames, cardNamesFormatized);
-    // Replace line breaks with <br>
-    this.newDesc = this.newDesc.replace(/\r?\n/g, '<br />');
-
-    // Replace paragraphs breaks with crappy double <br>
-    this.newDesc = this.newDesc.replace(/\r\r?\n\n/g, '<br /><br />');
+      // Replace paragraphs breaks with crappy double <br>
+      this.newDesc = this.newDesc.replace(/\r\r?\n\n/g, '<br /><br />');
+    }
+    
 
     // Return HTML version of string
     return { __html: this.newDesc }
@@ -63,12 +65,13 @@ class DeckDesc extends Component {
 }
 
 DeckDesc.propTypes = {
-  desc: PropTypes.string.isRequired,
+  desc: PropTypes.string,
   cards: PropTypes.arrayOf(PropTypes.object)
 };
 
 DeckDesc.defaultProps = {
-  cards: []
+  cards: [],
+  desc: ''
 }
 
 export default DeckDesc;

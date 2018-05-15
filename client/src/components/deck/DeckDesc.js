@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import ReactMarkdown from 'react-markdown';
 
 import replaceArray from '../../utils/replace-array';
 
@@ -16,6 +15,7 @@ class DeckDesc extends Component {
     const foundCardNames = [];
     const cardNamesFormatized = [];
     let cardClass = '';
+    let cardImg = '';
 
     cardNames.forEach(name => {
       // Check if each card name is in description
@@ -26,12 +26,13 @@ class DeckDesc extends Component {
         // Find matched card in deck cards
         // Set className based on its rarity
         cardClass = `has-text-${this.props.cardsPool.find(card => card.name === match[0]).rarity.toLowerCase()}`;
+        cardImg = this.props.cardsPool.find(card => card.name === match[0]).img;
 
         // Get matched cards names
         foundCardNames.push(name);
 
         // HTMLize card name with class based on rarity
-        cardNamesFormatized.push(`<span class="card-name ${cardClass}">${name}</span>`);
+        cardNamesFormatized.push(`<span class="card-name ${cardClass}">${name}<div class="card-preview"><img src="${cardImg}" alt="${name}" /></div></span>`);
       }
     })
 

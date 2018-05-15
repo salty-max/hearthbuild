@@ -6835,7 +6835,20 @@ label.panel-block {
   .deck--desc h3 {
     font-family: "Montserrat", sans-serif; }
   .deck--desc .card-name {
-    font-weight: 600; }
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    position: relative; }
+    .deck--desc .card-name:hover .card-preview {
+      display: block; }
+  .deck--desc .card-preview {
+    display: none;
+    position: absolute;
+    bottom: 2em;
+    width: 205px;
+    height: 310px;
+    background-color: transparent;
+    z-index: 10; }
 
 .deck--comments {
   overflow: hidden; }

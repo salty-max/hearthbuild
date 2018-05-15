@@ -215,3 +215,57 @@
 ### Cecile
 
 - Petit fix du CSS
+
+
+## 11-05-2018
+
+### Jonathan
+
+- Fix des warnings + modifs css
+
+### Max
+
+- Guide du débutant
+
+### Pair-programming
+
+- Création d'une page de profil
+- Suppression d'un deck depuis le profil
+
+
+## 12-05-2018
+
+### Pair-programming
+
+- Ajout d'un modal de confirmation pour les suppressions
+- Fix des banners + modifs css
+
+
+## 14-05-2018
+
+### Jonathan
+
+- Fix du responsive des tableaux
+- Troncage des textes en responsive
+
+### Pair-programming
+
+- Gros nettoyage du code
+- Ajouts de commentaires
+- Finition du responsive
+- Activation de la compression GZ
+- Supression d'utilisateur depuis son profil
+
+
+## 15-05-2018
+
+### Pair-programming
+
+- Ajout d'un emoji picker pour les commentaires
+- Création d'une fonction de remplacement de mots dans une string
+- Reconnaissance des noms de cartes dans la description d'un deck
+- I.E Preview des images des cartes présentes dans la description
+- Création de regex pour les retours à la ligne et check de toutes les cartes dans la description
+
+
+# THE END

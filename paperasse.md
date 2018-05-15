@@ -53,10 +53,9 @@ Les utilisateurs pourront partager autour de leur jeu préféré par différents
 #### Sitemap
 
 -   Accueil
--   Decks
-    -   Classes
+-   Deck
 -   Builder
--   Mes decks
+-   Profil / Mes decks
 -   Register/login
 
 
@@ -65,13 +64,12 @@ Les utilisateurs pourront partager autour de leur jeu préféré par différents
 - Environnement full JS
 - En anglais dans le texte
 - Convention BEM pour le style
-- Eslint AirBnB pour le JS
 - Base de données noSQL
 
 ### Specs fonctionnelles
 
-- Page d'accueil / listings des decks : ???
-- Page d'un deck + commentaires/rating : ???
+- Page d'accueil / listings des decks : **Cécile**
+- Page d'un deck + commentaires/rating : **Jonathan**
 - Deck builder : **Maxime Blanc**
 
 ### Specs techniques
@@ -88,7 +86,9 @@ Javascript front to back
 - react-router
 - bulma / sass
 - axios
-- brunch
+- webpack
+- formatizer
+- rumble-charts
 
 **Backend**
 - nodejs
@@ -97,14 +97,15 @@ Javascript front to back
 - body-parser
 - bcryptjs
 - passport
+- jsonwebtoken
+- validator
+- gravatar
 
 #### Outils
 
 - [Trello](https://trello.com/)
 - [GitHub](https://github.com/)
 - [Atom](https://atom.io/)
-- [Balsamiq](https://balsamiq.cloud/)
 - [Photoshop](https://www.adobe.com/fr/products/photoshop.html)
-- [Evernote](https://evernote.com/)
 - [mLab](https://mlab.com/welcome/)
-- [Netlify](https://www.netlify.com/)
+- [Heroku](https://www.heroku.com)

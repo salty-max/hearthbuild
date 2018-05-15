@@ -72,7 +72,7 @@ class DeckSingle extends Component {
                   {deck.description === '' ? (
                     <DeckDesc desc="The author did not leave any recommendations. Do or do not, there is no try !" />
                   ) : (
-                    <DeckDesc desc={deck.description} />
+                    <DeckDesc desc={deck.description} cards={deck.cards} />
                   )}
                 </div>
                 <div className="column is-4">

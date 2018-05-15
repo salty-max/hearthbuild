@@ -6834,6 +6834,8 @@ label.panel-block {
   font-family: "Roboto Slab", serif; }
   .deck--desc h3 {
     font-family: "Montserrat", sans-serif; }
+  .deck--desc .card-name {
+    font-weight: 600; }
 
 .deck--comments {
   overflow: hidden; }

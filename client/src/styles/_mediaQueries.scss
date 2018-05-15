@@ -47,6 +47,16 @@
     width: 80%;
   }
 
+  #home {
+    .fields {
+      display: block;
+
+      .field {
+        margin-bottom: 1em;
+      }
+    }
+  }
+
   #profile .profile--deck-title--text {
     width: 60%;
   }

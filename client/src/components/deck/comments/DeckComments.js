@@ -2,18 +2,33 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { setImagePath, Picker } from 'formatizer';
 
 import DeckComment from './DeckComment';
 import TextAreaFieldGroup from '../../common/TextAreaFieldGroup';
+import emojis from '../../../assets/img/emojione.svg'
+
+setImagePath(emojis);
 
 class DeckComments extends Component {
   constructor() {
     super();
     this.state = {
+      pickerIsActive: false,
       comment: '',
       currentPage: 1,
       commentsPerPage: 5,
     }
+  }
+
+  handlePicker = () => {
+    this.setState(prevState => ({ pickerIsActive: !prevState.pickerIsActive }));
+  }
+
+  handleEmoji = ({ shortname }) => {
+    const { comment } = this.state;
+    const value = `${comment} ${shortname}`.trim();
+    this.setState({ comment: value });
   }
 
   // Go to selected page
@@ -78,6 +93,19 @@ class DeckComments extends Component {
           />
           <input type="submit" value="Send" className="button is-primary is-medium is-pulled-right" />
         </form>
+        <div className="emoji-picker" style={{ position: 'relative', width: '50%' }}>
+          <button onClick={this.handlePicker} className="button is-medium is-light">
+            <span className="icon">
+              <i className="fas fa-login" />
+            </span>
+          </button>
+          {/* Picker */}
+          {this.state.pickerIsActive && (
+            <div style={{ height: '350px', width: '276px', position: 'absolute', bottom: '50px' }}>
+              <Picker onChange={this.handleEmoji} />
+            </div>
+          )} 
+        </div>
       </div>
     );
 
